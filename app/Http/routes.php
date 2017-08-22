@@ -11,6 +11,19 @@
 |
 */
 
+
+// rutas vistas //////
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('mivista', function () {
+    return view('prueba');
+});
+/////////////////////////////7
+
+
+////rutas controladores //////////////////
+
+Route::post('obtener/ejemplo','EjemploController@ejemplo');

@@ -38,8 +38,13 @@
     <body>
         <div class="container">
             <div class="content">
+<<<<<<< HEAD
                 <div class="title">holaaaaa mundo !!</div>
                 <p>ejemploooooooo</p>
+=======
+                <div class="title">Laravel 5</div>mivista
+                <a href="{{ url('mivista') }}"></a>
+>>>>>>> 0bfcd8f... practicando vista rutas y rutas controladores y modelos
             </div>
         </div>
     </body>
