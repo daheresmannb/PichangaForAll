@@ -42,10 +42,24 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt-auth',
+            'provider' => 'users'
+            //'driver' => 'token',
+            //'provider' => 'users',
+        ],
+
+        'jwt' => [
+            'driver' => 'jwt',
             'provider' => 'users',
         ],
     ],
+
+
+
+
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -64,10 +78,11 @@ return [
     |
     */
 
+
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model'  => App\User::class,
         ],
 
         // 'users' => [

@@ -36,6 +36,8 @@ class Kernel extends HttpKernel
         ],
     ];
 
+
+
     /**
      * The application's route middleware.
      *
@@ -49,5 +51,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'jwt.auth' => \App\Http\Middleware\VerifyJWTToken::class,//\Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+        'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
+         'valid-jwt' => \Paulvl\JWTGuard\Auth\Middleware\ValidJwt::class,
     ];
 }

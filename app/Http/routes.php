@@ -11,19 +11,46 @@
 |
 */
 
-
-// rutas vistas //////
-Route::get('/', function () {
+		Route::get('/', function () {
     return view('welcome');
 });
 
+// rutas vistas //////
 
-Route::get('mivista', function () {
-    return view('prueba');
-});
+
+
 /////////////////////////////7
 
 
 ////rutas controladores //////////////////
 
 Route::post('obtener/ejemplo','EjemploController@ejemplo');
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get(
+	'obtener/ejemplo', [
+		'middleware' => 'auth:api', 
+		'uses' => 'EjemploController@ejemplo'
+	]
+);
+
+
+
+Route::post('/signin', 'JwtController@login');
+//Route::get('/signin', 'JwtController@signin');
+Route::post('/signout', 'JwtController@signout');
+Route::post('/getuser', 'JwtController@getAuthUser');
+
+ 
+Route::group(
+	['middleware' => ['auth']], 
+	function () {
+		Route::get('/home', 
+			function () {
+    			return view('home');
+			}
+		);
+	}
+);
