@@ -1,0 +1,10 @@
+@extends('layouts.app')
+
+@include('header')
+@include('banner')
+@include('servicios')
+@include('portafolio')
+@include('acerca')
+@include('habilidades')
+@include('contacto')
+@include('footer')

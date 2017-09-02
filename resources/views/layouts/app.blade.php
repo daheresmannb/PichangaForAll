@@ -6,77 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>PichangaForAll</title>
-
+     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
+    {!! Html::style('assets/css/font-awesome.min.css'); !!}
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    {!! Html::style('assets/css/boostrap.min.css'); !!}
+    {!! Html::style('assets/css/style.css'); !!}
+    {!! Html::style('assets/css/bootstrap.css'); !!}
+        {!! HTML::script('assets/js/jquery-3.2.1.js'); !!}
+    {!! HTML::script('assets/js/boostrap.min.js'); !!}
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="application/x-javascript"> 
+        addEventListener(
+            "load", 
+            function() { 
+                setTimeout(hideURLbar, 0); 
+            }, 
+            false
+        ); 
+        function hideURLbar() { 
+            window.scrollTo(0,1); 
+        } 
+    </script>
+    {!! HTML::script('assets/js/move-top.js'); !!}
+    {!! HTML::script('assets/js/easing.js'); !!}
 
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
+    <script type="text/javascript">
+        jQuery(document).ready(
+            function($) {
+                $(".scroll").click(
+                    function(event){     
+                        event.preventDefault();
+                        $('html,body').animate({
+                            scrollTop:$(this.hash).offset().top
+                        },1000);
+                    }
+                );
+            }
+        );
+    </script>
+<!-- start-smoth-scrolling -->
+<!-- animated-css -->
+    {!! Html::style('assets/css/animate.css'); !!}
+    {!! HTML::script('assets/js/wow.min.js'); !!}
+    <script>
+        new WOW().init();
+    </script>
+
 </head>
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    PichangaForAll
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    @yield('content')
-
+<body>
+    @yield('header')
+    @yield('banner')
+    @yield('servicios')
+    @yield('portafolio')
+    @yield('acerca')
+    @yield('habilidades')
+    @yield('contacto')
+    @yield('footer')
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
 </body>
 </html>
