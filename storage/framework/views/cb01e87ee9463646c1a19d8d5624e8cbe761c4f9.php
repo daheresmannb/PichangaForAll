@@ -22,7 +22,13 @@
 				<div id="small-dialog" class="mfp-hide">
 					<iframe src="//player.vimeo.com/video/38584262"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 				</div>
-
+				<div id="small-dialog2" class="mfp-hide">
+					<div class="signup">
+				
+							
+					
+					</div>
+				</div>
 			</div>
 		</div>
 

@@ -75,6 +75,7 @@
     <?php echo $__env->yieldContent('contacto'); ?>
     <?php echo $__env->yieldContent('footer'); ?>
     <?php echo $__env->yieldContent('login'); ?>
+    <?php echo $__env->yieldContent('content'); ?>
 
 </body>
 </html>

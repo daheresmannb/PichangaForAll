@@ -65,6 +65,7 @@
     @yield('contacto')
     @yield('footer')
     @yield('login')
+    @yield('content')
 
 </body>
 </html>
