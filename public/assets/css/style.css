@@ -56,6 +56,7 @@ html,body {
 	-ms-transition:.5s all;
 }
 .top-nav ul li a.Signup {
+	margin-left: 10em;
 	color: #42B8DD;
 	padding: 0.5em 1em;
 	padding-left: 1em;
@@ -67,6 +68,28 @@ html,body {
 	-ms-border-radius: 10px;
 }
 .top-nav ul li a.Signup:hover{
+	border: #FFF solid 2px;
+	color: #FFF;
+	text-decoration:none;
+	transition:.5s all;
+	-webkit-transition:.5s all;
+	-moz-transition:.5s all;
+	-o-transition:.5s all;
+	-ms-transition:.5s all;
+}
+
+.top-nav ul li a.Signup2 {
+	color: #42B8DD;
+	padding: 0.5em 1em;
+	border: #42B8DD solid 2px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	-ms-border-radius: 10px;
+}
+.top-nav ul li a.Signup2:hover{
+
 	border: #FFF solid 2px;
 	color: #FFF;
 	text-decoration:none;

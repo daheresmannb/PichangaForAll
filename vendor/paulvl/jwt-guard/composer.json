@@ -1,0 +1,30 @@
+{
+  "name": "paulvl/jwt-guard",
+  "description": "JWT Guard for Laravel 5.*",
+  "keywords": [
+    "jwt",
+    "guard",
+    "laravel",
+    "json",
+    "web",
+    "token"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Paul Vidal",
+      "email": "paul@tecactus.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.5.9",
+    "illuminate/support": "5.*",
+    "firebase/php-jwt": "~3.0|~4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Paulvl\\JWTGuard\\": "src/"
+    }
+  }
+}

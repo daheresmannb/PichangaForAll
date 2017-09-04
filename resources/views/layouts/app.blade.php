@@ -14,7 +14,7 @@
     {!! Html::style('assets/css/style.css'); !!}
     {!! Html::style('assets/css/bootstrap.css'); !!}
         {!! HTML::script('assets/js/jquery-3.2.1.js'); !!}
-    {!! HTML::script('assets/js/boostrap.min.js'); !!}
+    {!! Html::script('assets/js/boostrap.min.js'); !!}
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="application/x-javascript"> 
@@ -49,7 +49,7 @@
 <!-- start-smoth-scrolling -->
 <!-- animated-css -->
     {!! Html::style('assets/css/animate.css'); !!}
-    {!! HTML::script('assets/js/wow.min.js'); !!}
+    {!! Html::script('assets/js/wow.min.js'); !!}
     <script>
         new WOW().init();
     </script>
@@ -64,7 +64,7 @@
     @yield('habilidades')
     @yield('contacto')
     @yield('footer')
-    <!-- JavaScripts -->
+    @yield('login')
 
 </body>
 </html>
