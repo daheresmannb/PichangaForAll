@@ -1,4 +1,174 @@
 <?php return array (
+  'session' => 
+  array (
+    'driver' => 'file',
+    'lifetime' => 120,
+    'expire_on_close' => false,
+    'encrypt' => false,
+    'files' => '/home/tintolio/Descargas/PichangaForAll/storage/framework/sessions',
+    'connection' => NULL,
+    'table' => 'sessions',
+    'lottery' => 
+    array (
+      0 => 2,
+      1 => 100,
+    ),
+    'cookie' => 'laravel_session',
+    'path' => '/',
+    'domain' => NULL,
+    'secure' => false,
+    'http_only' => true,
+  ),
+  'filesystems' => 
+  array (
+    'default' => 'local',
+    'cloud' => 's3',
+    'disks' => 
+    array (
+      'local' => 
+      array (
+        'driver' => 'local',
+        'root' => '/home/tintolio/Descargas/PichangaForAll/storage/app',
+      ),
+      'public' => 
+      array (
+        'driver' => 'local',
+        'root' => '/home/tintolio/Descargas/PichangaForAll/storage/app/public',
+        'visibility' => 'public',
+      ),
+      's3' => 
+      array (
+        'driver' => 's3',
+        'key' => 'your-key',
+        'secret' => 'your-secret',
+        'region' => 'your-region',
+        'bucket' => 'your-bucket',
+      ),
+    ),
+  ),
+  'cache' => 
+  array (
+    'default' => 'file',
+    'stores' => 
+    array (
+      'apc' => 
+      array (
+        'driver' => 'apc',
+      ),
+      'array' => 
+      array (
+        'driver' => 'array',
+      ),
+      'database' => 
+      array (
+        'driver' => 'database',
+        'table' => 'cache',
+        'connection' => NULL,
+      ),
+      'file' => 
+      array (
+        'driver' => 'file',
+        'path' => '/home/tintolio/Descargas/PichangaForAll/storage/framework/cache',
+      ),
+      'memcached' => 
+      array (
+        'driver' => 'memcached',
+        'servers' => 
+        array (
+          0 => 
+          array (
+            'host' => '127.0.0.1',
+            'port' => 11211,
+            'weight' => 100,
+          ),
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+      ),
+    ),
+    'prefix' => 'laravel',
+  ),
+  'broadcasting' => 
+  array (
+    'default' => 'pusher',
+    'connections' => 
+    array (
+      'pusher' => 
+      array (
+        'driver' => 'pusher',
+        'key' => NULL,
+        'secret' => NULL,
+        'app_id' => NULL,
+        'options' => 
+        array (
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+      ),
+      'log' => 
+      array (
+        'driver' => 'log',
+      ),
+    ),
+  ),
+  'database' => 
+  array (
+    'fetch' => 8,
+    'default' => 'pgsql',
+    'connections' => 
+    array (
+      'sqlite' => 
+      array (
+        'driver' => 'sqlite',
+        'database' => 'taller4',
+        'prefix' => '',
+      ),
+      'mysql' => 
+      array (
+        'driver' => 'mysql',
+        'host' => '127.0.0.1',
+        'port' => '5432',
+        'database' => 'taller4',
+        'username' => 'tito',
+        'password' => '1234',
+        'charset' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+        'prefix' => '',
+        'strict' => false,
+        'engine' => NULL,
+      ),
+      'pgsql' => 
+      array (
+        'driver' => 'pgsql',
+        'host' => '127.0.0.1',
+        'port' => '5432',
+        'database' => 'taller4',
+        'username' => 'tito',
+        'password' => '1234',
+        'charset' => 'utf8',
+        'prefix' => '',
+        'schema' => 'public',
+      ),
+    ),
+    'migrations' => 'migrations',
+    'redis' => 
+    array (
+      'cluster' => false,
+      'default' => 
+      array (
+        'host' => '127.0.0.1',
+        'password' => NULL,
+        'port' => '6379',
+        'database' => 0,
+      ),
+    ),
+  ),
   'queue' => 
   array (
     'default' => 'sync',
@@ -45,6 +215,23 @@
       'table' => 'failed_jobs',
     ),
   ),
+  'view' => 
+  array (
+    'paths' => 
+    array (
+      0 => '/home/tintolio/Descargas/PichangaForAll/resources/views',
+    ),
+    'compiled' => '/home/tintolio/Descargas/PichangaForAll/storage/framework/views',
+  ),
+  'compile' => 
+  array (
+    'files' => 
+    array (
+    ),
+    'providers' => 
+    array (
+    ),
+  ),
   'auth' => 
   array (
     'defaults' => 
@@ -89,113 +276,20 @@
       ),
     ),
   ),
-  'session' => 
+  'mail' => 
   array (
-    'driver' => 'file',
-    'lifetime' => 120,
-    'expire_on_close' => false,
-    'encrypt' => false,
-    'files' => '/var/www/PichangaForAll/storage/framework/sessions',
-    'connection' => NULL,
-    'table' => 'sessions',
-    'lottery' => 
+    'driver' => 'smtp',
+    'host' => 'mailtrap.io',
+    'port' => '2525',
+    'from' => 
     array (
-      0 => 2,
-      1 => 100,
+      'address' => NULL,
+      'name' => NULL,
     ),
-    'cookie' => 'laravel_session',
-    'path' => '/',
-    'domain' => NULL,
-    'secure' => false,
-    'http_only' => true,
-  ),
-  'compile' => 
-  array (
-    'files' => 
-    array (
-    ),
-    'providers' => 
-    array (
-    ),
-  ),
-  'filesystems' => 
-  array (
-    'default' => 'local',
-    'cloud' => 's3',
-    'disks' => 
-    array (
-      'local' => 
-      array (
-        'driver' => 'local',
-        'root' => '/var/www/PichangaForAll/storage/app',
-      ),
-      'public' => 
-      array (
-        'driver' => 'local',
-        'root' => '/var/www/PichangaForAll/storage/app/public',
-        'visibility' => 'public',
-      ),
-      's3' => 
-      array (
-        'driver' => 's3',
-        'key' => 'your-key',
-        'secret' => 'your-secret',
-        'region' => 'your-region',
-        'bucket' => 'your-bucket',
-      ),
-    ),
-  ),
-  'database' => 
-  array (
-    'fetch' => 8,
-    'default' => 'pgsql',
-    'connections' => 
-    array (
-      'sqlite' => 
-      array (
-        'driver' => 'sqlite',
-        'database' => 'taller4',
-        'prefix' => '',
-      ),
-      'mysql' => 
-      array (
-        'driver' => 'mysql',
-        'host' => '127.0.0.1',
-        'port' => '5432',
-        'database' => 'taller4',
-        'username' => 'daniel',
-        'password' => '1234',
-        'charset' => 'utf8',
-        'collation' => 'utf8_unicode_ci',
-        'prefix' => '',
-        'strict' => false,
-        'engine' => NULL,
-      ),
-      'pgsql' => 
-      array (
-        'driver' => 'pgsql',
-        'host' => '127.0.0.1',
-        'port' => '5432',
-        'database' => 'taller4',
-        'username' => 'daniel',
-        'password' => '1234',
-        'charset' => 'utf8',
-        'prefix' => '',
-        'schema' => 'public',
-      ),
-    ),
-    'migrations' => 'migrations',
-    'redis' => 
-    array (
-      'cluster' => false,
-      'default' => 
-      array (
-        'host' => '127.0.0.1',
-        'password' => NULL,
-        'port' => '6379',
-        'database' => 0,
-      ),
-    ),
+    'encryption' => NULL,
+    'username' => NULL,
+    'password' => NULL,
+    'sendmail' => '/usr/sbin/sendmail -bs',
   ),
   'services' => 
   array (
@@ -221,85 +315,6 @@
       'secret' => NULL,
     ),
   ),
-  'jwt' => 
-  array (
-    'secret' => 'LCVV7weWWeGbiSgQ9rh0q1HpgkYlxbuY',
-    'ttl' => 60,
-    'refresh_ttl' => 20160,
-    'algo' => 'HS256',
-    'user' => 'App\\User',
-    'identifier' => 'id',
-    'required_claims' => 
-    array (
-      0 => 'iss',
-      1 => 'iat',
-      2 => 'exp',
-      3 => 'nbf',
-      4 => 'sub',
-      5 => 'jti',
-    ),
-    'blacklist_enabled' => true,
-    'providers' => 
-    array (
-      'user' => 'Tymon\\JWTAuth\\Providers\\User\\EloquentUserAdapter',
-      'jwt' => 'Tymon\\JWTAuth\\Providers\\JWT\\NamshiAdapter',
-      'auth' => 'Tymon\\JWTAuth\\Providers\\Auth\\IlluminateAuthAdapter',
-      'storage' => 'Tymon\\JWTAuth\\Providers\\Storage\\IlluminateCacheAdapter',
-    ),
-  ),
-  'view' => 
-  array (
-    'paths' => 
-    array (
-      0 => '/var/www/PichangaForAll/resources/views',
-    ),
-    'compiled' => '/var/www/PichangaForAll/storage/framework/views',
-  ),
-  'cache' => 
-  array (
-    'default' => 'file',
-    'stores' => 
-    array (
-      'apc' => 
-      array (
-        'driver' => 'apc',
-      ),
-      'array' => 
-      array (
-        'driver' => 'array',
-      ),
-      'database' => 
-      array (
-        'driver' => 'database',
-        'table' => 'cache',
-        'connection' => NULL,
-      ),
-      'file' => 
-      array (
-        'driver' => 'file',
-        'path' => '/var/www/PichangaForAll/storage/framework/cache',
-      ),
-      'memcached' => 
-      array (
-        'driver' => 'memcached',
-        'servers' => 
-        array (
-          0 => 
-          array (
-            'host' => '127.0.0.1',
-            'port' => 11211,
-            'weight' => 100,
-          ),
-        ),
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-      ),
-    ),
-    'prefix' => 'laravel',
-  ),
   'app' => 
   array (
     'env' => 'local',
@@ -308,7 +323,7 @@
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
-    'key' => 'base64:bzoahUqF9G153XAFh4VSe0vWcoa3ibgEewUeaTHBRIs=',
+    'key' => 'base64:wwQBYjSIKoNaQgyJvFQZBHQJnrjVJ8HwCCGO65s22Ws=',
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
     'providers' => 
@@ -379,45 +394,30 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
-  'broadcasting' => 
+  'jwt' => 
   array (
-    'default' => 'pusher',
-    'connections' => 
+    'secret' => 'LCVV7weWWeGbiSgQ9rh0q1HpgkYlxbuY',
+    'ttl' => 60,
+    'refresh_ttl' => 20160,
+    'algo' => 'HS256',
+    'user' => 'App\\User',
+    'identifier' => 'id',
+    'required_claims' => 
     array (
-      'pusher' => 
-      array (
-        'driver' => 'pusher',
-        'key' => NULL,
-        'secret' => NULL,
-        'app_id' => NULL,
-        'options' => 
-        array (
-        ),
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-      ),
-      'log' => 
-      array (
-        'driver' => 'log',
-      ),
+      0 => 'iss',
+      1 => 'iat',
+      2 => 'exp',
+      3 => 'nbf',
+      4 => 'sub',
+      5 => 'jti',
     ),
-  ),
-  'mail' => 
-  array (
-    'driver' => 'smtp',
-    'host' => 'mailtrap.io',
-    'port' => '2525',
-    'from' => 
+    'blacklist_enabled' => true,
+    'providers' => 
     array (
-      'address' => NULL,
-      'name' => NULL,
+      'user' => 'Tymon\\JWTAuth\\Providers\\User\\EloquentUserAdapter',
+      'jwt' => 'Tymon\\JWTAuth\\Providers\\JWT\\NamshiAdapter',
+      'auth' => 'Tymon\\JWTAuth\\Providers\\Auth\\IlluminateAuthAdapter',
+      'storage' => 'Tymon\\JWTAuth\\Providers\\Storage\\IlluminateCacheAdapter',
     ),
-    'encryption' => NULL,
-    'username' => NULL,
-    'password' => NULL,
-    'sendmail' => '/usr/sbin/sendmail -bs',
   ),
 );

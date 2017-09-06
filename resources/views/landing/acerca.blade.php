@@ -16,7 +16,7 @@
 						<div class="team-grid-text wow bounceIn" data-wow-delay="0.4s">
 							<h5>Michael Joe</h5>
 							<p class="caption">CEO & Founder</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+							<p>cogito ergo sum.</p>
 						</div>
 					</div>
 					<div class="col-md-4 team-grid">
