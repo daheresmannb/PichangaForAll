@@ -1,5 +1,26 @@
 @extends('layouts.app')
+@extends('funcionesjs')
 @section('content')
+@if(session('respuesta'))
+    <?php 
+        $resp = session('respuesta');
+    ?>
+    <script type="text/javascript">
+        $(document).ready(
+
+            function(e) {
+                InfoModal(
+                    "Respuesta",
+                    "<?php echo $resp['msg'];?>"
+                );
+            }
+        );
+    </script>
+@endif
+
+<div>
+    <a href="{{ url('/signout') }}">Cerrar sesion</a>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">

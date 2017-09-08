@@ -12,7 +12,7 @@ Route::get(
 Route::post('obtener/ejemplo','EjemploController@ejemplo');
 
 Route::post('/signin', 'JwtController@login');
-Route::post('/signout', 'JwtController@signout');
+Route::get('/signout', 'JwtController@logout');
 
 Route::get('/login', 
 	function () {

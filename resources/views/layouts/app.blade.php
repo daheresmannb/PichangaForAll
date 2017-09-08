@@ -56,6 +56,7 @@
 
 </head>
 <body>
+    @yield('funcionesjs')
     @yield('header')
     @yield('banner')
     @yield('servicios')
@@ -66,6 +67,21 @@
     @yield('footer')
     @yield('login')
     @yield('content')
-
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="titulomodal" class="modal-title"></h4>
+                </div>
+                <div id="textmodal" class="modal-body  justify-content-center" >
+                </div> 
+                <div class="modal-footer">
+                    <button id='confirma-del' value='' class='btn btn-danger'>Confirmar</button>
+                    <button id="confirmamodal" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>  
+        </div>
+    </div>
 </body>
 </html>

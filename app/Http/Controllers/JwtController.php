@@ -16,26 +16,33 @@ class JwtController extends Controller {
 
         if (isset($user->id)) {
         	if (!$token = Auth::attempt($credentials)) {
-        		$data['errors'] = true;
-        		$data['msg']	= trans('auth.failed');
-            	return Response::json($data);
+        		$data['msg'] = trans('auth.failed');
+            	
+                return redirect('/login')->with(
+                    'respuesta', 
+                    $data
+                );
         	} else {
                 $data['errors'] = Auth::user();
         		$data['token']	 = $token;
+                
                 return redirect('/home')->with(
                     'data', 
                     $data
                 );
         	}
         } else {
-        	$data['errors']  = true;
-        	$data['msg']	 = trans('validation.required');
-        	return Response::json($data);
+        	$data['msg'] = trans('validation.required');
+        	
+            return redirect('/login')->with(
+                'respuesta', 
+                $data
+            );
         }
     }
 
     public function logout(Request $request) {
-        $data['msg2'] =  Auth::user();
-       	return Response::json($data);
+       Auth::logout();
+       return redirect('/');
 	}    
 }
