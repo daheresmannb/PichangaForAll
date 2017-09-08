@@ -95,7 +95,7 @@
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/var/www/PichangaForAll/storage/framework/sessions',
+    'files' => '/home/daniel/PichangaForAll/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'lottery' => 
@@ -127,12 +127,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/var/www/PichangaForAll/storage/app',
+        'root' => '/home/daniel/PichangaForAll/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/var/www/PichangaForAll/storage/app/public',
+        'root' => '/home/daniel/PichangaForAll/storage/app/public',
         'visibility' => 'public',
       ),
       's3' => 
@@ -251,9 +251,9 @@
   array (
     'paths' => 
     array (
-      0 => '/var/www/PichangaForAll/resources/views',
+      0 => '/home/daniel/PichangaForAll/resources/views',
     ),
-    'compiled' => '/var/www/PichangaForAll/storage/framework/views',
+    'compiled' => '/home/daniel/PichangaForAll/storage/framework/views',
   ),
   'cache' => 
   array (
@@ -277,7 +277,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/var/www/PichangaForAll/storage/framework/cache',
+        'path' => '/home/daniel/PichangaForAll/storage/framework/cache',
       ),
       'memcached' => 
       array (
