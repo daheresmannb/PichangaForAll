@@ -8,6 +8,10 @@ Route::get(
 	}
 );
 
+
+Route::get('/gmaps', 'GmapsController@index');
+Route::post('/LatLngd', 'GmapsController@LatLngbyDirect')->name('latlng.dir');
+
 ////rutas controladores //////////////////
 Route::post('obtener/ejemplo','EjemploController@ejemplo');
 

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV'),// 'production'),
 
     /*
     |--------------------------------------------------------------------------
@@ -149,6 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Irazasyed\JwtAuthGuard\JwtAuthGuardServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -206,7 +207,8 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class
     ],
 
 ];
