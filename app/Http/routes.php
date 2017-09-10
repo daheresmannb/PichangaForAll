@@ -32,5 +32,11 @@ Route::group(
     			return view('landing.home');
 			}
 		);
+
+		Route::get('/homeuser', 
+			function () {
+    			return view('landing.homeuser');
+			}
+		);
 	}
 );
