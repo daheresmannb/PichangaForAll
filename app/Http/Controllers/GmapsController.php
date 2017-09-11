@@ -19,6 +19,8 @@ class GmapsController extends Controller {
     public function index() {
         $diseño = new DiseñoMapa();
         $config['center'] = 'auto';
+        $config['apiKey'] = 'AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ';
+        
         $config['zoom'] = '15';
         $config['styles'] = $diseño->getDis(); 
         $config['places'] = true;
