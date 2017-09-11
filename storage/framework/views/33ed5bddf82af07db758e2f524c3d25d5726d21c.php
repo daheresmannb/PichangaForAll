@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE Html>
+<Html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,15 +11,15 @@
     <?php echo Html::style('assets/css/font-awesome.min.css');; ?>
 
     <!-- Styles -->
-    <?php echo Html::style('assets/css/boostrap.min.css');; ?>
+    <?php echo Html::style('assets/css/bootstrap.min.css');; ?>
 
     <?php echo Html::style('assets/css/style.css');; ?>
 
     <?php echo Html::style('assets/css/bootstrap.css');; ?>
 
-        <?php echo HTML::script('assets/js/jquery-3.2.1.js');; ?>
+        <?php echo Html::script('assets/js/jquery-3.2.1.js');; ?>
 
-    <?php echo Html::script('assets/js/boostrap.min.js');; ?>
+    <?php echo Html::script('assets/js/bootstrap.min.js');; ?>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,9 +35,9 @@
             window.scrollTo(0,1); 
         } 
     </script>
-    <?php echo HTML::script('assets/js/move-top.js');; ?>
+    <?php echo Html::script('assets/js/move-top.js');; ?>
 
-    <?php echo HTML::script('assets/js/easing.js');; ?>
+    <?php echo Html::script('assets/js/easing.js');; ?>
 
 
     <script type="text/javascript">
@@ -46,7 +46,7 @@
                 $(".scroll").click(
                     function(event){     
                         event.preventDefault();
-                        $('html,body').animate({
+                        $('Html,body').animate({
                             scrollTop:$(this.hash).offset().top
                         },1000);
                     }
@@ -94,4 +94,4 @@
         </div>
     </div>
 </body>
-</html>
+</Html>

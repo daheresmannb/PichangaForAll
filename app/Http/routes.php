@@ -8,7 +8,6 @@ Route::get(
 	}
 );
 
-
 Route::get('/gmaps', 'GmapsController@index');
 Route::post('/LatLngd', 'GmapsController@LatLngbyDirect')->name('latlng.dir');
 
@@ -38,5 +37,19 @@ Route::group(
     			return view('landing.homeuser');
 			}
 		);
+	}
+);
+
+		Route::get(
+			'/indexj', 
+			function () {
+    			return view('userjugador.indexuser');
+			}
+		);
+
+Route::group(
+	['middleware' => ['admin']], 
+	function () {
+
 	}
 );

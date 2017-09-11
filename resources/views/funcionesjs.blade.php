@@ -8,5 +8,19 @@
 		$("#confirma-del").hide();
 		$('#myModal').modal('show');
 	}
+
+	$(document).ready(
+		function(e) {
+			$("#jugc").click(
+				function(e) {
+					e.preventDefault();
+					alert('holaaaaaaaaaaaaaaaa');
+					$('#content').load('/gmaps');
+				
+					
+				}
+			);
+		}
+	);
 </script>
 @endsection
