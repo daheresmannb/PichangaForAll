@@ -16,10 +16,21 @@ class CreateJugadores extends Migration {
                 $table->string('apodo');
                 $table->string('posicion');
                 $table->integer('edad');
-                $table->integer('estatura');
-                $table->integer('peso');
+                $table->float('estatura');
+                $table->float('peso');
+                $table->enum(
+                    'posicion', 
+                    array(
+                        'Guardameta',
+                        'Defensor', 
+                        'Medio campo',
+                        'Delantero',
+                    )
+                );
+
+
                 $table->boolean('disponible')->default(
-                    false
+                        false
                 );
                 $table->point('location');
                 $table->foreign('user_id')
