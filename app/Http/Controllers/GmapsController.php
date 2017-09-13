@@ -54,9 +54,34 @@ class GmapsController extends Controller {
 		$pgm->add_marker($marker);
 		$data = $pgm->create_map();
 
+ 
+
         //Devolver vista con datos del mapa
         return view('userjugador.gmaps')->with('map', $data);
     }
+
+    /*
+    CREATE FUNCTION grifos_cercanos(pos_lat double precision, pos_lng double precision, radio_km double precision) RETURNS SETOF grifos
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    return query 
+    SELECT  
+        uuid,  
+        comuna,
+        coordenadas
+    FROM grifos 
+    WHERE ( 
+            6372.795477598 * 
+            ACOS(
+                SIN ( RADIANS(grifos.coordenadas[0]) ) * SIN( RADIANS((pos_lat)) ) + 
+                COS ( RADIANS(grifos.coordenadas[0]) ) * COS( RADIANS((pos_lat)) ) * 
+                COS ( RADIANS(grifos.coordenadas[1]) - RADIANS(pos_lng) )
+            )
+    ) < radio_km;
+END
+$$;
+    */
 
     public function LatLngbyDirect(Request $Request) {
         $pgm = new Phpgmaps();
@@ -82,6 +107,7 @@ class GmapsController extends Controller {
             	});
         	}
         	centreGot = true;
+
         ';
 
         $pgm->initialize($config);

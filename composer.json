@@ -13,7 +13,8 @@
         "irazasyed/jwt-auth-guard": "^1.0",
         "laravelcollective/html": "^5.2",
         "laravel/socialite": "^2.0",
-        "genealabs/phpgmaps": "^0.4.1"
+        "genealabs/phpgmaps": "^0.4.1",
+        "phaza/laravel-postgis": "^3.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

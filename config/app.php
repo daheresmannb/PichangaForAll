@@ -150,6 +150,7 @@ return [
         Irazasyed\JwtAuthGuard\JwtAuthGuardServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
+        Phaza\LaravelPostgis\DatabaseServiceProvider::class,
 
         /*
          * Application Service Providers...

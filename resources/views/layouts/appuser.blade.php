@@ -43,7 +43,13 @@
     @yield('header')
 
     <div id="content" class="content">
-      
+      @if(session('map'))
+<script type="text/javascript">
+    var centreGot = false;
+  </script>
+    {!! $map['js'] !!} 
+{!! $map['html'] !!}
+@endif
     </div>
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

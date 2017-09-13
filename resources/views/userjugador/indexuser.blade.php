@@ -4,4 +4,4 @@
 <div class="page home-page">
 @include('userjugador.header')
 
-</div>
+</div>	
