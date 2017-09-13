@@ -67,6 +67,9 @@
     @yield('footer')
     @yield('login')
     @yield('content')
+    @yield('jugadoresporlista')
+    @yield('jugadorformulario')
+    @yield('datosjugador')
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

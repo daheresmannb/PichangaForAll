@@ -8,6 +8,38 @@ Route::get(
 	}
 );
 
+Route::get(
+	'/listaj', 
+	function () {//nombre_carpeta .   nombre_vista
+    	return view('userjugador.listaj');
+	}
+);
+Route::get(
+	'/formulariojugador', 
+	function () {
+    	return view('userjugador.formjugador');
+	}
+);
+
+Route::post('/regjugador', 'GmapsController@LatLngbyDirect')->name('reg.jug');
+
+Route::get(
+	'/datosjugador', 
+	function () {
+    	return view('userjugador.datosjug');
+	}
+);
+
+Route::post('/datosjugador', 'GmapsController@LatLngbyDirect')->name('datos.jug');
+
+
+
+//ejemplo
+          //nombre_ruta  nombre_controller  nombre_funcion
+Route::post('titodelivery','TitoController@ganjah');
+//fin ejemplo
+
+
 Route::get('/gmaps', 'GmapsController@index');
 Route::post('/LatLngd', 'GmapsController@LatLngbyDirect')->name('latlng.dir');
 
