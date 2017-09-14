@@ -85,3 +85,9 @@ Route::group(
 
 	}
 );
+
+
+Route::post('jugador/crear','JugadorController@CreateJugador');
+Route::post('jugador/obtener','JugadorController@ReadJugador');
+Route::post('jugador/actualizar','JugadorController@UpdateJugador');
+Route::post('jugador/eliminar','JugadorController@DeleteJugador');
