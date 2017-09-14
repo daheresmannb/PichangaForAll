@@ -14,7 +14,8 @@
            array(
              'required',
              'class'=>'form-control',
-             'name'=>'nombre',
+             'name'=>'nombre', 
+             'id'=>'nombre',
              'placeholder'=>'nombre'
            ))
          !!}
@@ -58,7 +59,19 @@
            ))
          !!}
         </div>   
-
+        <div class="form-group has-feedback">
+         {!! Form::label('cotraseña') !!}
+         {!! Form::password(
+           'contraseña',
+           null,
+           array(
+             'required',
+             'class'=>'form-control',
+             'name'=>'contraseña',
+             'placeholder'=>'contraseña'
+           ))
+         !!}
+        </div>   
 
 
 <div class="form-group has-feedback" style="padding-left:35%; padding-right:35%; padding-top: 1%;">

@@ -31,7 +31,15 @@ Route::get(
 );
 
 Route::post('/datosjugador', 'GmapsController@LatLngbyDirect')->name('datos.jug');
+//buscar datos
+Route::get(
+	'/buscar', 
+	function () {
+    	return view('userjugador.buscarjug');
+	}
+);
 
+Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
 
 
 //ejemplo

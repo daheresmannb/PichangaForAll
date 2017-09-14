@@ -16,6 +16,8 @@
         {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
     {!! Html::script('assets/js/bootstrap.min.js'); !!}
 
+   {{ HTML::style('css/busqueda.css') }}
+   {{ HTML::script('js/busqueda.js') }}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="application/x-javascript"> 
         addEventListener(
@@ -70,6 +72,7 @@
     @yield('jugadoresporlista')
     @yield('jugadorformulario')
     @yield('datosjugador')
+    @yield('busquedajugador')
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
