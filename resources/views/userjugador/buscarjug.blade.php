@@ -31,10 +31,6 @@
 								<tbody>
 									<tr data-status="">
 										<td>
-											<div class="ckbox">
-												<input type="checkbox" id="checkbox1">
-												<label for="checkbox1"></label>
-											</div>
 										</td>
 										<td>
 											<a href="javascript:;" class="star">
@@ -56,10 +52,6 @@
 									</tr>
 									<tr data-status="pendiente">
 										<td>
-											<div class="ckbox">
-												<input type="checkbox" id="checkbox3">
-												<label for="checkbox3"></label>
-											</div>
 										</td>
 										<td>
 											<a href="javascript:;" class="star">
@@ -88,10 +80,7 @@
 									</tr>
 									<tr data-status="cancelado">
 										<td>
-											<div class="ckbox">
-												<input type="checkbox" id="checkbox2">
-												<label for="checkbox2"></label>
-											</div>
+
 										</td>
 										<td>
 											<a href="javascript:;" class="star">
@@ -114,10 +103,7 @@
 									</tr>
 									<tr data-status="pagado" class="selected">
 										<td>
-											<div class="ckbox">
-												<input type="checkbox" id="checkbox4" checked>
-												<label for="checkbox4"></label>
-											</div>
+
 										</td>
 										<td>
 											<a href="javascript:;" class="star star-checked">
@@ -140,10 +126,7 @@
 									</tr>
 									<tr data-status="pendiente">
 										<td>
-											<div class="ckbox">
-												<input type="checkbox" id="checkbox5">
-												<label for="checkbox5"></label>
-											</div>
+
 										</td>
 										<td>
 											<a href="javascript:;" class="star">
