@@ -27,7 +27,6 @@ class CreateTableJugadores extends Migration {
                     )
                 );
 
-
                 $table->boolean('disponible')->default(
                         false
                 );

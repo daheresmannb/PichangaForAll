@@ -77,6 +77,9 @@
     <?php echo $__env->yieldContent('footer'); ?>
     <?php echo $__env->yieldContent('login'); ?>
     <?php echo $__env->yieldContent('content'); ?>
+    <?php echo $__env->yieldContent('jugadoresporlista'); ?>
+    <?php echo $__env->yieldContent('jugadorformulario'); ?>
+    <?php echo $__env->yieldContent('datosjugador'); ?>
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
