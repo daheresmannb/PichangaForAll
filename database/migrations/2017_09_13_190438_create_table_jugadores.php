@@ -3,7 +3,7 @@
 use Bosnadev\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJugadores extends Migration {
+class CreateTableJugadores extends Migration {
 
     public function up() {
         Schema::create(
@@ -14,7 +14,6 @@ class CreateJugadores extends Migration {
                 );
                 $table->uuid('user_id');
                 $table->string('apodo');
-                $table->string('posicion');
                 $table->integer('edad');
                 $table->float('estatura');
                 $table->float('peso');
@@ -37,6 +36,7 @@ class CreateJugadores extends Migration {
                     ->references('id')
                     ->on('users')
                 ->onDelete('cascade');
+                
                 $table->timestamps();
             }
         );
