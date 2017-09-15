@@ -27,6 +27,7 @@ class JugadorController extends Controller {
     			$request->lon
     		);
 
+    		$status			  = trans('requests.success.code');
     		$data['errors']   = false;
         	$data['respesta'] = $jugador;
     	}
@@ -37,48 +38,60 @@ class JugadorController extends Controller {
     	if ($request->has('id')) {
     		$jugador = Jugador::find($request->id);
     		if (isset($jugador->id)) {
+    			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
         		$data['respesta'] = $jugador;
     		} else {
+    			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
         		$data['respesta'] = trans('registros.registro');
     		}
     	} else {
     		$jugadores = Jugador::all();
-
+    		$status			  = trans('requests.success.code');
     		$data['errors'] = false;
         	$data['respesta']	= $jugadores;
     	}
-   		return Response::json($data);
+   		return Response::json($data, $status);
     }
 
     public function UpdateJugador(Request $request) {
     	if ($request->has('id')) {
     		$jugador = Jugador::find($request->id);
     		if (isset($jugador->id)) {
-    			$jugador->user_id    = $request->user_id;
-    			$jugador->apodo      = $request->apodo;
-    			$jugador->edad 	     = $request->edad;
-    			$jugador->estatura 	 = $request->estatura;
-    			$jugador->peso     	 = $request->peso;
-    			$jugador->posicion 	 = $request->posicion;
-    			$jugador->disponible = $request->disponible;
-    			$jugador->location 	 = new Point(
-    				$request->lat,
-    				$request->lon
-    			);
+    			$val = $jugador->Validar($request->all());
+    			if ($val->fails()) {
+    				$status			  = trans('requests.failure.code.bad_request');
+    				$data['errors']   = true;
+        			$data['respesta'] = $val;
+    			} else {
+    				$jugador->user_id    = $request->user_id;
+    				$jugador->apodo      = $request->apodo;
+    				$jugador->edad 	     = $request->edad;
+    				$jugador->estatura 	 = $request->estatura;
+    				$jugador->peso     	 = $request->peso;
+    				$jugador->posicion 	 = $request->posicion;
+    				$jugador->disponible = $request->disponible;
+    				$jugador->location 	 = new Point(
+    					$request->lat,
+    					$request->lon
+    				);
 
-    			$data['errors']   = false;
-        		$data['respesta'] = $jugador;
+    				$status			  = trans('requests.success.code');
+    				$data['errors']   = false;
+        			$data['respesta'] = $jugador;
+    			}
     		} else {
+    			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
         		$data['respesta'] = trans('registros.reg');
     		}
     	} else {
-    		$data['errors'] = false;
-        	$data['respesta']	= trans('validation.required');
+    		$status			  = trans('requests.failure.code.bad_request');
+    		$data['errors']   = false;
+        	$data['respesta'] = trans('validation.required');
     	}
-   		return Response::json($data);
+   		return Response::json($data, $status);
     }
 
     public function DeleteJugador(Request $request) {
@@ -87,16 +100,64 @@ class JugadorController extends Controller {
     		if (isset($jugador->id)) {
     			$jugador->delete();
 
+    			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
         		$data['respesta'] = trans('registros.del');
+    		} else {
+    			$status			  = trans('requests.failure.code.not_founded');
+    			$data['errors']   = true;
+        		$data['respesta'] = trans('registros.reg');
+    		}
+    	} else {
+    		$status			  = trans('requests.failure.code.bad_request');
+    		$data['errors']   = false;
+        	$data['respesta'] = trans('validation.required');
+    	}
+   		return Response::json($data, $status);
+    }
+
+    public function setEstadoJugador(Request $request) {
+    	if ($request->has('id')) {
+    		$jugador = Jugador::find($request->id);
+    		if (isset($jugador->id)) {
+    			$jugador->disponible = $request->disponible;
+
+    			$status			  = trans('requests.success.code');
+    			$data['errors']   = false;
+        		$data['respesta'] = $jugador;
+    		} else {
+    			$status			  = trans('requests.failure.code.not_founded');
+    			$data['errors']   = true;
+        		$data['respesta'] = trans('registros.reg');
+    		}
+    	} else {
+    		$status			  = trans('requests.failure.code.bad_request');
+    		$data['errors']   = false;
+        	$data['respesta'] = trans('validation.required');
+    	}
+   		return Response::json($data, $status);
+    }
+
+    public function setLocationJugador(Request $request) {
+    	if ($request->has('id')) {
+    		$jugador = Jugador::find($request->id);
+    		if (isset($jugador->id)) {
+    			$jugador->location 	 = new Point(
+    				$request->lat,
+    				$request->lon
+    			);
+    			$status			  = trans('requests.success.code');
+    			$data['errors']   = false;
+        		$data['respesta'] = $jugador;
     		} else {
     			$data['errors']   = true;
         		$data['respesta'] = trans('registros.reg');
     		}
     	} else {
-    		$data['errors'] = false;
-        	$data['respesta']	= trans('validation.required');
+    		$status			  = trans('requests.failure.code.bad_request');
+    		$data['errors']   = false;
+        	$data['respesta'] = trans('validation.required');
     	}
-   		return Response::json($data);
+   		return Response::json($data, $status);
     }
 }
