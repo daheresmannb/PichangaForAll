@@ -68,7 +68,7 @@ Route::group(
 	function () {
 		Route::get('/home', 
 			function () {
-    			return view('landing.home');
+    			return view('userjugador.indexuser');
 			}
 		);
 

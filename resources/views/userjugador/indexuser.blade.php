@@ -1,7 +1,9 @@
-@extends('layouts.appuser')
+@extends('layouts.diseñopichanga')
 @extends('funcionesjs')
+@include('userjugador.sidebar')
+@include('userjugador.navbar')
 
-<div class="page home-page">
-@include('userjugador.header')
 
-</div>	
+@section('contenido')
+
+@endsection

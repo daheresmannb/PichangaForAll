@@ -22,6 +22,10 @@
     <?php echo Html::script('assets/js/bootstrap.min.js');; ?>
 
 
+   <?php echo e(HTML::style('css/busqueda.css')); ?>
+
+   <?php echo e(HTML::script('js/busqueda.js')); ?>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="application/x-javascript"> 
         addEventListener(
@@ -80,6 +84,7 @@
     <?php echo $__env->yieldContent('jugadoresporlista'); ?>
     <?php echo $__env->yieldContent('jugadorformulario'); ?>
     <?php echo $__env->yieldContent('datosjugador'); ?>
+    <?php echo $__env->yieldContent('busquedajugador'); ?>
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
