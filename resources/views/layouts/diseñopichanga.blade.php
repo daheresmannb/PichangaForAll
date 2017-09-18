@@ -15,12 +15,13 @@
     {!! Html::style('admin/assets/css/themify-icons.css'); !!}
 </head>
 <body>
+    {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
     <div class="wrapper">
         @yield('sidebar')
         <div class="main-panel">
             @yield('navbar')
             <div class="content">
-                <div class="container-fluid">
+                <div id="content" class="container-fluid">
                     @yield('contenido')
                 </div>
             </div>

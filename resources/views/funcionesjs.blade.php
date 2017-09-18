@@ -20,6 +20,17 @@
 					
 				}
 			);
+
+			$("userli").click(
+				function(e) {
+					$(this).attr('class', 'active');
+					$('#mapli').attr('class', '.');
+					
+				}
+			);
+
+
+			navli
 		}
 	);
 </script>

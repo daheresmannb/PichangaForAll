@@ -151,6 +151,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
         Phaza\LaravelPostgis\DatabaseServiceProvider::class,
+        
+       // Mrblackus\LaravelStoredprocedures\LaravelStoredproceduresServiceProvider::class,
 
         /*
          * Application Service Providers...

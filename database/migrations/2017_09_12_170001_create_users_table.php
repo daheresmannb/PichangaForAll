@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration {
     public function up() {
-        DB::statement('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
+        DB::statement('CREATE EXTENSION IF NOT EXISTS  "uuid-ossp";');
         Schema::create(
             'users',
             function (Blueprint $table) {
@@ -24,6 +24,10 @@ class CreateUsersTable extends Migration {
     }
 
     public function down() {
+        DB::statement('DROP FUNCTION IF EXISTS jugadores_cercanos (double precision, double precision, double precision);');
+        Schema::drop('password_resets');
+        Schema::drop('ubicacion_jugador');
+        Schema::drop('jugadores');
         Schema::drop('users');
     }
 }

@@ -1,96 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
 
- {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
- {!! Html::script('assets/js/bootstrap.min.js'); !!}
-{!! Html::style('assets/css/perfil_en_mapa.css'); !!}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer></script>
+<script>
+  var mi_location;
+  var map;
+  var marker;
+  function initMap() {
+    if (navigator.geolocation) { 
+      navigator.geolocation.getCurrentPosition(
+        function(position) { 
 
-<script type="text/javascript">
-  $(document).ready(
-      function(e) {
-          $("#cerrar").click(
-            function(e) {
-                document.getElementById('light').style.display='none';
-                document.getElementById('fade').style.display='none';
+          mi_location = new google.maps.LatLng(
+            position.coords.latitude, 
+            position.coords.longitude
+          );
+
+          map = new google.maps.Map(
+            document.getElementById('map'), {
+              center: mi_location,
+              zoom: 15,
+              disableDefaultUI: true,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"visibility":"on"},{"weight":0.9}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#44847f"},{"weight":0.7}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#55a29c"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#44847f"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#febb12"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#febb12"},{"lightness":-20}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#febb12"},{"lightness":-17}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#aaa69b"},{"lightness":-10},{"visibility":"off"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2d829d"}]
+              }]
             }
           );
-      }
-  );
-</script>
 
-<script type="text/javascript">
-	var centreGot = false;
-</script>
+          marker = new google.maps.Marker({
+            position: mi_location,
+            map: map,
+            title: 'Mi posicion'
+          }); 
 
-<script type="text/javascript">
-  
-</script>
-	{!! $map['js'] !!} 
-
-
-	
-
-{!! Form::open(['route' => array('latlng.dir',)]) !!}
-
-<div class="form-group has-feedback">
-    {!! Form::label('Direccion') !!}
-    {!! Form::text(
-            'direccion', 
-            null, 
-            array(
-              'required', 
-              'class'=>'form-control', 
-              'id'=>'direccion',
-              'name'=>'direccion'
-            )) 
-          !!}
-</div>
-<div class="form-group has-feedback" style="padding-left:3%; padding-right:35%; padding-top: 1%">
-    {!! Form::submit(
-      'Actualizar', 
-      array(
-        'class'=>'btn btn-primary btn-lg btn-block'
-      ))
-    !!}
-</div>
-{!! Form::close() !!}
-
-{!! $map['html'] !!}
-
-
-<script type="text/javascript">
-    var geocoder = new google.maps.Geocoder();
-
-    address = document.getElementById('direccion').value;
-    
-    if(address != '') {
-  // Llamamos a la función geodecode pasandole la dirección que hemos introducido en la caja de texto.
-      geocoder.geocode({ 
-          'address': address
-        }, 
-        function(results, status) {
-            if (status == 'OK') {
-                // Mostramos las coordenadas obtenidas en el p con id coordenadas
-                alert(results[0].geometry.location.lat()+', '+results[0].geometry.location.lng());
-
-                mapa.marker.setPosition(results[0].geometry.location);
-// Centramos el mapa en las coordenadas obtenidas
-                mapa.map.setCenter(mapa.marker.getPosition());
-                agendaForm.showMapaEventForm();
-            }
         }
-      );
+      ); 
+    } else {
+      alert("No se puede acceder a su localizacion");
     }
+  }
+
+
+
+
+function autoUpdate() {
+  navigator.geolocation.getCurrentPosition(
+    function(position) {  
+      var newPoint = new google.maps.LatLng(
+        position.coords.latitude, 
+        position.coords.longitude
+      );
+
+      if (marker) {
+        marker.setPosition(newPoint);
+      } else {
+        marker = new google.maps.Marker({
+          position: newPoint,
+          map: map,
+          title: 'Mi posicion'
+        });
+      }
+    //map.setCenter(newPoint);
+    }
+  ); 
+  setTimeout(autoUpdate, 2000);
+}
+
+autoUpdate();
 
 </script>
 
-
-  
-<div id="fade" class="overlay"></div>
-<div id="light" class="modal">
-  <button id="cerrar">x</button>
-  <h1>Datos del jugador</h1>     
-</div>
-  
-
-
-
-
+<button onclick="alert(''+map.InfoWindow.getPosition());"n>aaaa</button>
+  </body>
+</html>

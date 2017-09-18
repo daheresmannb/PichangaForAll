@@ -1,10 +1,9 @@
 <?php
 
-use Bosnadev\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateTableJugadores extends Migration {
-
     public function up() {
         Schema::create(
             'jugadores', 
@@ -26,22 +25,18 @@ class CreateTableJugadores extends Migration {
                         'Delantero',
                     )
                 );
-
                 $table->boolean('disponible')->default(
                         false
                 );
-                $table->point('location');
                 $table->foreign('user_id')
                     ->references('id')
                     ->on('users')
                 ->onDelete('cascade');
-                
                 $table->timestamps();
+                $table->primary('id');
             }
         );
     }
-
     public function down() {
-        Schema::drop('jugadores');
     }
 }

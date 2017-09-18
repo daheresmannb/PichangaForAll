@@ -6,62 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use GeneaLabs\Phpgmaps\Phpgmaps;
 use App\clases\DiseñoMapa;
-
-/*
-$config['directions'] = TRUE;
-$config['directionsStart'] = 'empire state building';
-$config['directionsEnd'] = 'statue of liberty';
-$config['directionsDivID'] = 'directionsDiv';
-*/
+use App\Models\UbicacionJug;
 
 class GmapsController extends Controller {
 
-    public function index() {
-        $diseño = new DiseñoMapa();
-        $config['center'] = 'auto';
-        $config['apiKey'] = 'AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ';
-        
-        $config['zoom'] = '15';
-        $config['styles'] = $diseño->getDis(); 
-        $config['places'] = true;
-        $config['placesAutocompleteInputID'] = 'direccion';
-        $config['placesAutocompleteBoundsMap'] = true; 
+    public function getJugadoresCercanos(Request $request) {
 
-        $config['onboundschanged'] = '
-        	if (!centreGot) {
-            	var mapCentre = map.getCenter();
-            	marker_0.setOptions({
-                	position: new google.maps.LatLng(
-                        mapCentre.lat(), 
-                        mapCentre.lng()
-                    )
-            	});
-        	}
-        	centreGot = true;
-        ';
-
-        $pgm = new Phpgmaps();
-        $pgm->initialize($config);
-
-		$marker = array();
-		$marker['onclick'] = "
-            document.getElementById('light').style.display='block';
-            document.getElementById('fade').style.display='block';
-        ";
-		//$marker['infowindow_content'] = 'Mi Ubicacion';
-		$marker['icon'] = url('assets/img/jugador2.png');
-		$marker['animation'] = 'BOUNCE';
-		$pgm->add_marker($marker);
-		$data = $pgm->create_map();
-
- 
-
-        //Devolver vista con datos del mapa
-        return view('userjugador.gmaps')->with('map', $data);
     }
 
     /*
-    CREATE FUNCTION grifos_cercanos(pos_lat double precision, pos_lng double precision, radio_km double precision) RETURNS SETOF grifos
+    CREATE FUNCTION jugadores_cercanos(pos_lat double precision, pos_lng double precision, radio_km double precision) RETURNS SETOF grifos
     LANGUAGE plpgsql
     AS $$
 BEGIN

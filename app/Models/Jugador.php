@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Validator;
 use Illuminate\Database\Eloquent\Model;
-use Phaza\LaravelPostgis\Eloquent\PostgisTrait;
-use Phaza\LaravelPostgis\Geometries\Point;
+use Grimzy\LaravelMysqlSpatial\Types\Point;
 
 class Jugador extends Model {
 	protected $table = 'jugadores';
@@ -23,7 +22,7 @@ class Jugador extends Model {
     protected $postgisFields = [
         'location'
     ];
-
+    
     protected $postgisTypes = [
         'location' => [
             'geomtype' => 'geography',
