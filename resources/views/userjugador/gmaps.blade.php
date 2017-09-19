@@ -3,13 +3,14 @@
   <head>
     <style>
        #map {
-        height: 400px;
+        height: 370px;
         width: 100%;
        }
     </style>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+    <h3>Jugadores Cercanos</h3>
+    <br><br>
     <div id="map"></div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer></script>
@@ -17,11 +18,23 @@
   var mi_location;
   var map;
   var marker;
+
+  function saltar() {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+
+  function detenido() {
+    marker.setAnimation(null);
+  }
+
+  function mostrarinfo() {
+    // body...
+  }
+
   function initMap() {
     if (navigator.geolocation) { 
       navigator.geolocation.getCurrentPosition(
         function(position) { 
-
           mi_location = new google.maps.LatLng(
             position.coords.latitude, 
             position.coords.longitude
@@ -40,9 +53,17 @@
 
           marker = new google.maps.Marker({
             position: mi_location,
+            animation: google.maps.Animation.BOUNCE,
             map: map,
+            icon: "<?php echo url('assets/img/jugador2.png'); ?>",
             title: 'Mi posicion'
           }); 
+          marker.addListener('mouseout', saltar);
+          marker.addListener('mouseover', detenido);
+          marker.addListener('click', mostrarinfo);
+
+     
+
 
         }
       ); 
@@ -81,6 +102,5 @@ autoUpdate();
 
 </script>
 
-<button onclick="alert(''+map.InfoWindow.getPosition());"n>aaaa</button>
   </body>
 </html>

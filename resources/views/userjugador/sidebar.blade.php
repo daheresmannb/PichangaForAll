@@ -6,7 +6,6 @@
 <script type="text/javascript">
         $(document).ready(
         function(e) {
-         //$('#content').load('/gmaps');
             $('#nav').on(
                 'click', 
                 'li', 
@@ -19,12 +18,29 @@
 
             $('#nav').on(
                 'click', 
+                '#userli', 
+                function(e) {
+                    e.preventDefault();
+                    $('#content').empty();
+                    $('#content').load(
+                        "<?php echo url('homeuser'); ?>"
+                    );
+                }
+            );
+
+            $('#nav').on(
+                'click', 
                 '#mapli', 
                 function(e) {
                     e.preventDefault();
-                    $('#contenido').load('/gmaps');
+                    $('#content').empty();
+                    $('#content').load(
+                        "<?php echo url('jugadorescercanos'); ?>"
+                    );
                 }
             );
+
+
         }
     );
 </script>

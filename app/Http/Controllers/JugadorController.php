@@ -164,4 +164,8 @@ class JugadorController extends Controller {
     	}
    		return Response::json($data, $status);
     }
+
+    public function getJugadoresCercanos(Request $request) {
+        # code...
+    }
 }

@@ -54,6 +54,15 @@ Route::post('/LatLngd', 'GmapsController@LatLngbyDirect')->name('latlng.dir');
 ////rutas controladores //////////////////
 Route::post('obtener/ejemplo','EjemploController@ejemplo');
 
+
+
+
+
+
+
+
+
+
 Route::post('/signin', 'JwtController@login');
 Route::get('/signout', 'JwtController@logout');
 
@@ -63,12 +72,21 @@ Route::get('/login',
 	}
 );
 
+
+////////////// rutas para el usuario logeado //////////////////////
 Route::group(
 	['middleware' => ['auth']], 
 	function () {
 		Route::get('/home', 
 			function () {
     			return view('userjugador.indexuser');
+			}
+		);
+
+		Route::get(
+			'/jugadorescercanos', 
+			function () {
+    			return view('userjugador.gmaps');
 			}
 		);
 
@@ -79,6 +97,14 @@ Route::group(
 		);
 	}
 );
+/////////////// rutas para el usuario logeado /////////////////////////
+
+
+
+
+
+
+
 
 		Route::get(
 			'/indexj', 
