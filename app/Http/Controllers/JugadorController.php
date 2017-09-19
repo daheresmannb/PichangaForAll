@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use \Response;
 use App\Http\Requests;
 use App\Models\Jugador;
+use App\Models\UbicacionJug;
 
 class JugadorController extends Controller {
     public function CreateJugador(Request $request) {
@@ -22,14 +23,20 @@ class JugadorController extends Controller {
     		$jugador->peso     	 = $request->peso;
     		$jugador->posicion 	 = $request->posicion;
     		$jugador->disponible = $request->disponible;
-    		$jugador->location 	 = new Point(
+            $jugador->save();
+
+            $ubicacion_jug = new UbicacionJug();
+            $ubicacion_jug->jugador_id = $jugador->id;
+    		$ubicacion_jug->location = new Point(
     			$request->lat,
     			$request->lon
     		);
+            $ubicacion_jug->save();
 
     		$status			  = trans('requests.success.code');
     		$data['errors']   = false;
         	$data['respesta'] = $jugador;
+            $data['respesta2'] = $ubicacion_jug;
     	}
     	return Response::json($data, $status);
     }
@@ -65,17 +72,13 @@ class JugadorController extends Controller {
     				$data['errors']   = true;
         			$data['respesta'] = $val;
     			} else {
-    				$jugador->user_id    = $request->user_id;
     				$jugador->apodo      = $request->apodo;
     				$jugador->edad 	     = $request->edad;
     				$jugador->estatura 	 = $request->estatura;
     				$jugador->peso     	 = $request->peso;
     				$jugador->posicion 	 = $request->posicion;
     				$jugador->disponible = $request->disponible;
-    				$jugador->location 	 = new Point(
-    					$request->lat,
-    					$request->lon
-    				);
+                    $jugador->save();
 
     				$status			  = trans('requests.success.code');
     				$data['errors']   = false;
@@ -121,6 +124,7 @@ class JugadorController extends Controller {
     		$jugador = Jugador::find($request->id);
     		if (isset($jugador->id)) {
     			$jugador->disponible = $request->disponible;
+                $jugador->save();
 
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;

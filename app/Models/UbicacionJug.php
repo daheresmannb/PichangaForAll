@@ -9,7 +9,8 @@ class UbicacionJug extends Model {
     protected $table = 'ubicacion_jugador';
 
     protected $fillable = [
-        'id'
+        'id',
+        'jugador_id'
     ];
 
     protected $postgisFields = [
