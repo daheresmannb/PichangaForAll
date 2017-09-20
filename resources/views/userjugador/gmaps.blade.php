@@ -1,16 +1,38 @@
-<!DOCTYPE html>
-<html>
-  <head>
+@if(session('respuesta'))
+    <?php 
+        $resp = session('respuesta');
+    ?>
+
+    <script type="text/javascript">
+        alert("respuestaaaa!!!");
+    </script>
+@endif
+
+<button id="ej"> addd</button>
+
+{!! Html::style('assets/css/perfil_en_mapa.css'); !!}
+<script type="text/javascript">
+  $(document).ready(
+      function(e) {
+        $("#cerrar").click(
+            function(e) {
+                document.getElementById('light').style.display='none';
+                document.getElementById('fade').style.display='none';
+            }
+        );
+      }
+  );
+</script>
+
     <style>
        #map {
         height: 370px;
         width: 100%;
        }
     </style>
-  </head>
-  <body>
-    <h3>Jugadores Cercanos</h3>
-    <br><br>
+
+    
+    <br>
     <div id="map"></div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer></script>
@@ -28,9 +50,21 @@
   }
 
   function mostrarinfo() {
-    // body...
+      document.getElementById('light').style.display='block';
+      document.getElementById('fade').style.display='block';
   }
 
+  function addMarker() {
+    var mark = new google.maps.Marker({
+      position: new google.maps.LatLng(
+            "-38.738806", 
+            "-72.597354"
+      ),
+      animation: google.maps.Animation.DROP,
+      map: map
+    });
+  }
+  
   function initMap() {
     if (navigator.geolocation) { 
       navigator.geolocation.getCurrentPosition(
@@ -62,16 +96,20 @@
           marker.addListener('mouseover', detenido);
           marker.addListener('click', mostrarinfo);
 
-     
-
+          google.maps.event.addDomListener(
+            document.getElementById('ej'),
+            'click',
+            addMarker
+          );
 
         }
       ); 
     } else {
       alert("No se puede acceder a su localizacion");
     }
-  }
 
+
+  }
 
 
 
@@ -102,5 +140,9 @@ autoUpdate();
 
 </script>
 
-  </body>
-</html>
+<div id="fade" class="overlay"></div>
+<div id="light" class="modal">
+  <button id="cerrar">x</button>
+  <h1>Datos del Jugador</h1>
+  <button id="">ver perfil</button>     
+</div>

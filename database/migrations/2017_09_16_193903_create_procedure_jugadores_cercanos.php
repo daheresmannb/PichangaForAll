@@ -3,6 +3,9 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
+// SELECT ST_X(location::geometry), ST_Y(location::geometry) FROM ubicacion_jugador;
+
 class CreateProcedureJugadoresCercanos extends Migration {
     public function up() {
         $sql = "
@@ -12,15 +15,18 @@ class CreateProcedureJugadoresCercanos extends Migration {
             BEGIN
                 return query 
                 SELECT  
-                    id,  
-                    location
+                    id,
+                    jugador_id,
+                    location,
+                    created_at,
+                    updated_at
                 FROM ubicacion_jugador 
                 WHERE ( 
                     6372.795477598 * 
                     ACOS(
-                        SIN ( RADIANS(ubicacion_jugador.location[0]) ) * SIN( RADIANS((pos_lat)) ) + 
-                        COS ( RADIANS(ubicacion_jugador.location[0]) ) * COS( RADIANS((pos_lat)) ) * 
-                        COS ( RADIANS(ubicacion_jugador.location[1]) - RADIANS(pos_lng) )
+                        SIN ( RADIANS(ST_X(location::geometry)) ) * SIN( RADIANS((pos_lat)) ) + 
+                        COS ( RADIANS(ST_X(location::geometry)) ) * COS( RADIANS((pos_lat)) ) * 
+                        COS ( RADIANS(ST_Y(location::geometry)) - RADIANS(pos_lng) )
                     )
                 ) < radio_km;
             END

@@ -1,10 +1,7 @@
-
-
 @section('sidebar')
 {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
-
 <script type="text/javascript">
-        $(document).ready(
+    $(document).ready(
         function(e) {
             $('#nav').on(
                 'click', 
@@ -56,7 +53,7 @@
                 <li id="userli" class="active">
                     <a href="#">
                         <i class="ti-user"></i>
-                        <p>Perfil</p>
+                        <p>Mi Perfil</p>
                     </a>
                 </li>
                 <li id="mapli" class="">

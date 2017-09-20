@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Phaza\LaravelPostgis\Schema\Blueprint;
 
+// ST_SetSRID(ST_MakePoint(long, lat), 4326); para insertar
+// SELECT ST_X(location::geometry), ST_Y(location::geometry) FROM ubicacion_jugador;
+
 class CreateTableUbicacionJugador extends Migration {
     public function up() {
         Schema::create(

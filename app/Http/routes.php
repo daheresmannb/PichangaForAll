@@ -130,3 +130,5 @@ Route::post(
 Route::post('jugador/obtener','JugadorController@ReadJugador');
 Route::post('jugador/actualizar','JugadorController@UpdateJugador');
 Route::post('jugador/eliminar','JugadorController@DeleteJugador');
+
+Route::post('jugadores/cercanos','JugadorController@getJugadoresCercanos');
