@@ -6,10 +6,19 @@ use \Response;
 use App\Http\Requests;
 use App\Models\Partidos;
 use DB;
+/*
+Alex
+Acotacion: Estandarizar nombres de cada funcion
+asi como estan ahora las funciones
 
+    Create
+    Read
+    Update
+    Delete
+
+*/
 
 class EventoController extends Controller {
-    
     
     public function CreatePartido(Request $request) {
     	$partido = new Partidos();
@@ -28,9 +37,8 @@ class EventoController extends Controller {
     	}
     	return Response::json($data, $status);
     }
-
     
-    public function GetPartido(Request $request) {
+    public function ReadPartido(Request $request) {
     	if ($request->has('id')) {
     		$partido = Partidos::find($request->id);
     		if (isset($partido->id)) {
@@ -51,8 +59,7 @@ class EventoController extends Controller {
    		return Response::json($data, $status);    
 	}
  
- 	
- 	public function SetPartido(Request $request) {
+ 	public function UpdatePartido(Request $request) {
     	if ($request->has('id')) {
     		$partido = Partidos::find($request->id);
     		if (isset($partido->id)) {
@@ -62,7 +69,7 @@ class EventoController extends Controller {
     				$data['errors']   = true;
         			$data['respesta'] = $val;
     			} else {
-    				$partido->recinto_id      = $request->recinto_id;
+    				$partido->recinto_id = $request->recinto_id;
                     $partido->save();
 
     				$status			  = trans('requests.success.code');
@@ -82,7 +89,6 @@ class EventoController extends Controller {
    		return Response::json($data, $status);
     }
 
-    
     public function DeletePartido(Request $request) {
     	if ($request->has('id')) {
     		$partido = Partidos::find($request->id);
@@ -104,5 +110,4 @@ class EventoController extends Controller {
     	}
    		return Response::json($data, $status);
     }
-
 }

@@ -120,6 +120,8 @@ class JugadorController extends Controller {
    		return Response::json($data, $status);
     }
 
+//////////////////////////////////////////////////////////////////////////
+
     public function setEstadoJugador(Request $request) {
     	if ($request->has('id')) {
     		$jugador = Jugador::find($request->id);
@@ -167,10 +169,10 @@ class JugadorController extends Controller {
     }
 
     public function getJugadoresCercanos(Request $request) {
-        $jugadores = Jugador::getJugadoresCercanos(
+        $jugadores = UbicacionJug::getJugadoresCercanos(
             $request->latitud,//-38.738806,
             $request->longitud,//-72.597354,
-            $request->radio
+            $request->radio // radio en km^2
         );
       
         $data['errors']   = false;

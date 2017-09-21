@@ -124,14 +124,40 @@ Route::group(
 );
 
 
-Route::post(
-	'jugador/crear',
-	'JugadorController@CreateJugador'
-	)->name(
-		'reg.jug'
+/////////////// RUTAS CRUD JUGADOR //////////////////////////////////	
+Route::post('jugador/obtener','JugadorController@ReadJugador')->name(
+	'jugador.obtener'
 );
-Route::post('jugador/obtener','JugadorController@ReadJugador');
-Route::post('jugador/actualizar','JugadorController@UpdateJugador');
-Route::post('jugador/eliminar','JugadorController@DeleteJugador');
+Route::post('jugador/obtener','JugadorController@ReadJugador')->name(
+	'jugador.obtener'
+);
+Route::post('jugador/actualizar','JugadorController@UpdateJugador')->name(
+	'jugador.actualizar'
+);
+Route::post('jugador/eliminar','JugadorController@DeleteJugador')->name(
+	'jugador.eliminar'
+);
+/////////////////////////////////////////////////////////////////////
 
-Route::post('jugadores/cercanos','JugadorController@getJugadoresCercanos');
+////////////// RUTA JUGADORES CERCANOS //////////////////////////////
+Route::post('jugadores/cercanos','JugadorController@getJugadoresCercanos')->name(
+	'jugador.cercanos'
+);
+/////////////////////////////////////////////////////////////////////
+
+
+/////////////// RUTAS CRUD PARTIDOS //////////////////////////////////
+
+Route::post('partido/obtener','JugadorController@CreatePartido')->name(
+	'partido.obtener'
+);
+Route::post('partido/actualizar','JugadorController@ReadPartido')->name(
+	'partido.actualizar'
+);
+Route::post('partido/eliminar','JugadorController@UpdatePartido')->name(
+	'partido.eliminar'
+);
+Route::post('partido/cercanos','JugadorController@DeletePartido')->name(
+	'partido.cercanos'
+);
+/////////////////////////////////////////////////////////////////////
