@@ -1,15 +1,38 @@
-<!DOCTYPE html>
-<html>
-  <head>
+@if(session('respuesta'))
+    <?php 
+        $resp = session('respuesta');
+    ?>
+
+    <script type="text/javascript">
+        alert("respuestaaaa!!!");
+    </script>
+@endif
+
+<button id="ej"> addd</button>
+
+{!! Html::style('assets/css/perfil_en_mapa.css'); !!}
+<script type="text/javascript">
+  $(document).ready(
+      function(e) {
+        $("#cerrar").click(
+            function(e) {
+                document.getElementById('light').style.display='none';
+                document.getElementById('fade').style.display='none';
+            }
+        );
+      }
+  );
+</script>
+
     <style>
        #map {
-        height: 400px;
+        height: 370px;
         width: 100%;
        }
     </style>
-  </head>
-  <body>
-    <h3>My Google Maps Demo</h3>
+
+    
+    <br>
     <div id="map"></div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer></script>
@@ -17,11 +40,35 @@
   var mi_location;
   var map;
   var marker;
+
+  function saltar() {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+
+  function detenido() {
+    marker.setAnimation(null);
+  }
+
+  function mostrarinfo() {
+      document.getElementById('light').style.display='block';
+      document.getElementById('fade').style.display='block';
+  }
+
+  function addMarker() {
+    var mark = new google.maps.Marker({
+      position: new google.maps.LatLng(
+            "-38.738806", 
+            "-72.597354"
+      ),
+      animation: google.maps.Animation.DROP,
+      map: map
+    });
+  }
+  
   function initMap() {
     if (navigator.geolocation) { 
       navigator.geolocation.getCurrentPosition(
         function(position) { 
-
           mi_location = new google.maps.LatLng(
             position.coords.latitude, 
             position.coords.longitude
@@ -40,17 +87,29 @@
 
           marker = new google.maps.Marker({
             position: mi_location,
+            animation: google.maps.Animation.BOUNCE,
             map: map,
+            icon: "<?php echo url('assets/img/jugador2.png'); ?>",
             title: 'Mi posicion'
           }); 
+          marker.addListener('mouseout', saltar);
+          marker.addListener('mouseover', detenido);
+          marker.addListener('click', mostrarinfo);
+
+          google.maps.event.addDomListener(
+            document.getElementById('ej'),
+            'click',
+            addMarker
+          );
 
         }
       ); 
     } else {
       alert("No se puede acceder a su localizacion");
     }
-  }
 
+
+  }
 
 
 
@@ -81,6 +140,9 @@ autoUpdate();
 
 </script>
 
-<button onclick="alert(''+map.InfoWindow.getPosition());"n>aaaa</button>
-  </body>
-</html>
+<div id="fade" class="overlay"></div>
+<div id="light" class="modal">
+  <button id="cerrar">x</button>
+  <h1>Datos del Jugador</h1>
+  <button id="">ver perfil</button>     
+</div>

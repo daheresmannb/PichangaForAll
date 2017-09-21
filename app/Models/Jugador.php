@@ -5,6 +5,7 @@ namespace App\Models;
 use Validator;
 use Illuminate\Database\Eloquent\Model;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
+use DB;
 
 class Jugador extends Model {
 	protected $table = 'jugadores';
@@ -31,19 +32,19 @@ class Jugador extends Model {
     ];
 
     public function Validar($array){
-    	$validator = Validator::make(
-    		$array, [
-    			'user_id' 	 => 'required',
-    			'apodo' 	 => 'required',
-    			'edad' 		 => 'required',
-    			'estatura' 	 => 'required',
-    			'peso' 		 => 'required',
-    			'posicion' 	 => 'required',
-    			'disponible' => 'required',
-    			'lat' 		 => 'required',
-    			'lon'  		 => 'required',
-			]
-		);
-		return $validator;
+        $validator = Validator::make(
+            $array, [
+                'user_id'    => 'required',
+                'apodo'      => 'required',
+                'edad'       => 'required',
+                'estatura'   => 'required',
+                'peso'       => 'required',
+                'posicion'   => 'required',
+                'disponible' => 'required',
+                'lat'        => 'required',
+                'lon'        => 'required',
+            ]
+        );
+        return $validator;
     }
 }

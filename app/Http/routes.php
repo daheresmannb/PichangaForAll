@@ -42,17 +42,38 @@ Route::get(
 Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
 
 
+
+
 Route::get(
 	'/registro', 
 	function () {//nombre_carpeta .   nombre_vista
     	return view('userjugador.regusuarios');
 	}
 );
+
+//ejemplo
+          //nombre_ruta  nombre_controller  nombre_funcion
+Route::post('titodelivery','TitoController@ganjah');
+//fin ejemplo
+
+//prueba de funcionamineto operaciones crud partidos
+Route::post('/partidos','EventoController@DeletePartido');
+
+
 Route::get('/gmaps', 'GmapsController@index');
 Route::post('/LatLngd', 'GmapsController@LatLngbyDirect')->name('latlng.dir');
 
 ////rutas controladores //////////////////
 Route::post('obtener/ejemplo','EjemploController@ejemplo');
+
+
+
+
+
+
+
+
+
 
 Route::post('/signin', 'JwtController@login');
 Route::get('/signout', 'JwtController@logout');
@@ -63,12 +84,21 @@ Route::get('/login',
 	}
 );
 
+
+////////////// rutas para el usuario logeado //////////////////////
 Route::group(
 	['middleware' => ['auth']], 
 	function () {
 		Route::get('/home', 
 			function () {
     			return view('userjugador.indexuser');
+			}
+		);
+
+		Route::get(
+			'/jugadorescercanos', 
+			function () {
+    			return view('userjugador.gmaps');
 			}
 		);
 
@@ -79,6 +109,14 @@ Route::group(
 		);
 	}
 );
+/////////////// rutas para el usuario logeado /////////////////////////
+
+
+
+
+
+
+
 
 		Route::get(
 			'/indexj', 
@@ -95,16 +133,42 @@ Route::group(
 );
 
 
-Route::post('usuario/registro')->name('regusuarios');
 
-Route::post(
-	'jugador/crear',
-	'JugadorController@CreateJugador'
-	)->name(
-		'reg.jug'
-); 
+/////////////// RUTAS CRUD JUGADOR //////////////////////////////////	
+Route::post('jugador/obtener','JugadorController@ReadJugador')->name(
+	'jugador.obtener'
+);
+Route::post('jugador/obtener','JugadorController@ReadJugador')->name(
+	'jugador.obtener'
+);
+Route::post('jugador/actualizar','JugadorController@UpdateJugador')->name(
+	'jugador.actualizar'
+);
+Route::post('jugador/eliminar','JugadorController@DeleteJugador')->name(
+	'jugador.eliminar'
+);
+/////////////////////////////////////////////////////////////////////
+
+////////////// RUTA JUGADORES CERCANOS //////////////////////////////
+Route::post('jugadores/cercanos','JugadorController@getJugadoresCercanos')->name(
+	'jugador.cercanos'
+);
+/////////////////////////////////////////////////////////////////////
 
 
-Route::post('jugador/obtener','JugadorController@ReadJugador');
-Route::post('jugador/actualizar','JugadorController@UpdateJugador');
-Route::post('jugador/eliminar','JugadorController@DeleteJugador');
+/////////////// RUTAS CRUD PARTIDOS //////////////////////////////////
+
+Route::post('partido/obtener','JugadorController@CreatePartido')->name(
+	'partido.obtener'
+);
+Route::post('partido/actualizar','JugadorController@ReadPartido')->name(
+	'partido.actualizar'
+);
+Route::post('partido/eliminar','JugadorController@UpdatePartido')->name(
+	'partido.eliminar'
+);
+Route::post('partido/cercanos','JugadorController@DeletePartido')->name(
+	'partido.cercanos'
+);
+/////////////////////////////////////////////////////////////////////
+

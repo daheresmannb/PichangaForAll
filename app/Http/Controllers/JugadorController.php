@@ -6,6 +6,7 @@ use \Response;
 use App\Http\Requests;
 use App\Models\Jugador;
 use App\Models\UbicacionJug;
+use DB;
 
 class JugadorController extends Controller {
     public function CreateJugador(Request $request) {
@@ -119,6 +120,8 @@ class JugadorController extends Controller {
    		return Response::json($data, $status);
     }
 
+//////////////////////////////////////////////////////////////////////////
+
     public function setEstadoJugador(Request $request) {
     	if ($request->has('id')) {
     		$jugador = Jugador::find($request->id);
@@ -163,5 +166,18 @@ class JugadorController extends Controller {
         	$data['respesta'] = trans('validation.required');
     	}
    		return Response::json($data, $status);
+    }
+
+    public function getJugadoresCercanos(Request $request) {
+        $jugadores = UbicacionJug::getJugadoresCercanos(
+            $request->latitud,//-38.738806,
+            $request->longitud,//-72.597354,
+            $request->radio // radio en km^2
+        );
+      
+        $data['errors']   = false;
+        $data['respesta'] = $jugadores;
+
+        return Response::json($data);
     }
 }
