@@ -42,12 +42,12 @@ Route::get(
 Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
 
 
-//ejemplo
-          //nombre_ruta  nombre_controller  nombre_funcion
-Route::post('titodelivery','TitoController@ganjah');
-//fin ejemplo
-
-
+Route::get(
+	'/registro', 
+	function () {//nombre_carpeta .   nombre_vista
+    	return view('userjugador.regusuarios');
+	}
+);
 Route::get('/gmaps', 'GmapsController@index');
 Route::post('/LatLngd', 'GmapsController@LatLngbyDirect')->name('latlng.dir');
 
@@ -95,12 +95,16 @@ Route::group(
 );
 
 
+Route::post('usuario/registro')->name('regusuarios');
+
 Route::post(
 	'jugador/crear',
 	'JugadorController@CreateJugador'
 	)->name(
 		'reg.jug'
-);
+); 
+
+
 Route::post('jugador/obtener','JugadorController@ReadJugador');
 Route::post('jugador/actualizar','JugadorController@UpdateJugador');
 Route::post('jugador/eliminar','JugadorController@DeleteJugador');
