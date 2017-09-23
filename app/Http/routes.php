@@ -42,6 +42,15 @@ Route::get(
 Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
 
 
+
+
+Route::get(
+	'/registro', 
+	function () {//nombre_carpeta .   nombre_vista
+    	return view('userjugador.regusuarios');
+	}
+);
+
 //ejemplo
           //nombre_ruta  nombre_controller  nombre_funcion
 Route::post('titodelivery','TitoController@ganjah');
@@ -124,6 +133,7 @@ Route::group(
 );
 
 
+
 /////////////// RUTAS CRUD JUGADOR //////////////////////////////////	
 Route::post('jugador/obtener','JugadorController@ReadJugador')->name(
 	'jugador.obtener'
@@ -160,3 +170,4 @@ Route::post('partido/cercanos','JugadorController@DeletePartido')->name(
 	'partido.cercanos'
 );
 /////////////////////////////////////////////////////////////////////
+
