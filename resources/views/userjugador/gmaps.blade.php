@@ -8,7 +8,6 @@
     </script>
 @endif
 
-<button id="ej"> addd</button>
 
 {!! Html::style('assets/css/perfil_en_mapa.css'); !!}
 <script type="text/javascript">
@@ -20,6 +19,12 @@
                 document.getElementById('fade').style.display='none';
             }
         );
+
+        $('#ex1').slider({
+          formatter: function(value) {
+            return 'Current value: ' + value;
+          }
+        });
       }
   );
 </script>
@@ -29,10 +34,16 @@
         height: 370px;
         width: 100%;
        }
+
+         #ex1 .slider-selection {
+  background: #BABABA;
+}
     </style>
 
     
     <br>
+
+    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
     <div id="map"></div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer></script>
@@ -107,9 +118,21 @@
     } else {
       alert("No se puede acceder a su localizacion");
     }
-
-
   }
+
+  $.ajax({
+    type: 'POST',
+    url:  "<?php echo url('assets/img/jugador2.png'); ?>",
+    headers: {'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"},
+    data: {id: id, _token: tok},
+                  
+    success: function(data) {
+      // data.msg
+    },
+    error: function(xhr, textStatus, thrownError) {
+      textStatus
+    }
+  });
 
 
 

@@ -145,7 +145,6 @@ Route::post('jugadores/cercanos','JugadorController@getJugadoresCercanos')->name
 );
 /////////////////////////////////////////////////////////////////////
 
-
 /////////////// RUTAS CRUD PARTIDOS //////////////////////////////////
 
 Route::post('partido/obtener','JugadorController@CreatePartido')->name(

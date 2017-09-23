@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Grimzy\LaravelMysqlSpatial\Types\Point;
+use DB;
 
 class UbicacionJug extends Model {
     protected $table = 'ubicacion_jugador';
