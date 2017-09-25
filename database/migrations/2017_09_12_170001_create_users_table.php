@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration {
         Schema::drop('password_resets');
         Schema::drop('ubicacion_jugador');
         Schema::drop('jugadores');
+        Schema::drop('info_user');
         Schema::drop('users');
     }
 }

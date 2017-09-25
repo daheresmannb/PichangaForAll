@@ -43,9 +43,12 @@ Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
 Route::post('titodelivery','TitoController@ganjah');
 //fin ejemplo
 
-//prueba de funcionamineto operaciones crud partidos
-Route::post('/partidos','EventoController@DeletePartido');
+//#########################################################################
 
+//prueba de funcionamineto operaciones crud info_user
+Route::post('/infoUser','UserController@CreateInfoUser');
+
+//#########################################################################
 
 Route::get('/gmaps', 'GmapsController@index');
 Route::post('/LatLngd', 'GmapsController@LatLngbyDirect')->name('latlng.dir');
