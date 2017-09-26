@@ -31,25 +31,12 @@ Route::get(
 );
 
 Route::post('/datosjugador', 'GmapsController@LatLngbyDirect')->name('datos.jug');
-//buscar datos
-Route::get(
-	'/buscar', 
-	function () {
-    	return view('userjugador.buscarjug');
-	}
-);
 
 Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
 
 
 
 
-Route::get(
-	'/registro', 
-	function () {//nombre_carpeta .   nombre_vista
-    	return view('userjugador.regusuarios');
-	}
-);
 
 //ejemplo
           //nombre_ruta  nombre_controller  nombre_funcion
@@ -68,15 +55,6 @@ Route::post('/LatLngd', 'GmapsController@LatLngbyDirect')->name('latlng.dir');
 
 ////rutas controladores //////////////////
 Route::post('obtener/ejemplo','EjemploController@ejemplo');
-
-
-
-
-
-
-
-
-
 
 Route::post('/signin', 'JwtController@login');
 Route::get('/signout', 'JwtController@logout');
@@ -114,13 +92,6 @@ Route::group(
 );
 /////////////// rutas para el usuario logeado /////////////////////////
 
-
-
-
-
-
-
-
 Route::get(
 	'/indexj', 
 	function () {
@@ -135,7 +106,31 @@ Route::group(
 	}
 );
 
+//// usuarios /////////////////////////////////////////////////////////
+Route::get(
+	'/buscar', 
+	function () {
+    	return view('userjugador.buscarjug');
+	}
+);
 
+
+
+
+Route::get(
+	'/registro', 
+	function () {
+    	return view('userjugador.regusuarios');
+	}
+);
+
+Route::post('usuario/crear','UserController@CreateUsers')->name(
+	'usuario.crear'
+);
+
+
+
+////////////////////////////////////////////////////////////////////
 
 /////////////// RUTAS CRUD JUGADOR //////////////////////////////////	
 Route::post('jugador/obtener','JugadorController@ReadJugador')->name(

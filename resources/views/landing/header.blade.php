@@ -22,9 +22,10 @@
 									iniciar
 								</a>
 
-							<a class="Signup2 play-icon popup-with-zoom-anim" 
-								href="{{url('/registro')}}" 
-							>registrar</a></li>
+								<a href="{{ url('/registro') }}" class="Signup" >
+									registrar
+								</a>
+							</li>
 							
 						</ul>
 						<!-- script-for-menu -->
