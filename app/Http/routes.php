@@ -118,12 +118,12 @@ Route::group(
 
 
 
-		Route::get(
-			'/indexj', 
-			function () {
-    			return view('userjugador.indexuser');
-			}
-		);
+Route::get(
+	'/indexj', 
+	function () {
+    	return view('userjugador.indexuser');
+	}
+);
 
 Route::group(
 	['middleware' => ['admin']], 
@@ -156,7 +156,6 @@ Route::post('jugadores/cercanos','JugadorController@getJugadoresCercanos')->name
 /////////////////////////////////////////////////////////////////////
 
 /////////////// RUTAS CRUD PARTIDOS //////////////////////////////////
-
 Route::post('partido/obtener','JugadorController@CreatePartido')->name(
 	'partido.obtener'
 );
@@ -170,4 +169,3 @@ Route::post('partido/cercanos','JugadorController@DeletePartido')->name(
 	'partido.cercanos'
 );
 /////////////////////////////////////////////////////////////////////
-

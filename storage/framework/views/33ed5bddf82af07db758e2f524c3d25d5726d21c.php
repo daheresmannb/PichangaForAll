@@ -85,6 +85,7 @@
     <?php echo $__env->yieldContent('jugadorformulario'); ?>
     <?php echo $__env->yieldContent('datosjugador'); ?>
     <?php echo $__env->yieldContent('busquedajugador'); ?>
+    <?php echo $__env->yieldContent('registro'); ?>
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

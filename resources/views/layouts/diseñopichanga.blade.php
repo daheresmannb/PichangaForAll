@@ -27,6 +27,12 @@
             </div>
         </div>
     </div>
+    <div id="fade" class="overlay"></div>
+<div id="light" class="modal">
+  <button type="button" id="cerrar" class="close" aria-hidden="true">&times;</button>
+  <h1>Datos del Jugador</h1>
+  <button id="">ver perfil</button>     
+</div>
 </body>
     {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
     {!! Html::script('admin/assets/js/bootstrap.min.js'); !!}

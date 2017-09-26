@@ -8,8 +8,12 @@
     </script>
 @endif
 
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="dist/bootstrap-slider.js"></script>
 
 {!! Html::style('assets/css/perfil_en_mapa.css'); !!}
+
 <script type="text/javascript">
   $(document).ready(
       function(e) {
@@ -22,7 +26,7 @@
 
         $('#ex1').slider({
           formatter: function(value) {
-            return 'Current value: ' + value;
+              return 'Kilometros: ' + value;
           }
         });
       }
@@ -31,23 +35,50 @@
 
     <style>
        #map {
-        height: 370px;
-        width: 100%;
+          height: 300px;
+          width: 100%;
+          margin: 0px;
+          padding: 0px
        }
 
-         #ex1 .slider-selection {
-  background: #BABABA;
-}
     </style>
-
-    
     <br>
 
-    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+
+<h4><span>Buscar Jugadores Cercanos</span></h4>
+<div class="card" style="display:inline-block;">
+<div class="row">
+  <div class="col-sm-8">
+    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+  </div>
+  <div class="col-sm-4">
+    <button style="background: #66615b; text-shadow: #fff;" type="button" class="btn btn-default  btn-sm">Buscar</button>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+{!! Html::script('assets/js/jquery-3.2.1.js'); !!}
+{!! Html::script('assets/js/jquery.min.js'); !!}
+{!! Html::style('assets/css/slider.css'); !!}
+{!! Html::script('assets/js/slider.js'); !!}
+
+<div class="card" style="padding: 1% 1% 1% 1%;">
+  <center>
     <div id="map"></div>
+  </center>
+</div>
+    
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer></script>
 <script>
+  var lat = "-38.738806";
+  var lon = "-72.597354";
+  var markersArray = [];
   var mi_location;
   var map;
   var marker;
@@ -68,8 +99,8 @@
   function addMarker() {
     var mark = new google.maps.Marker({
       position: new google.maps.LatLng(
-            "-38.738806", 
-            "-72.597354"
+            lat, 
+            lon
       ),
       animation: google.maps.Animation.DROP,
       map: map
@@ -163,9 +194,3 @@ autoUpdate();
 
 </script>
 
-<div id="fade" class="overlay"></div>
-<div id="light" class="modal">
-  <button id="cerrar">x</button>
-  <h1>Datos del Jugador</h1>
-  <button id="">ver perfil</button>     
-</div>
