@@ -8,8 +8,7 @@ use App\Models\InfoUser;
 use DB;
 
 
-class UserController extends Controller
-{
+class UserController extends Controller {
  	public function CreateInfoUser(Request $request) {
     	$infouser = new InfoUser();
     	$val = $infouser->Validar($request->all());

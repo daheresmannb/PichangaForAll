@@ -6,18 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>PichangaForAll</title>
-     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
-    <!-- Fonts -->
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
     {!! Html::style('assets/css/font-awesome.min.css'); !!}
-    <!-- Styles -->
     {!! Html::style('assets/css/bootstrap.min.css'); !!}
     {!! Html::style('assets/css/style.css'); !!}
     {!! Html::style('assets/css/bootstrap.css'); !!}
-        {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
+    {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
     {!! Html::script('assets/js/bootstrap.min.js'); !!}
-
-   {{ HTML::style('css/busqueda.css') }}
-   {{ HTML::script('js/busqueda.js') }}
+    {!! Html::style('css/busqueda.css') !!}
+    {!! Html::script('js/busqueda.js') !!}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="application/x-javascript"> 
         addEventListener(

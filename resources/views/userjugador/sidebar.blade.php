@@ -37,7 +37,17 @@
                 }
             );
 
-
+            $('#nav').on(
+                'click', 
+                '#partli', 
+                function(e) {
+                    e.preventDefault();
+                    $('#content').empty();
+                    $('#content').load(
+                        "<?php echo url('jugadorescercanos'); ?>"
+                    );
+                }
+            );
         }
     );
 </script>
@@ -60,6 +70,12 @@
                     <a href="#">
                         <i class="ti-map"></i>
                         <p>Jugadores Cercanos</p>
+                    </a>
+                </li>
+                <li id="partli" class="">
+                    <a href="#">
+                        <i class="ti-map"></i>
+                        <p>Partidos</p>
                     </a>
                 </li>
             </ul>

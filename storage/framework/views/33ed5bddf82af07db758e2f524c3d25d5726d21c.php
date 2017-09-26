@@ -6,25 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>PichangaForAll</title>
-     <link rel="shortcut icon" href="<?php echo e(asset('assets/img/favicon.png')); ?>">
-    <!-- Fonts -->
+    <link rel="shortcut icon" href="<?php echo e(asset('assets/img/favicon.png')); ?>">
     <?php echo Html::style('assets/css/font-awesome.min.css');; ?>
 
-    <!-- Styles -->
     <?php echo Html::style('assets/css/bootstrap.min.css');; ?>
 
     <?php echo Html::style('assets/css/style.css');; ?>
 
     <?php echo Html::style('assets/css/bootstrap.css');; ?>
 
-        <?php echo Html::script('assets/js/jquery-3.2.1.js');; ?>
+    <?php echo Html::script('assets/js/jquery-3.2.1.js');; ?>
 
     <?php echo Html::script('assets/js/bootstrap.min.js');; ?>
 
+    <?php echo Html::style('css/busqueda.css'); ?>
 
-   <?php echo e(HTML::style('css/busqueda.css')); ?>
-
-   <?php echo e(HTML::script('js/busqueda.js')); ?>
+    <?php echo Html::script('js/busqueda.js'); ?>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="application/x-javascript"> 

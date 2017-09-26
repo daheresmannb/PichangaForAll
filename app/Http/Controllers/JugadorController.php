@@ -15,7 +15,7 @@ class JugadorController extends Controller {
     	if ($val->fails()) {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = true;
-        	$data['respesta'] = $val;
+        	$data['respesta'] = $val->messages();
     	} else {
     		$jugador->user_id    = $request->user_id;
     		$jugador->apodo      = $request->apodo;
@@ -176,7 +176,7 @@ class JugadorController extends Controller {
         );
       
         $data['errors']   = false;
-        $data['respesta'] = $jugadores;
+        $data['respuesta'] = $jugadores;
 
         return Response::json($data);
     }
