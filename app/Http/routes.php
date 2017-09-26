@@ -125,7 +125,7 @@ Route::get(
 	}
 );
 
-Route::post('usuario/crear','UsuarioController@ReadUsuario')->name(
+Route::post('usuario/crear','UserController@CreateUsers')->name(
 	'usuario.crear'
 );
 

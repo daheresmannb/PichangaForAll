@@ -93,42 +93,45 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 
 </script>
 
+
+
+
+
+<!--empesada de formulario de registro -->
+
+
+
+
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Pichanga for All</strong> </h1>
+                            <h1><strong>PichangaForAll</strong> </h1>
              
                         </div>
                     </div>
-
- <div class="row">
+                    <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
-                        		<div class="form-top-left">
-                        			<h3>Registro de Usuarios</h3>
-                            		<p>
-                                        rellenear todos los campos:
+                          <div class="form-top">
+                            <div class="form-top-left">
+                              <h3>Inicio de sesion</h3>
+                                <p>
+                                        Ingresa el correo, y contraseña asociado a tu cuenta:
                                     </p>
-                        		</div>
-                        		</div>
-
-
-<div class="form-bottom">
-
-
-<!--empesada de formulario de registro -->
-<form role="form" action="{{ url('#') }}" method="POST" class="form-horizontal">
-                                
-  {{ csrf_field() }}
+                            </div>
+                            <div class="form-top-right">
+                              <i class="fa fa-key"></i>
+                            </div>
+                            </div>
+                            <div class="form-bottom">
 
 
 
-
+{!! Form::open(['route' => array('usuario.crear', ), 'autocomplete' => 'off']) !!}
 <div class="form-horizontal">
  {!! Form::label('nombre','Nombre')  !!}
  {!! Form::text(
-  'nombre',
+  'name',
   null,[
     'class' => 'form-control',
     'placeholder' => 'nombre',
@@ -149,31 +152,72 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 
 <div class="form-horizontal">
  {!! Form::label('email','email')  !!}
- {!! Form::email('email',
- 		null,['class' => 'form-control',
+ {!! Form::text('email',
+    null,['class' => 'form-control',
               'placeholder' =>'email',
               'required'])!!}
 
 </div>
 
+<div class="form-horizontal">
+ {!! Form::label('telefono','telefono')  !!}
+ {!! Form::text('telefono',
+    null,['class' => 'form-control',
+              'placeholder' =>'telefono',
+              'required'])!!}
+</div>
 
-<div class="form-group">
-                            
-{!! Form::label('password','password',['class' => 'col-md-4 control-label'])  !!}
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+<div class="form-horizontal">
+{!! Form::label('password') !!}
+{!! Form::password(
+  'password',[
+  'class' => 'form-control',
+  'name'=>'password',
+  'autocomplete'=>'new-password',
+  'placeholder' => 'Password',
+  'type' => 'password'
+  ])
+!!}                        
+</div>
 
-                            </div>
+<div class="form-horizontal">
+{!! Form::label('re-password') !!}
+{!! Form::password(
+  'password2',[
+  'class' => 'form-control',
+  'name'=>'password2',
+  'autocomplete'=>'new-password',
+  'placeholder' => 'Password2',
+  'type' => 'password'
+  ])
+!!}                        
+</div>
+
+
+<div class="form-horizontal">
+   {!! Form::submit(
+     'Registrar',
+     array(
+       'class'=>'btn btn-primary btn-lg btn-block'
+     ))
+   !!}
+</div>
+
+
+{!! Form::close() !!}
+
+
+
+                        
                         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> Registrar
-                                </button>
-                            </div>
-</form>
+
+
 <!--
 <div class="Form-group">
   
@@ -186,28 +230,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 <!-- fin de formulario registro-->
 
 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 social-login">
-                        	<h3>registrarse con redes sociales:</h3>
-                        	<div class="social-login-buttons">
-	                        	<a class="btn btn-link-1 btn-link-1-facebook" href="#">
-	                        		<i class="fa fa-facebook"></i> Facebook
-	                        	</a>
-	                        	<a class="btn btn-link-1 btn-link-1-twitter" href="#">
-	                        		<i class="fa fa-twitter"></i> Twitter
-	                        	</a>
-	                        	<a class="btn btn-link-1 btn-link-1-google-plus" href="#">
-	                        		<i class="fa fa-google-plus"></i> Google Plus
-	                        	</a>
-                        	</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
         {!! Html::script('assets2/js/jquery-1.11.1.min.js'); !!}
         {!! Html::script('assets2/bootstrap/js/bootstrap.min.js'); !!}
         {!! Html::script('assets2/js/jquery.backstretch.min.js'); !!}
