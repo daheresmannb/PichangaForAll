@@ -14,7 +14,7 @@
 			$("#jugc").click(
 				function(e) {
 					e.preventDefault();
-					alert('holaaaaaaaaaaaaaaaa');
+					
 					$('#content').load('/gmaps');
 				
 					
