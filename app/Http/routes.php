@@ -59,7 +59,7 @@ Route::post('titodelivery','TitoController@ganjah');
 //#########################################################################
 
 //prueba de funcionamineto operaciones crud info_user
-Route::post('/infoUser','UserController@CreateInfoUser');
+Route::post('/infoUser','UserController@UpdateInfoUser');
 
 //#########################################################################
 
