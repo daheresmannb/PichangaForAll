@@ -167,3 +167,34 @@ Route::post('partido/cercanos','JugadorController@DeletePartido')->name(
 	'partido.cercanos'
 );
 /////////////////////////////////////////////////////////////////////
+
+/////////////// RUTAS CRUD INFO_USER ////////////////////////////////
+Route::post('infoUser/crear','UserController@CreateInfoUser')->name(
+	'infoUser.crear'
+);
+Route::post('infoUser/obtener','UserController@ReadInfoUser')->name(
+	'infoUser.obtener'
+);
+Route::post('infoUser/actualizar','UserController@UpdateInfoUser')->name(
+	'infoUser.actualizar'
+);
+Route::post('infoUser/eliminar','UserController@DeleteInfoUser')->name(
+	'infoUser.eliminar'
+);
+/////////////////////////////////////////////////////////////////////
+
+/////////////// RUTAS CRUD USER /////////////////////////////////////
+Route::post('user/crear','UserController@CreateUsers')->name(
+	'user.crear'
+);
+Route::post('user/obtener','UserController@ReadUser')->name(
+	'user.obtener'
+);
+Route::post('user/actualizar','UserController@UpdateUser')->name(
+	'user.actualizar'
+);
+
+Route::post('user/eliminar','UserController@DeleteUser')->name(
+	'user.eliminar'
+);
+/////////////////////////////////////////////////////////////////////
