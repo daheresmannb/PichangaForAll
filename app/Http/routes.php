@@ -30,6 +30,13 @@ Route::get(
 	}
 );
 
+Route::get(
+	'/perfil', 
+	function () {
+    	return view('userjugador.perfil');
+	}
+);
+
 Route::post('/datosjugador', 'GmapsController@LatLngbyDirect')->name('datos.jug');
 
 Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
