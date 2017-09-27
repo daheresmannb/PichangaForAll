@@ -15,7 +15,11 @@ class User extends Authenticatable {
 
 protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'password','password2',
+        'name', 
+        'email', 
+        'password',
+        'rol',
+        'password2',
     ];
 
     protected $hidden = [
@@ -35,7 +39,8 @@ protected $table = 'users';
                 'name'       => 'required',
                 'email'      => 'required',
                 'password'   => 'required',
-                'password2'  => 'required',
+                'rol'  => 'required',
+                'password2' => 'required',
             ]
         );
         return $validator;
