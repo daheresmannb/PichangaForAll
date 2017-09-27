@@ -90,21 +90,26 @@ Route::group(
 		);
 	}
 );
+
+
+
+Route::get(
+	'/infouser', 
+	function () {
+    	return view('userjugador.infouser');
+	}
+);
+
+
+
+
+
+
+
+
+
+
 /////////////// rutas para el usuario logeado /////////////////////////
-
-
-<<<<<<< HEAD
-		Route::get(
-			'/indexj', 
-			function () {
-    			return view('userjugador.indexuser');
-			}
-		);
-=======
-
-
-
-
 
 
 Route::get(
@@ -113,7 +118,7 @@ Route::get(
     	return view('userjugador.indexuser');
 	}
 );
->>>>>>> bbebabe78aab06898ecf12c92e3572cb4a656800
+
 
 Route::group(
 	['middleware' => ['admin']], 
@@ -122,16 +127,13 @@ Route::group(
 	}
 );
 
-//// usuarios /////////////////////////////////////////////////////////
+/////////////////////// usuarios ////////////////////////////////////
 Route::get(
 	'/buscar', 
 	function () {
     	return view('userjugador.buscarjug');
 	}
 );
-
-
-
 
 Route::get(
 	'/registro', 
@@ -144,6 +146,17 @@ Route::post('usuario/crear','UserController@CreateUsers')->name(
 	'usuario.crear'
 );
 
+
+Route::get(
+	'/infouser', 
+	function () {
+    	return view('userjugador.infouser');
+	}
+);
+
+Route::post('usuario/infouser','UserController@CreateUsers')->name(
+	'usuario.infoUser'
+);
 
 
 ////////////////////////////////////////////////////////////////////
@@ -182,4 +195,16 @@ Route::post('partido/eliminar','JugadorController@UpdatePartido')->name(
 Route::post('partido/cercanos','JugadorController@DeletePartido')->name(
 	'partido.cercanos'
 );
+/////////////////////////////////////////////////////////////////////
+
+//////////////// Rutas Torneos///////////////////////////////////////
+
+Route::get(
+	'/creacapeonato',
+		function () {
+			return view('userjugador.creacampeonato');
+	}
+);
+
+
 /////////////////////////////////////////////////////////////////////

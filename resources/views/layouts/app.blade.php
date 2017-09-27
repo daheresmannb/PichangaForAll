@@ -74,6 +74,9 @@
     @yield('datosjugador')
     @yield('busquedajugador')
     @yield('registro')
+    @yield('infouser')
+    @yield('creacapeonato')
+
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

@@ -1,9 +1,0 @@
-<?php echo $__env->make('header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->make('banner', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->make('servicios', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->make('portafolio', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->make('acerca', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->make('habilidades', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->make('contacto', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->make('footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -31,7 +31,7 @@
                 function(e) {
                     e.preventDefault();
                     $('#content').empty();
-                    $('#content').load(
+                    $('#content').load(  ///nombre ruta
                         "<?php echo url('jugadorescercanos'); ?>"
                     );
                 }
@@ -60,6 +60,12 @@
                     <a href="#">
                         <i class="ti-map"></i>
                         <p>Jugadores Cercanos</p>
+                    </a>
+                </li>
+                                <li id="mapli" class="">
+                    <a href="#">
+                        <i class="ti-map"></i>
+                        <p>Jinfocanos</p>
                     </a>
                 </li>
             </ul>
