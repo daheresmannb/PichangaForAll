@@ -26,27 +26,46 @@
         @yield('sidebar')
         <div class="main-panel">
             @yield('navbar')
-            <div class="content">
+            <div id="content" class="content">
+            
+         
+                    @yield('contenido')
 
-                <div id="content" class="container-fluid">
-                    @yield('contenido')
-                    @yield('contenido')
-                </div>
             </div>
         </div>
     </div>
-    <div id="fade" class="overlay"></div>
+    
+<div id="fade" class="overlay"></div>
 <div id="light" class="modal">
-  <button type="button" id="cerrar" class="close" aria-hidden="true">&times;</button>
-  <h1>Datos del Jugador</h1>
-  <button id="">ver perfil</button>     
+    <div id="cabeza">
+       <button type="button" id="cerrar" class="close" aria-hidden="true">&times;</button> 
+    </div>
+    <div id="cuerpo">
+          
+        <h1>Datos del Jugador</h1>
+    </div>   
+    <div id="fondo">
+        <button id="">ver perfil</button> 
+    </div>
 </div>
-    {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
-    {!! Html::script('admin/assets/js/bootstrap.min.js'); !!}
-    {!! Html::script('admin/assets/js/chartist.min.js'); !!}
-    {!! Html::script('admin/assets/js/bootstrap-notify.js'); !!}
-    {!! Html::script('admin/assets/js/paper-dashboard.js'); !!}
-        <div class="modal fade" id="myModal" role="dialog">
+
+<script type="text/javascript">
+    $(document).ready(
+        function(e) {
+            $("#cerrar").click(
+                function(e) {
+                    document.getElementById('light2').style.display='none';
+                    document.getElementById('fade2').style.display='none';
+                }
+            );
+        }
+    );
+</script>
+<div id="fade2" class="overlay"></div>
+
+
+<center>
+    <div id="light2" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -62,5 +81,13 @@
             </div>  
         </div>
     </div>
+</center>
+
+    {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
+    {!! Html::script('admin/assets/js/bootstrap.min.js'); !!}
+    {!! Html::script('admin/assets/js/chartist.min.js'); !!}
+    {!! Html::script('admin/assets/js/bootstrap-notify.js'); !!}
+    {!! Html::script('admin/assets/js/paper-dashboard.js'); !!}
+
 </body>
 </html>

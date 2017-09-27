@@ -24,6 +24,10 @@ class UbicacionJug extends Model {
         ]
     ];
 
+    public function jugador() {
+        return $this->hasOne('App\Models\Jugador');
+    }
+
     public static function getJugadoresCercanos($latitud, $longitud, $radio) {
         return DB::select(
             'SELECT id, ST_X(location::geometry) as latitud, ST_Y(location::geometry) as longitud from jugadores_cercanos(?, ?, ?)', 

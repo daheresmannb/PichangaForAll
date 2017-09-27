@@ -8,15 +8,8 @@ use App\Models\InfoUser;
 use App\Models\User;
 use DB;
 
-
-<<<<<<< HEAD
 class UserController extends Controller {
-=======
-	
 
-class UserController extends Controller
-{
->>>>>>> 445fe12deff8e3bd1ad92485245fe74e4197df02
  	public function CreateInfoUser(Request $request) {
     	$infouser = new InfoUser();
     	$val = $infouser->Validar($request->all());
@@ -126,23 +119,20 @@ class UserController extends Controller
             $status            = trans('requests.failure.code.bad_request');
             $data['errors']    = true;
             $data['respuesta'] = $val->messages();
-        } else { 
-            
-            if (strcmp($request->password , $request->password2)== 0) {
-                        $user->name     = $request->name;
-                        $user->email    = $request->email;
-                        $user->password = $request->password;
-                    $user->save();
+        } elseif (strcmp($request->password , $request->password2)== 0) {
+            $user->name     = $request->name;
+            $user->email    = $request->email;
+            $user->password = $request->password;
+            $user->save();
 
             $status            = trans('requests.success.code');
             $data['errors']    = false;
-            $data['respuesta'] = 'ingreso';
+            $data['respuesta'] = $user;
 
-            }else {
-                $status            = trans('requests.success.code');
+        }else {
+            $status            = trans('requests.success.code');
             $data['errors']    = true;
-            $data['respuesta'] = 'error_v';
-            }
+            $data['respuesta'] = '';
         }
         return Response::json($data, $status);
     }

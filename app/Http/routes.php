@@ -133,7 +133,7 @@ Route::post('usuario/crear','UserController@CreateUsers')->name(
 ////////////////////////////////////////////////////////////////////
 
 /////////////// RUTAS CRUD JUGADOR //////////////////////////////////	
-Route::post('jugador/obtener','JugadorController@ReadJugador')->name(
+Route::post('jugador/crear','JugadorController@CreateJugador')->name(
 	'jugador.obtener'
 );
 Route::post('jugador/obtener','JugadorController@ReadJugador')->name(

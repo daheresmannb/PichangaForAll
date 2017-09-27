@@ -15,7 +15,7 @@ class JugadorController extends Controller {
     	if ($val->fails()) {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = true;
-        	$data['respesta'] = $val->messages();
+        	$data['respuesta'] = $val->messages();
     	} else {
     		$jugador->user_id    = $request->user_id;
     		$jugador->apodo      = $request->apodo;
@@ -36,8 +36,8 @@ class JugadorController extends Controller {
 
     		$status			  = trans('requests.success.code');
     		$data['errors']   = false;
-        	$data['respesta'] = $jugador;
-            $data['respesta2'] = $ubicacion_jug;
+        	$data['respuesta'] = $jugador;
+            $data['respuesta2'] = $ubicacion_jug;
     	}
     	return Response::json($data, $status);
     }
@@ -48,17 +48,17 @@ class JugadorController extends Controller {
     		if (isset($jugador->id)) {
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respesta'] = $jugador;
+        		$data['respuesta'] = $jugador;
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.registro');
+        		$data['respuesta'] = trans('registros.registro');
     		}
     	} else {
     		$jugadores = Jugador::all();
     		$status			  = trans('requests.success.code');
     		$data['errors'] = false;
-        	$data['respesta']	= $jugadores;
+        	$data['respuesta']	= $jugadores;
     	}
    		return Response::json($data, $status);
     }
@@ -71,7 +71,7 @@ class JugadorController extends Controller {
     			if ($val->fails()) {
     				$status			  = trans('requests.failure.code.bad_request');
     				$data['errors']   = true;
-        			$data['respesta'] = $val;
+        			$data['respuesta'] = $val;
     			} else {
     				$jugador->apodo      = $request->apodo;
     				$jugador->edad 	     = $request->edad;
@@ -83,17 +83,17 @@ class JugadorController extends Controller {
 
     				$status			  = trans('requests.success.code');
     				$data['errors']   = false;
-        			$data['respesta'] = $jugador;
+        			$data['respuesta'] = $jugador;
     			}
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.reg');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = false;
-        	$data['respesta'] = trans('validation.required');
+        	$data['respuesta'] = trans('validation.required');
     	}
    		return Response::json($data, $status);
     }
@@ -106,21 +106,25 @@ class JugadorController extends Controller {
 
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respesta'] = trans('registros.del');
+        		$data['respuesta'] = trans('registros.del');
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.reg');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = false;
-        	$data['respesta'] = trans('validation.required');
+        	$data['respuesta'] = trans('validation.required');
     	}
    		return Response::json($data, $status);
     }
 
 //////////////////////////////////////////////////////////////////////////
+
+    public function CreateUbicacionJugador(Request $request) {
+        # code...
+    }
 
     public function setEstadoJugador(Request $request) {
     	if ($request->has('id')) {
@@ -131,16 +135,16 @@ class JugadorController extends Controller {
 
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respesta'] = $jugador;
+        		$data['respuesta'] = $jugador;
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.reg');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = false;
-        	$data['respesta'] = trans('validation.required');
+        	$data['respuesta'] = trans('validation.required');
     	}
    		return Response::json($data, $status);
     }
@@ -155,15 +159,15 @@ class JugadorController extends Controller {
     			);
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respesta'] = $jugador;
+        		$data['respuesta'] = $jugador;
     		} else {
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.reg');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = false;
-        	$data['respesta'] = trans('validation.required');
+        	$data['respuesta'] = trans('validation.required');
     	}
    		return Response::json($data, $status);
     }
@@ -174,6 +178,11 @@ class JugadorController extends Controller {
             $request->longitud,//-72.597354,
             $request->radio // radio en km^2
         );
+
+        foreach ($jugadores as $jugador) {
+            $ub = UbicacionJug::find($jugador->id);
+            $jugador->jugador_id = $ub->jugador_id;
+        }
       
         $data['errors']   = false;
         $data['respuesta'] = $jugadores;
