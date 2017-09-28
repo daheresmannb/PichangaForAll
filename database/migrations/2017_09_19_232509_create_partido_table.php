@@ -13,7 +13,10 @@ class CreatePartidoTable extends Migration
                 $table->uuid('id')->default(
                     DB::raw('uuid_generate_v4()')
                 );
-                $table->uuid('recinto_id');              
+                $table->uuid('recinto_id');
+                $table->date('fecha');
+                $table->time('hora_i');
+                $table->time('hora_t');              
                 $table->timestamps();
                 $table->primary('id');
                 //$table->foreign('recinto_id')->references('id')->on('recintos'); 
