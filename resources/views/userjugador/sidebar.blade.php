@@ -48,6 +48,30 @@
                     );
                 }
             );
+
+            $('#nav').on(
+                'click', 
+                '#torli', 
+                function(e) {
+                    e.preventDefault();
+                    $('#content').empty();
+                    $('#content').load(
+                        "<?php echo url('creacapeonato'); ?>"
+                    );
+                }
+            );
+
+            $('#nav').on(
+                'click', 
+                '#infouser', 
+                function(e) {
+                    e.preventDefault();
+                    $('#content').empty();
+                    $('#content').load(
+                        "<?php echo url('infouser'); ?>"
+                    );
+                }
+            );
         }
     );
 </script>
@@ -66,25 +90,37 @@
                         <p>Mi Perfil</p>
                     </a>
                 </li>
+                <li id="infouser" class="active">
+                    <a href="#">
+                        <i class="ti-user"></i>
+                        <p>Infouser</p>
+                    </a>
+                </li>                
                 <li id="mapli" class="">
                     <a href="#">
                         <i class="ti-map"></i>
                         <p>Jugadores Cercanos</p>
                     </a>
                 </li>
-<<<<<<< HEAD
-                                <li id="mapli" class="">
+                             <li id="mapli" class="">
                     <a href="#">
                         <i class="ti-map"></i>
                         <p>Jinfocanos</p>
-=======
+
                 <li id="partli" class="">
                     <a href="#">
                         <i class="ti-map"></i>
                         <p>Partidos</p>
->>>>>>> de9def18bfb28829b8e5f12a504bf05e65c718ec
                     </a>
                 </li>
+                <li id="torli" class="">
+                    <a href="#">
+                        <i class="ti-map"></i>
+                        <p>torneos </p>
+                    </a>
+                </li>
+                
+
             </ul>
     	</div>
     </div>

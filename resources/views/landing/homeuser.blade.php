@@ -24,7 +24,7 @@
 </style>
 
 <div id="contus" class="container">
-<div class="mainbody container-fluid">
+  <div class="mainbody container-fluid">
     <div class="row">
         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
             <div class="panel panel-default">

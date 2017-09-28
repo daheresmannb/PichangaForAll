@@ -2,8 +2,18 @@
 @extends('funcionesjs')
 @section('infouser')
 
- <div class="container">
-                    <div class="row">
+
+
+<style>
+       #contus {
+        height: 370px;
+        width: 100%;
+       }
+</style>
+
+<div id="contus" class="container">
+  <div class="mainbody container-fluid"> 
+<div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>Informacion de usuario</strong> </h1>
              
@@ -22,7 +32,7 @@
                               <i class="fa fa-key"></i>
                             </div>
                             </div>
-                            <div class="fotm-bottom"> 
+                            <div class="form-bottom"> 
                             		{!! Form::open(['route' => array('infoUser.obtener', ), 'autocomplete' => 'off']) !!}
 										<div class="form-horizontal">
    											{!! Form::submit(
@@ -96,5 +106,6 @@
                         </div><!--fin de containr botton-->
                         </div>
                     </div>
-                </div>
+                                            </div>
+                    </div>
 @endsection
