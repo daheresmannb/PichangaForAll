@@ -114,10 +114,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                           <div class="form-top">
                             <div class="form-top-left">
-                              <h3>Inicio de sesion</h3>
-                                <p>
-                                        Ingresa el correo, y contraseña asociado a tu cuenta:
-                                    </p>
+                              <h3>Registro de Usuarios</h3>
                             </div>
                             <div class="form-top-right">
                               <i class="fa fa-key"></i>
@@ -127,7 +124,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 
 
 
-{!! Form::open(['route' => array('usuario.crear', ), 'autocomplete' => 'off']) !!}
+{!! Form::open(['route' => array('user.crear', ), 'autocomplete' => 'off']) !!}
 <div class="form-horizontal">
  {!! Form::label('nombre','Nombre')  !!}
  {!! Form::text(
@@ -142,29 +139,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 </div>
 
 <div class="form-horizontal">
- {!! Form::label('apelido','apellido')  !!}
- {!! Form::text('apelido',
-        null,['class' => 'form-control',
-              'placeholder' =>'apellido',
-            'required'])!!}
-
-</div>
-
-<div class="form-horizontal">
  {!! Form::label('email','email')  !!}
  {!! Form::text('email',
     null,['class' => 'form-control',
               'placeholder' =>'email',
               'required'])!!}
 
-</div>
-
-<div class="form-horizontal">
- {!! Form::label('telefono','telefono')  !!}
- {!! Form::text('telefono',
-    null,['class' => 'form-control',
-              'placeholder' =>'telefono',
-              'required'])!!}
 </div>
 
 <div class="form-horizontal">
@@ -206,9 +186,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 
 {!! Form::close() !!}
 
-
-
-                        
                         </div>
                         </div>
                     </div>

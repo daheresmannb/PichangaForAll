@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+      
     <title>PichangaForAll</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" href="<?php echo e(asset('assets/img/favicon.png')); ?>">
     <?php echo Html::style('assets/css/font-awesome.min.css');; ?>
 
@@ -77,12 +78,13 @@
     <?php echo $__env->yieldContent('contacto'); ?>
     <?php echo $__env->yieldContent('footer'); ?>
     <?php echo $__env->yieldContent('login'); ?>
+    <?php echo $__env->yieldContent('registro'); ?>
     <?php echo $__env->yieldContent('content'); ?>
     <?php echo $__env->yieldContent('jugadoresporlista'); ?>
     <?php echo $__env->yieldContent('jugadorformulario'); ?>
     <?php echo $__env->yieldContent('datosjugador'); ?>
-    <?php echo $__env->yieldContent('busquedajugador'); ?>
-    <?php echo $__env->yieldContent('registro'); ?>
+
+
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

@@ -126,6 +126,7 @@ class UserController extends Controller {
             $user->name     = $request->name;
             $user->email    = $request->email;
             $user->password = $request->password;
+            $user->rol      = 1;
             $user->save();
 
             $status            = trans('requests.success.code');
