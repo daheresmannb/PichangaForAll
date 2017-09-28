@@ -136,9 +136,12 @@ class UserController extends Controller {
         }else {
             $status            = trans('requests.success.code');
             $data['errors']    = true;
-            $data['respuesta'] = '';
+            $data['respuesta'] = 'La confimacion de contraseña no coincide';
         }
-        return Response::json($data, $status);
+        return redirect('/registro')->with(
+            'respuesta', 
+            $data
+        );
     }
     
     public function ReadUser(Request $request) {
