@@ -1,19 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.diseñopichanga')
 @extends('funcionesjs')
 @section('infouser')
 
 
-
-<style>
-       #contus {
-        height: 370px;
-        width: 100%;
-       }
-</style>
-
-<div id="contus" class="container">
-  <div class="mainbody container-fluid"> 
-<div class="row">
+<div class="card" style="display:inline-block; padding: 5% 5% 5% 5%;">
+	<div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>Informacion de usuario</strong> </h1>
              
@@ -22,15 +13,8 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                           <div class="form-top">
-                            <div class="form-top-left">
-                              <h3>Informacion  de Usuario</h3>
-                                <p>
-                                        Actualizar
-                                    </p>
-                            </div>
-                            <div class="form-top-right">
-                              <i class="fa fa-key"></i>
-                            </div>
+                            
+
                             </div>
                             <div class="form-bottom"> 
                             		{!! Form::open(['route' => array('infoUser.obtener', ), 'autocomplete' => 'off']) !!}
@@ -106,6 +90,6 @@
                         </div><!--fin de containr botton-->
                         </div>
                     </div>
-                                            </div>
-                    </div>
+</div>
+                    
 @endsection

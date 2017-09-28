@@ -93,7 +93,7 @@
                 <li id="infouser" class="active">
                     <a href="#">
                         <i class="ti-user"></i>
-                        <p>Infouser</p>
+                        <p>Info user</p>
                     </a>
                 </li>                
                 <li id="mapli" class="">
@@ -102,11 +102,11 @@
                         <p>Jugadores Cercanos</p>
                     </a>
                 </li>
-                             <li id="mapli" class="">
+                <li id="mapli" class="">
                     <a href="#">
                         <i class="ti-map"></i>
                         <p>Jinfocanos</p>
-
+                    </a>
                 <li id="partli" class="">
                     <a href="#">
                         <i class="ti-map"></i>

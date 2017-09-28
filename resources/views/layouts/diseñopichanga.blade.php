@@ -30,6 +30,10 @@
             
          
                     @yield('contenido')
+                    @yield('busquedajugador')
+                    @yield('registro')
+                    @yield('infouser')
+                    @yield('creacapeonato')
 
             </div>
         </div>
