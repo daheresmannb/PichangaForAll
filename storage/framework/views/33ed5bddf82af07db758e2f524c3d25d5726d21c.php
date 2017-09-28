@@ -4,18 +4,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      
+
     <title>PichangaForAll</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
-    {!! Html::style('assets/css/font-awesome.min.css'); !!}
-    {!! Html::style('assets/css/bootstrap.min.css'); !!}
-    {!! Html::style('assets/css/style.css'); !!}
-    {!! Html::style('assets/css/bootstrap.css'); !!}
-    {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
-    {!! Html::script('assets/js/bootstrap.min.js'); !!}
-    {!! Html::style('css/busqueda.css') !!}
-    {!! Html::script('js/busqueda.js') !!}
+    <link rel="shortcut icon" href="<?php echo e(asset('assets/img/favicon.png')); ?>">
+    <?php echo Html::style('assets/css/font-awesome.min.css');; ?>
+
+    <?php echo Html::style('assets/css/bootstrap.min.css');; ?>
+
+    <?php echo Html::style('assets/css/style.css');; ?>
+
+    <?php echo Html::style('assets/css/bootstrap.css');; ?>
+
+    <?php echo Html::script('assets/js/jquery-3.2.1.js');; ?>
+
+    <?php echo Html::script('assets/js/bootstrap.min.js');; ?>
+
+    <?php echo Html::style('css/busqueda.css'); ?>
+
+    <?php echo Html::script('js/busqueda.js'); ?>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="application/x-javascript"> 
         addEventListener(
@@ -29,8 +36,10 @@
             window.scrollTo(0,1); 
         } 
     </script>
-    {!! Html::script('assets/js/move-top.js'); !!}
-    {!! Html::script('assets/js/easing.js'); !!}
+    <?php echo Html::script('assets/js/move-top.js');; ?>
+
+    <?php echo Html::script('assets/js/easing.js');; ?>
+
 
     <script type="text/javascript">
         jQuery(document).ready(
@@ -48,33 +57,32 @@
     </script>
 <!-- start-smoth-scrolling -->
 <!-- animated-css -->
-    {!! Html::style('assets/css/animate.css'); !!}
-    {!! Html::script('assets/js/wow.min.js'); !!}
+    <?php echo Html::style('assets/css/animate.css');; ?>
+
+    <?php echo Html::script('assets/js/wow.min.js');; ?>
+
     <script>
         new WOW().init();
     </script>
 
 </head>
 <body>
-    @yield('funcionesjs')
-    @yield('header')
-    @yield('banner')
-    @yield('servicios')
-    @yield('portafolio')
-    @yield('acerca')
-    @yield('habilidades')
-    @yield('contacto')
-    @yield('footer')
-    @yield('login')
-    @yield('content')
-    @yield('jugadoresporlista')
-    @yield('jugadorformulario')
-    @yield('datosjugador')
-    @yield('busquedajugador')
-    @yield('registro')
-    @yield('infouser')
-    @yield('creacapeonato')
-
+    <?php echo $__env->yieldContent('funcionesjs'); ?>
+    <?php echo $__env->yieldContent('header'); ?>
+    <?php echo $__env->yieldContent('banner'); ?>
+    <?php echo $__env->yieldContent('servicios'); ?>
+    <?php echo $__env->yieldContent('portafolio'); ?>
+    <?php echo $__env->yieldContent('acerca'); ?>
+    <?php echo $__env->yieldContent('habilidades'); ?>
+    <?php echo $__env->yieldContent('contacto'); ?>
+    <?php echo $__env->yieldContent('footer'); ?>
+    <?php echo $__env->yieldContent('login'); ?>
+    <?php echo $__env->yieldContent('content'); ?>
+    <?php echo $__env->yieldContent('jugadoresporlista'); ?>
+    <?php echo $__env->yieldContent('jugadorformulario'); ?>
+    <?php echo $__env->yieldContent('datosjugador'); ?>
+    <?php echo $__env->yieldContent('busquedajugador'); ?>
+    <?php echo $__env->yieldContent('registro'); ?>
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

@@ -6,7 +6,7 @@
 @section('contenido')
 <script type="text/javascript">
 	$(document).ready(
-		function (e) {
+		function(e) {
 			$('#content').empty();
             $('#content').load(
                 "<?php echo url('homeuser'); ?>"

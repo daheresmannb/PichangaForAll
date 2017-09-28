@@ -30,6 +30,13 @@ Route::get(
 	}
 );
 
+Route::get(
+	'/perfil', 
+	function () {
+    	return view('userjugador.perfil');
+	}
+);
+
 Route::post('/datosjugador', 'GmapsController@LatLngbyDirect')->name('datos.jug');
 
 Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
@@ -46,7 +53,9 @@ Route::post('titodelivery','TitoController@ganjah');
 //#########################################################################
 
 //prueba de funcionamineto operaciones crud info_user
-Route::post('/infoUser','UserController@CreateInfoUser');
+Route::post('/infoUser','UserController@UpdateInfoUser');
+
+
 
 //#########################################################################
 
@@ -91,26 +100,7 @@ Route::group(
 	}
 );
 
-
-
-Route::get(
-	'/infouser', 
-	function () {
-    	return view('userjugador.infouser');
-	}
-);
-
-
-
-
-
-
-
-
-
-
 /////////////// rutas para el usuario logeado /////////////////////////
-
 
 Route::get(
 	'/indexj', 
@@ -119,7 +109,6 @@ Route::get(
 	}
 );
 
-
 Route::group(
 	['middleware' => ['admin']], 
 	function () {
@@ -127,42 +116,10 @@ Route::group(
 	}
 );
 
-/////////////////////// usuarios ////////////////////////////////////
-Route::get(
-	'/buscar', 
-	function () {
-    	return view('userjugador.buscarjug');
-	}
-);
 
-Route::get(
-	'/registro', 
-	function () {
-    	return view('userjugador.regusuarios');
-	}
-);
-
-Route::post('usuario/crear','UserController@CreateUsers')->name(
-	'usuario.crear'
-);
-
-
-Route::get(
-	'/infouser', 
-	function () {
-    	return view('userjugador.infouser');
-	}
-);
-
-Route::post('usuario/infouser','UserController@CreateUsers')->name(
-	'usuario.infoUser'
-);
-
-
-////////////////////////////////////////////////////////////////////
 
 /////////////// RUTAS CRUD JUGADOR //////////////////////////////////	
-Route::post('jugador/obtener','JugadorController@ReadJugador')->name(
+Route::post('jugador/crear','JugadorController@CreateJugador')->name(
 	'jugador.obtener'
 );
 Route::post('jugador/obtener','JugadorController@ReadJugador')->name(
@@ -208,3 +165,61 @@ Route::get(
 
 
 /////////////////////////////////////////////////////////////////////
+
+/////////////// RUTAS CRUD INFO_USER ////////////////////////////////
+
+
+
+Route::get(
+	'/infouser', 
+	function () {
+    	return view('userjugador.infouser');
+	}
+);
+
+
+Route::post('infoUser/crear','UserController@CreateInfoUser')->name(
+	'infoUser.crear'
+);
+Route::post('infoUser/obtener','UserController@ReadInfoUser')->name(
+	'infoUser.obtener'
+);
+Route::post('infoUser/actualizar','UserController@UpdateInfoUser')->name(
+	'infoUser.actualizar'
+);
+Route::post('infoUser/eliminar','UserController@DeleteInfoUser')->name(
+	'infoUser.eliminar'
+);
+/////////////////////////////////////////////////////////////////////
+
+/////////////// RUTAS CRUD USER /////////////////////////////////////
+
+Route::get(
+	'/buscar', 
+	function () {
+    	return view('userjugador.buscarjug');
+	}
+);
+
+Route::get(
+	'/registro', 
+	function () {
+    	return view('userjugador.regusuarios');
+	}
+);
+
+Route::post('user/crear','UserController@CreateUsers')->name(
+	'user.crear'
+);
+Route::post('user/obtener','UserController@ReadUser')->name(
+	'user.obtener'
+);
+Route::post('user/actualizar','UserController@UpdateUser')->name(
+	'user.actualizar'
+);
+
+Route::post('user/eliminar','UserController@DeleteUser')->name(
+	'user.eliminar'
+);
+/////////////////////////////////////////////////////////////////////
+

@@ -2,9 +2,7 @@
 @extends('funcionesjs')
 @section('infouser')
 
-<div>nombe , apeliido,email, telefono</div>
-
-                <div class="container">
+ <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>Informacion de usuario</strong> </h1>
@@ -24,13 +22,31 @@
                               <i class="fa fa-key"></i>
                             </div>
                             </div>
+                            <div class="fotm-bottom"> 
+                            		{!! Form::open(['route' => array('infoUser.obtener', ), 'autocomplete' => 'off']) !!}
+										<div class="form-horizontal">
+   											{!! Form::submit(
+     												'mis datos',
+     												array(
+       												'class'=>'btn btn-primary btn-lg btn-block'
+     												))
+   											!!}
+										</div>
+
+									{!! Form::close() !!}
+	                        </div><!--fin de containr botton-->
+
+                             
                             <div class="form-bottom">
 
-								{!! Form::open(['route' => array('usuario.infoUser', ), 'autocomplete' => 'off']) !!}
+{!! Form::open(['route' => array('infoUser.crear', ), 'autocomplete' => 'off']) !!}
+								
+
+
 								<div class="form-horizontal">
  								{!! Form::label('nombre','Nombre')  !!}
  								{!! Form::text(
-  											'name',
+  											'nombre',
   											null,[
     										'class' => 'form-control',
     										'placeholder' => 'nombre',
@@ -40,71 +56,44 @@
 
 							<div class="form-horizontal">
  								{!! Form::label('apelido','apellido')  !!}
- 									{!! Form::text('apelido',
-        					null,['class' => 'form-control',
-              					'placeholder' =>'apellido',
-            					'required'])!!}
+ 									{!! Form::text('apellido',
+        							null,['class' => 'form-control',
+              						'placeholder' =>'apellido',
+            						'required'])
+            					!!}
 							</div>
 
 						<div class="form-horizontal">
- 					{!! Form::label('email','email')  !!}
- 				{!! Form::text('email',
-    			null,['class' => 'form-control',
-              			'placeholder' =>'email',
-              			'required'])!!}
+ 								{!! Form::label('email','email')  !!}
+ 								{!! Form::text('email',
+    									null,['class' => 'form-control',
+              							'placeholder' =>'email',
+              							'required'])
+              					!!}
 						</div>
 
-				<div class="form-horizontal">
- {!! Form::label('telefono','telefono')  !!}
- {!! Form::text('telefono',
-    null,['class' => 'form-control',
-              'placeholder' =>'telefono',
-              'required'])!!}
-				</div>
+						<div class="form-horizontal">
+ 								{!! Form::label('telefono','telefono')  !!}
+ 								{!! Form::text('telefono',
+    									null,['class' => 'form-control',
+              							'placeholder' =>'telefono',
+              							'required'])
+              							!!}
+						</div>
 
-			<div class="form-horizontal">
-				{!! Form::label('Contraseña') !!}
-				{!! Form::password(
-  'password',[
-  'class' => 'form-control',
-  'name'=>'password',
-  'autocomplete'=>'new-password',
-  'placeholder' => 'Password',
-  'type' => 'password'
-  ])
-					!!}                        
-			</div>
-
-			<div class="form-horizontal">
-				{!! Form::label('Confirmar COntraseña') !!}
-				{!! Form::password(
-  'password2',[
-  'class' => 'form-control',
-  'name'=>'password2',
-  'autocomplete'=>'new-password',
-  'placeholder' => 'Password2',
-  'type' => 'password'
-  ])
-				!!}                        
-</div>
-
-
-<div class="form-horizontal">
-   {!! Form::submit(
-     'Actualizar',
-     array(
-       'class'=>'btn btn-primary btn-lg btn-block'
-     ))
-   !!}
-</div>
-
-
+						<div class="form-horizontal">
+   								{!! Form::submit(
+     										'Actualizar',
+     										array(
+       										'class'=>'btn btn-primary btn-lg btn-block'))
+   								!!}
+						</div>
 {!! Form::close() !!}
 
 
 
                         
-                        </div>
+                        </div><!--fin de containr botton-->
                         </div>
                     </div>
                 </div>
