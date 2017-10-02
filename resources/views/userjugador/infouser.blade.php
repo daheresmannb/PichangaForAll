@@ -28,15 +28,12 @@
 										</div>
 
 									{!! Form::close() !!}
-	                        </div><!--fin de containr botton-->
+	                      	</div><!--fin de containr botton-->
 
                              
                             <div class="form-bottom">
 
-{!! Form::open(['route' => array('infoUser.crear', ), 'autocomplete' => 'off']) !!}
-								
-
-
+				{!! Form::open(['route' => array('infoUser.crear', ), 'autocomplete' => 'off']) !!}
 								<div class="form-horizontal">
  								{!! Form::label('nombre','Nombre')  !!}
  								{!! Form::text(

@@ -6,7 +6,6 @@
     <?php 
         $resp = session('respuesta');
     ?>
-    
     <script type="text/javascript">
         $(document).ready(
             function(e) {

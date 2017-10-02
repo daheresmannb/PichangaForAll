@@ -202,15 +202,16 @@ Route::get(
 );
 
 Route::get(
-	'/registro', 
-	function () {
-    	return view('userjugador.regusuarios');
-	}
+    '/registro',
+    function () {
+       return view('userjugador.regusuarios');
+    }
 );
 
-Route::post('user/crear','UserController@CreateUsers')->name(
-	'user.crear'
+Route::post('usuario/crear','UserController@CreateUsers')->name(
+    'usuario.crear'
 );
+
 Route::post('user/obtener','UserController@ReadUser')->name(
 	'user.obtener'
 );
