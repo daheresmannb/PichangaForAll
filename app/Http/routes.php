@@ -36,7 +36,12 @@ Route::get(
     	return view('userjugador.perfil');
 	}
 );
-
+Route::get(
+	'/crearpartido', 
+	function () {
+    	return view('userjugador.crearpartido');
+	}
+);
 Route::post('/datosjugador', 'GmapsController@LatLngbyDirect')->name('datos.jug');
 
 Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
@@ -140,17 +145,17 @@ Route::post('jugadores/cercanos','JugadorController@getJugadoresCercanos')->name
 /////////////////////////////////////////////////////////////////////
 
 /////////////// RUTAS CRUD PARTIDOS //////////////////////////////////
-Route::post('partido/obtener','JugadorController@CreatePartido')->name(
-	'partido.obtener'
+Route::post('partido/crear','EventoController@CreatePartido')->name(
+	'partido.crear'
 );
-Route::post('partido/actualizar','JugadorController@ReadPartido')->name(
+Route::post('partido/actualizar','EventoController@UpdatePartido')->name(
 	'partido.actualizar'
 );
-Route::post('partido/eliminar','JugadorController@UpdatePartido')->name(
+Route::post('partido/eliminar','EventoController@DeletePartido')->name(
 	'partido.eliminar'
 );
-Route::post('partido/cercanos','JugadorController@DeletePartido')->name(
-	'partido.cercanos'
+Route::post('partido/obtener','EventoController@ReadPartido')->name(
+	'partido.obtener'
 );
 /////////////////////////////////////////////////////////////////////
 

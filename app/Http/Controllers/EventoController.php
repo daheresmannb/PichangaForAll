@@ -28,7 +28,10 @@ class EventoController extends Controller {
     		$data['errors']    = true;
         	$data['respuesta'] = $val;
     	} else {
-    		$partido->recinto_id    = $request->recinto_id;
+            $partido->recinto_id    = $request->recinto_id;
+            $partido->fecha         = $request->fecha;
+            $partido->hora_i        = $request->hora_i;
+            $partido->hora_t        = $request->hora_t;
             $partido->save();
 
     		$status			   = trans('requests.success.code');
@@ -69,7 +72,10 @@ class EventoController extends Controller {
     				$data['errors']   = true;
         			$data['respesta'] = $val;
     			} else {
-    				$partido->recinto_id = $request->recinto_id;
+                    $partido->recinto_id    = $request->recinto_id;
+                    $partido->fecha         = $request->fecha;
+                    $partido->hora_i        = $request->hora_i;
+                    $partido->hora_t        = $request->hora_t;
                     $partido->save();
 
     				$status			  = trans('requests.success.code');

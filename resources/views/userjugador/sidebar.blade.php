@@ -90,7 +90,7 @@
                         <p>Mi Perfil</p>
                     </a>
                 </li>
-                <li id="infouser" class="active">
+                <li id="infouser" class="">
                     <a href="#">
                         <i class="ti-user"></i>
                         <p>Info user</p>
@@ -119,8 +119,6 @@
                         <p>torneos </p>
                     </a>
                 </li>
-                
-
             </ul>
     	</div>
     </div>

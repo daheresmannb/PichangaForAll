@@ -65,7 +65,7 @@
   }
 </style>
 <br>
-<div class="card" style="display:inline-block; padding: 1% 1% 1% 1%;">
+<div class="" style="background-color: transparent; display:inline-block; padding: 1% 1% 1% 1%; padding-top: 2%;">
   <h4><span>Buscar Jugadores Cercanos</span></h4>
 </div>
 <br>

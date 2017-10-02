@@ -66,6 +66,7 @@
     @yield('contacto')
     @yield('footer')
     @yield('login')
+    @yield('registro')
     @yield('content')
     @yield('jugadoresporlista')
     @yield('jugadorformulario')

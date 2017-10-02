@@ -39,7 +39,6 @@ protected $table = 'users';
                 'name'       => 'required',
                 'email'      => 'required',
                 'password'   => 'required',
-                'rol'  => 'required',
                 'password2' => 'required',
             ]
         );

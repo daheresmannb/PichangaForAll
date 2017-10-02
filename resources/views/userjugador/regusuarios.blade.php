@@ -2,7 +2,22 @@
 @extends('funcionesjs')
 @section('registro')
 
-
+@if(session('respuesta'))
+    <?php 
+        $resp = session('respuesta');
+    ?>
+    
+    <script type="text/javascript">
+        $(document).ready(
+            function(e) {
+                InfoModal(
+                    "Respuesta",
+                    "<?php echo $resp['respuesta'];?>"
+                );
+            }
+        );
+    </script>
+@endif
 {!! Html::style('assets2/bootstrap/css/bootstrap.min.css'); !!}
 
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -106,10 +121,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                           <div class="form-top">
                             <div class="form-top-left">
-                              <h3>Inicio de sesion</h3>
-                                <p>
-                                        Ingresa el correo, y contraseña asociado a tu cuenta:
-                                    </p>
+                              <h3>Registro de Usuarios</h3>
                             </div>
                             <div class="form-top-right">
                               <i class="fa fa-key"></i>
@@ -134,29 +146,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 </div>
 
 <div class="form-horizontal">
- {!! Form::label('apelido','apellido')  !!}
- {!! Form::text('apelido',
-        null,['class' => 'form-control',
-              'placeholder' =>'apellido',
-            'required'])!!}
-
-</div>
-
-<div class="form-horizontal">
  {!! Form::label('email','email')  !!}
  {!! Form::text('email',
     null,['class' => 'form-control',
               'placeholder' =>'email',
               'required'])!!}
 
-</div>
-
-<div class="form-horizontal">
- {!! Form::label('telefono','telefono')  !!}
- {!! Form::text('telefono',
-    null,['class' => 'form-control',
-              'placeholder' =>'telefono',
-              'required'])!!}
 </div>
 
 <div class="form-horizontal">
@@ -198,9 +193,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 
 {!! Form::close() !!}
 
-
-
-                        
                         </div>
                         </div>
                     </div>
