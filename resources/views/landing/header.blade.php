@@ -13,20 +13,16 @@
 						<ul class="nav1">
 							<li><a class="scroll" href="#home">Home</a></li>
 							<li><a class="scroll" href="#services">Servicios</a></li>
-							<li><a class="scroll" href="#portfolio">Portfolio</a></li>
 							<li><a class="scroll" href="#about">Acerca</a></li>
 							<li style=""><a class="scroll" href="#contact">Contacto</a></li>
-							
 							<li>
 								<a href="{{ url('/login') }}" class="Signup" >
 									iniciar
 								</a>
-
 								<a href="{{ url('/registro') }}" class="Signup" >
 									registrar
 								</a>
 							</li>
-							
 						</ul>
 						<!-- script-for-menu -->
 							 <script>

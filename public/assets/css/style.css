@@ -11,10 +11,23 @@ html,body {
 /*---- heder ----*/
 .heder{
 	background:#000;
+	padding-top: 80px;
+	padding: 0;
+  	margin: 0;
+	position: fixed;
+  	z-index: 100;
+/*--	color: black;
+	height: 80px;
+    width: 100%;
+    left: 0;
+    top: 0;--*/
+
+	
 }
 .container{
 	width:85%;
 	margin:0 auto;
+	padding-top: 80px;
 }
 .heder-logo{
 	float:left;
@@ -32,6 +45,7 @@ html,body {
 .top-nav {
 	float: right;
 	margin: .5em 0 0 8em;
+
 }
 .top-nav ul {
 	margin: 1.7em 0 0 0;
@@ -99,6 +113,7 @@ html,body {
 	-o-transition:.5s all;
 	-ms-transition:.5s all;
 }
+
 
 /*---- banner ----*/
 .banner{

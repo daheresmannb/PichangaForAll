@@ -3,8 +3,6 @@
 @include('landing.header')
 @include('landing.banner')
 @include('landing.servicios')
-@include('landing.portafolio')
 @include('landing.acerca')
-@include('landing.habilidades')
 @include('landing.contacto')
 @include('landing.footer')

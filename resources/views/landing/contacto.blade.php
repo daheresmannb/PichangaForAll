@@ -3,10 +3,10 @@
 			<!-- container -->
 			<div class="container">
 				<div class="contact-hedding wow bounceIn" data-wow-delay="0.4s">
-					<h3>Contact us.</h3>
+					<h3>Contacto.</h3>
 				</div>
-				<p class="wow bounceIn" data-wow-delay="0.4s">123A Building, Road Street, Orlando District, US
-					<span>+01 234 567 89 - +01 234 567 89 | contact@book.com</span>
+				<p class="wow bounceIn" data-wow-delay="0.4s">Avenida siempre viva,temuco,chile
+					<span>+56 2 4 567 88 - +56 9 9692326| dheresmann2012@gmail.com</span>
 				</p>
 				<div class="social-icons wow bounceIn" data-wow-delay="0.4s">
 					<ul>
