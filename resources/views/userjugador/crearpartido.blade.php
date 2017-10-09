@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.diseñopichanga')
+@extends('funcionesjs')
 
 <div class="container" style="margin-top:30px">
     <div class="col-md-4">
@@ -40,6 +41,7 @@
                             <td>
                                 <div class="form-group">                                
                                     <input type="time" name="hora" value="11:45:00" max="22:30:00" min="10:00:00" step="1">
+                                    
                                 </div>
                             </td>
                         </tr>

@@ -13,29 +13,25 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                           <div class="form-top">
-                            
-
                             </div>
-                            <div class="form-bottom"> 
-                            		{!! Form::open(['route' => array('infoUser.obtener', ), 'autocomplete' => 'off']) !!}
-										<div class="form-horizontal">
-   											{!! Form::submit(
-     												'mis datos',
-     												array(
-       												'class'=>'btn btn-primary btn-lg btn-block'
-     												))
-   											!!}
-										</div>
 
-									{!! Form::close() !!}
-	                      	</div><!--fin de containr botton-->
 
                              
                             <div class="form-bottom">
 
-				{!! Form::open(['route' => array('infoUser.crear', ), 'autocomplete' => 'off']) !!}
+				{!! Form::open(['route' => array('infoUser.actualizar', ), 'autocomplete' => 'off']) !!}
+								
+								{!! Form::hidden(
+   												'id_user',
+   												'Auth::user()->id',
+   												array(
+       												'id' => 'id_user',
+       												'name' => 'id_user')
+								)!!}
+
+
 								<div class="form-horizontal">
- 								{!! Form::label('nombre','Nombre')  !!}
+ 								{!! Form::label('nombre','nombre')  !!}
  								{!! Form::text(
   											'nombre',
   											null,[
@@ -45,48 +41,48 @@
   											])!!}
 								</div>
 
-							<div class="form-horizontal">
- 								{!! Form::label('apelido','apellido')  !!}
+								<div class="form-horizontal">
+ 								{!! Form::label('apellido','apellido')  !!}
  									{!! Form::text('apellido',
         							null,['class' => 'form-control',
               						'placeholder' =>'apellido',
             						'required'])
             					!!}
-							</div>
+								</div>
 
-						<div class="form-horizontal">
+								<div class="form-horizontal">
  								{!! Form::label('email','email')  !!}
  								{!! Form::text('email',
     									null,['class' => 'form-control',
               							'placeholder' =>'email',
               							'required'])
               					!!}
-						</div>
+								</div>
 
-						<div class="form-horizontal">
+								<div class="form-horizontal">
  								{!! Form::label('telefono','telefono')  !!}
  								{!! Form::text('telefono',
     									null,['class' => 'form-control',
               							'placeholder' =>'telefono',
               							'required'])
               							!!}
-						</div>
+								</div>
 
-						<div class="form-horizontal">
+								<div class="form-horizontal">
    								{!! Form::submit(
      										'Actualizar',
      										array(
        										'class'=>'btn btn-primary btn-lg btn-block'))
    								!!}
-						</div>
-{!! Form::close() !!}
+								</div>
+				{!! Form::close() !!}
 
 
 
                         
                         </div><!--fin de containr botton-->
                         </div>
-                    </div>
+       </div>
 </div>
                     
 @endsection

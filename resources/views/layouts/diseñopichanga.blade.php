@@ -27,11 +27,10 @@
         <div class="main-panel">
             @yield('navbar')
             <div id="content" class="content">
-            
-         
                     @yield('contenido')
                     @yield('busquedajugador')
                     @yield('infouser')
+                    @yield('crearpartido')
                     @yield('creacapeonato')
 
             </div>

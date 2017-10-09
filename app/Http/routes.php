@@ -57,10 +57,6 @@ Route::post('titodelivery','TitoController@ganjah');
 
 //#########################################################################
 
-//prueba de funcionamineto operaciones crud info_user
-Route::post('/infoUser','UserController@UpdateInfoUser');
-
-
 
 //#########################################################################
 
@@ -121,8 +117,6 @@ Route::group(
 	}
 );
 
-
-
 /////////////// RUTAS CRUD JUGADOR //////////////////////////////////	
 Route::post('jugador/crear','JugadorController@CreateJugador')->name(
 	'jugador.obtener'
@@ -174,6 +168,8 @@ Route::get(
 /////////////// RUTAS CRUD INFO_USER ////////////////////////////////
 
 
+//prueba de funcionamineto operaciones crud info_user
+//Route::post('/infoUser','UserController@updateinfouser');
 
 Route::get(
 	'/infouser', 

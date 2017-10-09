@@ -16,7 +16,7 @@
 				</div>
 				<div class="col-md-4 services-info wow bounceIn" data-wow-delay="0.4s">
 					<div class="col-md-3 img-grid">
-						<span class="food"> </span>
+						<span class="power"> </span>
 					</div>
 					<div class="col-md-9 img-grid-text">
 						<h4> Red Social</h4>

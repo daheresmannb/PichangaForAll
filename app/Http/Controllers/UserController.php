@@ -54,12 +54,18 @@ class UserController extends Controller {
    		return Response::json($data, $status);    
 	}
 
+      public function edit($id)
+    {
+        $infouser = Pastel::find($id);
+        return view('infouser.edit')->with('id_user',$id);
+    }
 	public function UpdateInfoUser(Request $request) { 
     	
     	if ($request->has('id')) {
-    		$infouser = InfoUser::find($request->id);
+    		$infouser = infouser::find($request->id);
+
     		if (isset($infouser->id)) {
-    			$val = $infouser->Validar($request->all());
+    			$val = $InfoUser->Validar($request->all());
     			if ($val->fails()) {
     				$status			  = trans('requests.failure.code.bad_request');
     				$data['errors']   = true;
@@ -88,8 +94,8 @@ class UserController extends Controller {
         	$data['respesta'] = trans('validation.required');
     	}
    		return Response::json($data, $status);
+        redirect()->route('/infouser');
     }
-
     public function DeleteInfoUser(Request $request) {
     	if ($request->has('id')) {
     		$infouser = InfoUser::find($request->id);
@@ -111,6 +117,8 @@ class UserController extends Controller {
     	}
    		return Response::json($data, $status);
     }
+
+
 
 ///////////////////////  CRUD USER  /////////////////////////////////
     public function CreateUsers(Request $request) {

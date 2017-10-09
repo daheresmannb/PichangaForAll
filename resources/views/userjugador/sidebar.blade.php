@@ -44,7 +44,7 @@
                     e.preventDefault();
                     $('#content').empty();
                     $('#content').load(
-                        "<?php echo url('jugadorescercanos'); ?>"
+                        "<?php echo url('crearpartido'); ?>"
                     );
                 }
             );

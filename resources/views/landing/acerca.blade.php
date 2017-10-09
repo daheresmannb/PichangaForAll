@@ -53,24 +53,19 @@
 			<!-- container -->
 			<div class="container">
 				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
-					<span> </span>
-					<p>2009</p>
-					<p class="text">PERSPICIATIS</p>
+					<span class="awards"> </span>
+					<p></p>
+					<p class="text">unete a campeonatos</p>
 				</div>
 				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
 					<span class="comments"> </span>
-					<p>13,562</p>
-					<p class="text">COMMENTS</p>
-				</div>
-				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
-					<span class="cups"> </span>
-					<p>8,710</p>
-					<p class="text">COFFEE CUPS</p>
+					<p></p>
+					<p class="text">interactua con tus vecinos</p>
 				</div>
 				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
 					<span class="awards"> </span>
-					<p>715</p>
-					<p class="text">AWARDS</p>
+					<p></p>
+					<p class="text">crea tus campeonatos</p>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
