@@ -39,39 +39,34 @@ class UserController extends Controller {
     		if (isset($infouser->id)) {
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respesta'] = $infouser;
+        		$data['respuesta'] = $infouser;
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.registro');
+        		$data['respuesta'] = trans('registros.registro');
     		}
     	} else {
     		$partidos = InfoUser::all();
     		$status			  = trans('requests.success.code');
     		$data['errors'] = false;
-        	$data['respesta']	= $partidos;
+        	$data['respuesta']	= $partidos;
     	}
    		return Response::json($data, $status);    
 	}
 
-      public function edit($id)
-    {
-        $infouser = Pastel::find($id);
-        return view('infouser.edit')->with('id_user',$id);
-    }
-	public function UpdateInfoUser(Request $request) { 
+    public function UpdateInfoUser(Request $request) { 
     	
-    	if ($request->has('id')) {
-    		$infouser = infouser::find($request->id);
-
+    	if ($request->has('id_user')) {
+//dd($request->id_user);
+    		$infouser = InfoUser::where('id_user',"".$request->id_user)->first();
+//dd($infouser);
     		if (isset($infouser->id)) {
-    			$val = $InfoUser->Validar($request->all());
+    			$val = $infouser->Validar($request->all());
     			if ($val->fails()) {
     				$status			  = trans('requests.failure.code.bad_request');
     				$data['errors']   = true;
-        			$data['respesta'] = $val;
+        			$data['respuesta'] = $val->messages();
     			} else {
-    				$infouser->id_user  = $request->id_user;
 		    		$infouser->nombre   = $request->nombre;
 		    		$infouser->apellido = $request->apellido;
 		    		$infouser->email    = $request->email;
@@ -81,20 +76,22 @@ class UserController extends Controller {
 
     				$status			  = trans('requests.success.code');
     				$data['errors']   = false;
-        			$data['respesta'] = $infouser;
+        			$data['respuesta'] = $infouser;
     			}
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.reg');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = false;
-        	$data['respesta'] = trans('validation.required');
+        	$data['respuesta'] = trans('validation.required');
     	}
-   		return Response::json($data, $status);
-        redirect()->route('/infouser');
+   		    return redirect('/home')->with(
+                'respuesta', 
+                $data
+            );
     }
     public function DeleteInfoUser(Request $request) {
     	if ($request->has('id')) {
@@ -104,16 +101,16 @@ class UserController extends Controller {
 
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respesta'] = trans('registros.del');
+        		$data['respuesta'] = trans('registros.del');
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.reg');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = false;
-        	$data['respesta'] = trans('validation.required');
+        	$data['respuesta'] = trans('validation.required');
     	}
    		return Response::json($data, $status);
     }
@@ -158,17 +155,17 @@ class UserController extends Controller {
             if (isset($user->id)) {
                 $status           = trans('requests.success.code');
                 $data['errors']   = false;
-                $data['respesta'] = $user;
+                $data['respuesta'] = $user;
             } else {
                 $status           = trans('requests.failure.code.not_founded');
                 $data['errors']   = true;
-                $data['respesta'] = trans('registros.registro');
+                $data['respuesta'] = trans('registros.registro');
             }
         } else {
             $partidos = InfoUser::all();
             $status           = trans('requests.success.code');
             $data['errors'] = false;
-            $data['respesta']   = $partidos;
+            $data['respuesta']   = $partidos;
         }
         return Response::json($data, $status);    
     }  
@@ -182,7 +179,7 @@ class UserController extends Controller {
                 if ($val->fails()) {
                     $status           = trans('requests.failure.code.bad_request');
                     $data['errors']   = true;
-                    $data['respesta'] = $val;
+                    $data['respuesta'] = $val;
                 } else {
                     if (strcmp($request->password , $request->password2)== 0) {
                         $user->name     = $request->name;
@@ -193,18 +190,18 @@ class UserController extends Controller {
 
                         $status           = trans('requests.success.code');
                         $data['errors']   = false;
-                        $data['respesta'] = $user;
+                        $data['respuesta'] = $user;
                     }
                 }
             } else {    
                 $status           = trans('requests.failure.code.not_founded');
                 $data['errors']   = true;
-                $data['respesta'] = trans('registros.reg');
+                $data['respuesta'] = trans('registros.reg');
             }
         } else {
             $status           = trans('requests.failure.code.bad_request');
             $data['errors']   = false;
-            $data['respesta'] = trans('validation.required');
+            $data['respuesta'] = trans('validation.required');
         }
         return Response::json($data, $status);
     }
@@ -217,16 +214,16 @@ class UserController extends Controller {
 
                 $status           = trans('requests.success.code');
                 $data['errors']   = false;
-                $data['respesta'] = trans('registros.del');
+                $data['respuesta'] = trans('registros.del');
             } else {
                 $status           = trans('requests.failure.code.not_founded');
                 $data['errors']   = true;
-                $data['respesta'] = trans('registros.reg');
+                $data['respuesta'] = trans('registros.reg');
             }
         } else {
             $status           = trans('requests.failure.code.bad_request');
             $data['errors']   = false;
-            $data['respesta'] = trans('validation.required');
+            $data['respuesta'] = trans('validation.required');
         }
         return Response::json($data, $status);
     }

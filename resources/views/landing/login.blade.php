@@ -203,7 +203,6 @@ pauseButton.addEventListener("click", function() {
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
-
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>

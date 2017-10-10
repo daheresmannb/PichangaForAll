@@ -19,7 +19,7 @@
 								<a href="{{ url('/login') }}" class="Signup" >
 									iniciar
 								</a>
-								<a href="{{ url('/registro') }}" class="Signup" >
+										<a href="{{ url('/registro') }}" class="Signup" >
 									registrar
 								</a>
 							</li>

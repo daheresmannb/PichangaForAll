@@ -23,7 +23,7 @@
 								
 								{!! Form::hidden(
    												'id_user',
-   												'Auth::user()->id',
+   												Auth::user()->id,
    												array(
        												'id' => 'id_user',
        												'name' => 'id_user')
@@ -35,6 +35,7 @@
  								{!! Form::text(
   											'nombre',
   											null,[
+  											'id'=>'nombre',
     										'class' => 'form-control',
     										'placeholder' => 'nombre',
     										'required'
@@ -44,7 +45,9 @@
 								<div class="form-horizontal">
  								{!! Form::label('apellido','apellido')  !!}
  									{!! Form::text('apellido',
-        							null,['class' => 'form-control',
+        							null,[
+        							'id'=>'apellido',
+        							'class' => 'form-control',
               						'placeholder' =>'apellido',
             						'required'])
             					!!}
@@ -53,7 +56,9 @@
 								<div class="form-horizontal">
  								{!! Form::label('email','email')  !!}
  								{!! Form::text('email',
-    									null,['class' => 'form-control',
+    									null,[
+    									'id'=>'email',
+    									'class' => 'form-control',
               							'placeholder' =>'email',
               							'required'])
               					!!}
@@ -62,7 +67,9 @@
 								<div class="form-horizontal">
  								{!! Form::label('telefono','telefono')  !!}
  								{!! Form::text('telefono',
-    									null,['class' => 'form-control',
+    									null,[
+    									'id'=>'telefono',
+    									'class' => 'form-control',
               							'placeholder' =>'telefono',
               							'required'])
               							!!}

@@ -11,6 +11,9 @@
     {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
     {!! Html::script('assets/js/bootstrap.min.js'); !!}
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>﻿
+
+
 
     {!! Html::style('admin/assets/css/animate.min.css'); !!}
     {!! Html::style('admin/assets/css/paper-dashboard.css'); !!}
