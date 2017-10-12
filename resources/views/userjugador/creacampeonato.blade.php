@@ -11,17 +11,11 @@
                         'onclick' => ""
                     )
                 )!!}
-                {!! Form::button(
-                    'Crear torneos',
-                    array(
-                        'class' => 'btn btn-primary',
-                        'onclick' => ""
-                    )
-                )!!}
-                
-               <button  class="btn btn-primary" data-toggle="modal" data-target="#creartorneo">botonprueba</button>
+               
+               <button  class="btn btn-primary" data-toggle="modal" data-target="#creartorneo">crear torneo</button>
                 <!-- inicio modal-->
-                <div class="modal face" id="creartorneo" tabindex="-1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
+               
+                <div style="z-index:0 ; position: relative;"  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
                     <div class="modal-dialog" role="documen">
                         <div class="modal-content">
                             <div class="modal-header">

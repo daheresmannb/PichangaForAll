@@ -3,7 +3,7 @@
 @section('infouser')
 
 
-<div class="card" style="display:inline-block; padding: 5% 5% 5% 5%;">
+<div class="container-fluid" style="display:inline-block; padding: 5% 5% 5% 5%;">
 	<div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>Informacion de usuario</strong> </h1>
@@ -15,11 +15,11 @@
                           <div class="form-top">
                             </div>
 
-
+<div>Auth::user()->id</div>
                              
                             <div class="form-bottom">
 
-				{!! Form::open(['route' => array('infoUser.actualizar', ), 'autocomplete' => 'off']) !!}
+				{!! Form::open(['route' => array('infoUser.actualizar', )]) !!}
 								
 								{!! Form::hidden(
    												'id_user',
@@ -37,7 +37,7 @@
   											null,[
   											'id'=>'nombre',
     										'class' => 'form-control',
-    										'placeholder' => 'nombre',
+    										Auth::user()-> nombre,
     										'required'
   											])!!}
 								</div>

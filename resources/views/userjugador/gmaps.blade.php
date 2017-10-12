@@ -31,8 +31,6 @@
 }
 </style>
 
-
-
 <script type="text/javascript">
   var km;
 

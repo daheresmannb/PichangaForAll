@@ -11,7 +11,7 @@
     {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
     {!! Html::script('assets/js/bootstrap.min.js'); !!}
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>﻿
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>﻿
 
 
 
@@ -20,9 +20,56 @@
     {!! Html::style('admin/assets/css/font-awesome.min.css'); !!}
     {!! Html::style('admin/assets/css/font1.css'); !!}
     {!! Html::style('admin/assets/css/themify-icons.css'); !!}
+    {!! Html::script('assets/js/jquery.min.js'); !!}         
+<!--calendario-->
+    {!!!Html::script('assets/js/bootstrap-datetimepicker.js')!!}
+    {!!Html::script('assets/js/bootstrap-datetimepicker.min.js')!!}
 
-    {!! Html::script('assets/js/jquery.min.js'); !!}
+
+
 </head>
+
+<!-- inicio modal-->
+               
+                <div  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
+                    <div class="modal-dialog" role="documen">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title"> Crear Torneo</h4>   
+                            </div> <!-- fin modal-header-->
+                            <div class="modal-body">
+                                <label>seleccione recinto</label>
+                                <select class="custom-select">
+                                     <option selected>recinto</option>
+                                        <option value="1">quilas</option>
+                                        <option value="2">pueblo nuevo</option>
+                                        <option value="3">cautin</option>
+                                </select>
+                                <br>
+                                <label>fecha</label>
+                                    <input size="16" type="text" readonly class="form_datetime">
+                                        
+                                        <script type="text/javascript">
+                                    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+                                        </script> 
+                             <!--   <input type="text" name="fehca"> -->
+
+
+                               <!-- <input type="text" name="fecha">-->
+                                <br>
+                                <label>numero de equipos</label>
+                                <input type="text" name="numero">
+
+                            </div> <!-- fin del modal-body-->
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">cancelar</button>
+                            <button type="button" class="btn btn-primary">crear evento</button>  </div>
+
+                        </div>
+                    </div>
+                </div>
+                    <!-- fin modal -->
 <body>
     @yield('funcionesjs')
     <div class="wrapper">
