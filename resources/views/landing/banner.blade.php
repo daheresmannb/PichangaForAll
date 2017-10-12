@@ -11,9 +11,9 @@
 						<p><a class="play-icon popup-with-zoom-anim" href="#small-dialog">Click para ver el video</a></p>
 					</div>
 					<!-- pop-up-box -->
-					{!! HTML::script('assets/js/modernizr.custom.min.js'); !!}
+					{!! Html::script('assets/js/modernizr.custom.min.js'); !!}
 					{!! Html::style('assets/css/popuo-box.css'); !!}
-					{!! HTML::script('assets/js/jquery.magnific-popup.js'); !!}
+					{!! Html::script('assets/js/jquery.magnific-popup.js'); !!}
 					
 					<!--//pop-up-box -->
 				<div id="small-dialog" class="mfp-hide">

@@ -1,12 +1,18 @@
 @section('header')
-		<div id="home" class="heder">
-			<!-- container -->
-			<div class="container">
-				<div class="header-top">
-					<div class="heder-logo">
-						<h1><a href="#">  <div class="logo"> PichangaForAll </div> </a></h1>
-					</div>
-					<div class="top-nav">
+		<div id="home" class="heder" style="padding-left: 40px;">
+		<div class="heder-logo">
+			<h1>
+				<a href="#">  
+					<div class="logo"> 
+						PichangaForAll 
+						<img src="https://josedepors.files.wordpress.com/2016/04/logo_pelota-300x300.png?w=100" alt="Dispute Bills">	
+					</div> 
+					
+				</a>
+			</h1>
+
+		</div>
+		<div class="top-nav">
 					<span class="menu">
 						{!! Html::image('assets/img/menu.png', 'alt') !!}
 					</span>
@@ -19,7 +25,7 @@
 								<a href="{{ url('/login') }}" class="Signup" >
 									iniciar
 								</a>
-										<a href="{{ url('/registro') }}" class="Signup" >
+										<a href="{{ url('/registro') }}" class="Signup2" >
 									registrar
 								</a>
 							</li>
@@ -34,12 +40,7 @@
 							</script>
 						<!-- /script-for-menu -->
 					</div>
-					<div class="clearfix"> 
-
-
-					</div>
-				</div>
-			</div>
+		
 			<!-- container -->
 		</div>
 @endsection
