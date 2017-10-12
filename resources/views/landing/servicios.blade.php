@@ -3,7 +3,7 @@
 			<!-- container -->
 			<div class="container">
 				<div class="col-md-4 services-hedding wow bounceIn" data-wow-delay="0.4s">
-					<h3>Our Services.</h3>
+					<h3>Servicios.</h3>
 				</div>
 				<div class="col-md-4 services-info wow bounceIn" data-wow-delay="0.4s">
 					<div class="col-md-3 img-grid">

@@ -2,7 +2,7 @@
 <div class="footer">
 			<!-- container -->
 			<div class="container">
-				<h4>IDDO</h4>
+				<h4>PichangaForAll</h4>
 				<div class="copyright">
 					<p>
 						Template by <a href="http://w3layouts.com/">W3layouts.com</a>

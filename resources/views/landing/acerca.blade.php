@@ -3,7 +3,7 @@
 			<!-- container -->
 			<div class="container">
 				<div class="team-hedding wow bounceIn" data-wow-delay="0.4s">
-					<h3>Our team.</h3>
+					<h3>Nuestro Equipo.</h3>
 				</div>
 				<div class="team-grids">
 					<div class="col-md-4 team-grid">
