@@ -5,14 +5,15 @@
 				<a href="#">  
 					<div class="logo"> 
 						PichangaForAll 
-						<img src="https://josedepors.files.wordpress.com/2016/04/logo_pelota-300x300.png?w=100" alt="Dispute Bills">	
+				
+						{!! Html::image('pelotalogo.png', 'alt') !!}
 					</div> 
 					
 				</a>
 			</h1>
 
 		</div>
-		<div class="top-nav">
+		<div class="top-nav" style="padding-right: 25px; padding-bottom: 25px; padding-top: 25px;">
 					<span class="menu">
 						{!! Html::image('assets/img/menu.png', 'alt') !!}
 					</span>
@@ -24,9 +25,6 @@
 							<li>
 								<a href="{{ url('/login') }}" class="Signup" >
 									iniciar
-								</a>
-										<a href="{{ url('/registro') }}" class="Signup2" >
-									registrar
 								</a>
 							</li>
 						</ul>
