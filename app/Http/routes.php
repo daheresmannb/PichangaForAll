@@ -213,15 +213,15 @@ Route::post('usuario/crear','UserController@CreateUsers')->name(
     'usuario.crear'
 );
 
-Route::post('user/obtener','UserController@ReadUser')->name(
-	'user.obtener'
+Route::post('usuario/obtener','UserController@ReadUser')->name(
+	'usuario.obtener'
 );
-Route::post('user/actualizar','UserController@UpdateUser')->name(
-	'user.actualizar'
+Route::post('usuario/actualizar','UserController@UpdateUser')->name(
+	'usuario.actualizar'
 );
 
-Route::post('user/eliminar','UserController@DeleteUser')->name(
-	'user.eliminar'
+Route::post('usuario/eliminar','UserController@DeleteUser')->name(
+	'usuario.eliminar'
 );
 /////////////////////////////////////////////////////////////////////
 
