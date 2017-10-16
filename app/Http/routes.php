@@ -179,17 +179,17 @@ Route::get(
 );
 
 
-Route::post('infoUser/crear','UserController@CreateInfoUser')->name(
-	'infoUser.crear'
+Route::post('infouser/crear','UserController@CreateInfoUser')->name(
+	'infouser.crear'
 );
-Route::post('infoUser/obtener','UserController@ReadInfoUser')->name(
-	'infoUser.obtener'
+Route::post('infouser/obtener','UserController@ReadInfoUser')->name(
+	'infouser.obtener'
 );
-Route::post('infoUser/actualizar','UserController@UpdateInfoUser')->name(
-	'infoUser.actualizar'
+Route::post('infouser/actualizar','UserController@UpdateInfoUser')->name(
+	'infouser.actualizar'
 );
-Route::post('infoUser/eliminar','UserController@DeleteInfoUser')->name(
-	'infoUser.eliminar'
+Route::post('infouser/eliminar','UserController@DeleteInfoUser')->name(
+	'infouser.eliminar'
 );
 /////////////////////////////////////////////////////////////////////
 
