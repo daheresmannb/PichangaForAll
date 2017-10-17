@@ -75,11 +75,12 @@
                 </div>
                     <!-- fin modal -->
 <body>
-    @yield('funcionesjs')
+    <div class=”container”>
+    @yield('sidebar')
     <div class="wrapper">
-        @yield('sidebar')
-        <div class="main-panel">
-            @yield('navbar')
+   
+        <div class="main-panel" >
+            
             <div id="content" class="content">
                     @yield('contenido')
                     @yield('busquedajugador')
@@ -118,9 +119,6 @@
     );
 </script>
 <div id="fade2" class="overlay"></div>
-
-
-<center>
     <div id="light2" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -137,17 +135,19 @@
             </div>  
         </div>
     </div>
-</center>
-
+    </div>
     {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
     {!! Html::script('admin/assets/js/bootstrap.min.js'); !!}
     {!! Html::script('admin/assets/js/chartist.min.js'); !!}
     {!! Html::script('admin/assets/js/bootstrap-notify.js'); !!}
     {!! Html::script('admin/assets/js/paper-dashboard.js'); !!}
+<<<<<<< HEAD
 
     <!--time picker-->
 
 
 
+=======
+>>>>>>> 2b65e7ab9ff385077a1b139b8d6b3959cb294313
 </body>
 </html>
