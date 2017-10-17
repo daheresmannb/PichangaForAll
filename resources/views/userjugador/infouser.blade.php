@@ -15,7 +15,6 @@
                           <div class="form-top">
                             </div>
 
-<div>Auth::user()->id</div>
                              
                             <div class="form-bottom">
 

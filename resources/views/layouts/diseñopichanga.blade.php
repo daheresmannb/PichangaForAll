@@ -12,20 +12,16 @@
     {!! Html::script('assets/js/bootstrap.min.js'); !!}
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>﻿
-
-
-
     {!! Html::style('admin/assets/css/animate.min.css'); !!}
     {!! Html::style('admin/assets/css/paper-dashboard.css'); !!}
     {!! Html::style('admin/assets/css/font-awesome.min.css'); !!}
     {!! Html::style('admin/assets/css/font1.css'); !!}
     {!! Html::style('admin/assets/css/themify-icons.css'); !!}
     {!! Html::script('assets/js/jquery.min.js'); !!}         
-<!--calendario-->
-    {!!!Html::script('assets/js/bootstrap-datetimepicker.js')!!}
-    {!!Html::script('assets/js/bootstrap-datetimepicker.min.js')!!}
 
-
+<!--datepicker-->
+{!!Html::style('assets/css/jquery.datetimepicker.min.css'); !!}
+{!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
 
 </head>
 
@@ -43,20 +39,27 @@
                                 <select class="custom-select">
                                      <option selected>recinto</option>
                                         <option value="1">quilas</option>
-                                        <option value="2">pueblo nuevo</option>
-                                        <option value="3">cautin</option>
                                 </select>
                                 <br>
-                                <label>fecha</label>
-                                    <input size="16" type="text" readonly class="form_datetime">
-                                        
-                                        <script type="text/javascript">
-                                    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-                                        </script> 
-                             <!--   <input type="text" name="fehca"> -->
-
-
-                               <!-- <input type="text" name="fecha">-->
+                                <label>fecha y hora de inicio</label>
+                                   
+                                   <input id="datetime">
+                                   <script>
+                                       $("#datetime").datetimepicker({
+                                        autoclose: true
+                                       });
+                                   </script>
+                                   <br>
+                                <label>fecha y hora de termino</label>
+                                   
+                                   <input id="datetime2">
+                                   <script>
+                                       $("#datetime2").datetimepicker({
+                                        autoclose: true
+                                       });
+                                   </script>
+   
+                                                               
                                 <br>
                                 <label>numero de equipos</label>
                                 <input type="text" name="numero">
@@ -64,7 +67,8 @@
                             </div> <!-- fin del modal-body-->
                             <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">cancelar</button>
-                            <button type="button" class="btn btn-primary">crear evento</button>  </div>
+                            <button type="button" class="btn btn-primary">crear evento</button>  
+                            </div>
 
                         </div>
                     </div>
@@ -140,6 +144,10 @@
     {!! Html::script('admin/assets/js/chartist.min.js'); !!}
     {!! Html::script('admin/assets/js/bootstrap-notify.js'); !!}
     {!! Html::script('admin/assets/js/paper-dashboard.js'); !!}
+
+    <!--time picker-->
+
+
 
 </body>
 </html>
