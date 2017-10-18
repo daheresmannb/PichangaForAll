@@ -1,64 +1,53 @@
 @extends('layouts.diseñopichanga')
 @extends('funcionesjs')
 
-<div class="container" style="margin-top:30px">
+
+<!--datepicker-->
+{!!Html::style('assets/css/jquery.datetimepicker.min.css'); !!}
+{!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
+
+<div class="container-fluid">
     <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title"><strong>Crear Partido </strong></h3></div>
-            <div class="panel-body">
-                <form role="form">
-                    <div class="form-group">
-                        <label">Recinto</label>
-                        <div class="control-group">
-                            <div class="controls">
-                                <select id="recinto" name="recinto" class="input-xlarge">
-                                    <option value="" selected="selected">Selecionar recinto</option>
-                                    <option value="">recinto1</option>
-                                    <option value="">recinto2</option>
-                                    <option value="">recinto3</option>
-                                    <option value="">recinto4</option>
-                                </select>
-                            </div>
-                        </div>
+                 <div class="row">
+                            <h1>crea tu partido </h1>
                     </div>
-                    
 
-                    <div class="form-group">
-                        <label>Fecha Partido</label>
-                        <input type="date" class="form-control" id="date" name="date">
-                    </div>
-                    <table>
-                        <tr>
-                            <td><label>Hora Inico: </label></td>
-                            <td><label>Hora Termino: </label></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-group">                                
-                                    <input type="time" name="hora" value="11:45:00" max="22:30:00" min="10:00:00" step="1">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">                                
-                                    <input type="time" name="hora" value="11:45:00" max="22:30:00" min="10:00:00" step="1">
-                                    
-                                </div>
-                            </td>
-                        </tr>
-                        
-                    </table>
+                <form role="form-gruop">
 
-                    
-                    
-                    
-                    <button type="submit" class="btn btn-sm btn-default">Crear</button>
-              
+                                <div class="form-horizontal">
+                                <label>seleccione recinto</label>
+                                         <select class="custom-select">
+                                               <option selected>recinto</option>
+                                             <option value="1">quilas</option>
+                                         </select>
+                                </div>
+                                <div>
+                                    <label>fecha y hora de inicio</label>
+                                   
+                                   <input id="partidotime">
+                                   <script>
+                                       $("#partidotime").datetimepicker({
+                                        autoclose: true
+                                       });
+                                   </script>
+                                   <br>
+                                <label>fecha y hora de termino</label>
+                                   
+                                   <input id="partidotime2">
+                                   <script>
+                                       $("#partidotime2").datetimepicker({
+                                        autoclose: true
+                                       });
+                                   </script>
+                                </div>
+                                <div class="form-horizontal">
+                                {!! Form::submit(
+                                            'crear partido',
+                                            array(
+                                            'class'=>'btn btn-primary  btn-block'))
+                                !!}
+                                </div>
 
                 </form>
-          </div>
     </div>
-</div>
-<div class="col-md-4">
-
-
 </div>

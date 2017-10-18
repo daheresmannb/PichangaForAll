@@ -27,7 +27,7 @@
 
 <!-- inicio modal-->
                
-                <div  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
+              <div  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
                     <div class="modal-dialog" role="documen">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -45,35 +45,25 @@
                                    
                                    <input id="datetime">
                                    <script>
-                                       $("#datetime").datetimepicker({
-                                        autoclose: true
-                                       });
+                                       $("#datetime").datetimepicker({autoclose: true });
                                    </script>
                                    <br>
                                 <label>fecha y hora de termino</label>
-                                   
                                    <input id="datetime2">
                                    <script>
-                                       $("#datetime2").datetimepicker({
-                                        autoclose: true
-                                       });
-                                   </script>
-   
-                                                               
+                                       $("#datetime2").datetimepicker({autoclose: true });
+                                   </script>                               
                                 <br>
                                 <label>numero de equipos</label>
                                 <input type="text" name="numero">
-
                             </div> <!-- fin del modal-body-->
                             <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">cancelar</button>
                             <button type="button" class="btn btn-primary">crear evento</button>  
                             </div>
-
                         </div>
                     </div>
-                </div>
-                    <!-- fin modal -->
+                </div>        <!-- fin modal -->
 <body>
     <div class=”container”>
     @yield('sidebar')
@@ -141,13 +131,6 @@
     {!! Html::script('admin/assets/js/chartist.min.js'); !!}
     {!! Html::script('admin/assets/js/bootstrap-notify.js'); !!}
     {!! Html::script('admin/assets/js/paper-dashboard.js'); !!}
-<<<<<<< HEAD
 
-    <!--time picker-->
-
-
-
-=======
->>>>>>> 2b65e7ab9ff385077a1b139b8d6b3959cb294313
 </body>
 </html>
