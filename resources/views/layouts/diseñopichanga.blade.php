@@ -77,6 +77,7 @@
                     @yield('infouser')
                     @yield('crearpartido')
                     @yield('creacapeonato')
+                    @yield('recintos')
 
             </div>
         </div>

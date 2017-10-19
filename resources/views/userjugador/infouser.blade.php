@@ -1,6 +1,6 @@
 @extends('layouts.diseñopichanga')
 @extends('funcionesjs')
-@section('infouser')
+
 
 
 <div class="container-fluid" style="display:inline-block; padding: 5% 5% 5% 5%;">
@@ -18,7 +18,7 @@
                              
                             <div class="form-bottom">
 
-				{!! Form::open(['route' => array('infoUser.actualizar', )]) !!}
+				{!! Form::open(['route' => array('infouser.actualizar', )]) !!}
 								
 								{!! Form::hidden(
    												'id_user',
@@ -91,4 +91,3 @@
        </div>
 </div>
                     
-@endsection

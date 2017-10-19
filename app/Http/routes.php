@@ -224,4 +224,12 @@ Route::post('usuario/eliminar','UserController@DeleteUser')->name(
 	'usuario.eliminar'
 );
 /////////////////////////////////////////////////////////////////////
+//////////////// recintos///////////////7
+//////////////////////////////////////////////////////
 
+Route::get(
+    '/recintos',
+    function () {
+       return view('userjugador.recintos');
+    }
+);
