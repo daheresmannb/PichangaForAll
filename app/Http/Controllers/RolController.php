@@ -79,6 +79,24 @@ class RolController extends Controller {
     }
 
     public function RolDelete(Request $request) {
-    	# code...
+    	if ($request->has('id')) {
+    		$rol = Rol::find($request->id);
+    		if (isset($rol->id)) {
+    			$rol->delete();
+
+    			$status			  = trans('requests.success.code');
+    			$data['errors']   = false;
+        		$data['respuesta'] = trans('registros.del');
+    		} else {
+    			$status			  = trans('requests.failure.code.not_founded');
+    			$data['errors']   = true;
+        		$data['respuesta'] = trans('registros.reg');
+    		}
+    	} else {
+    		$status			  = trans('requests.failure.code.bad_request');
+    		$data['errors']   = false;
+        	$data['respuesta'] = trans('validation.required');
+    	}
+   		return Response::json($data, $status);
     }
 }
