@@ -72,6 +72,17 @@
                     );
                 }
             );
+            $('#nav').on(
+                'click', 
+                '#recin', 
+                function(e) {
+                    e.preventDefault();
+                    $('#content').empty();
+                    $('#content').load(
+                        "<?php echo url('recintos'); ?>"
+                    );
+                }
+            );
         }
     );
 </script>
@@ -119,6 +130,14 @@
                         <p>torneos </p>
                     </a>
                 </li>
+                <li id="recin" class="">
+                    <a href="#">
+                        <i class="ti-map"></i>
+                        <p>Admin recintos </p>
+                    </a>
+                </li>
+                
+
             </ul>
     	</div>
     </div>

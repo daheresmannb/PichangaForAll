@@ -46,8 +46,6 @@
 <div class="card" style="display:inline-block;">
 
 </div>
-
-
 <h1>Vista solo de administrador</h1>
 <h2>Crear Recintos</h2>
 
@@ -81,14 +79,12 @@
     <div id="map"></div>
   </center>
 </div>
-
+<!--JS de googlemaps key incorporada-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer>
 </script>
 <script type="text/javascript">
   var markers = new Array();
   var marks_coords = [];
-  var lat = "-38.738806";
-  var lon = "-72.597354";
   var markersArray = [];
   var mi_location;
   var map;
@@ -102,40 +98,6 @@
     marker.setAnimation(null);
   }
 
-  function mostrarinfo(idd) {
-    $.ajax({
-      type: 'POST',
-      url:  "<?php echo url('jugador/obtener'); ?>",
-      headers: {'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"},
-      data: {
-        id: idd, 
-        _token: {'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"}
-      },      
-      success: function(data) {
-        var dis;
-        if(data.respuesta.disponible == true) {
-          dis = "Disponible";
-        } else {
-          dis = "No Disponible";
-        }
-        $("#cuerpo").empty();
-        $("#cuerpo").append(
-          "<p>Apodo: "+data.respuesta.apodo+"</p><br>"+
-          "<p>Edad: "+data.respuesta.edad+"</p><br>"+
-          "<p>Estatura: "+data.respuesta.estatura+"</p><br>"+
-          "<p>Peso: "+data.respuesta.peso+"</p><br>"+
-          "<p>Posicion: "+data.respuesta.posicion+"</p><br>"+
-          "<p>Disponible para jugar: "+dis+"</p>"
-        );
-        document.getElementById('light').style.display='block';
-  
-      },
-      error: function(xhr, textStatus, thrownError) {
-       
-        alert(thrownError +"error "+ textStatus);
-      }
-    });
-  }
 
   function mostrarinfo2(titulo, texto) {
     $("#titulomodal").empty();
@@ -172,7 +134,7 @@
             position: mi_location,
             animation: google.maps.Animation.BOUNCE,
             map: map,
-            icon: "<?php echo url('assets/img/jugador2.png'); ?>",
+            icon: "<?php echo url('assets/img/cancha.png'); ?>",
             title: 'Mi posicion'
           }); 
           marker.addListener('mouseout', saltar);
@@ -185,7 +147,7 @@
       alert("No se puede acceder a su localizacion");
     }
   }
-
+//fin de iniciador de mapa
 function autoUpdate() {
   navigator.geolocation.getCurrentPosition(
     function(position) {  
