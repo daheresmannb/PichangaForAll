@@ -122,10 +122,6 @@ class JugadorController extends Controller {
 
 //////////////////////////////////////////////////////////////////////////
 
-    public function CreateUbicacionJugador(Request $request) {
-        # code...
-    }
-
     public function setEstadoJugador(Request $request) {
     	if ($request->has('id')) {
     		$jugador = Jugador::find($request->id);
