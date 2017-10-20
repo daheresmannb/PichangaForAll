@@ -49,7 +49,33 @@ class RolController extends Controller {
     }
 
     public function RolUpdate(Request $request) {
-    	# code...
+    	if ($request->has('id')) {
+    		$rol = Rol::find($request->id);
+    		if (isset($rol->id)) {
+    			$val = $rol->Validar($request->all());
+    			if ($val->fails()) {
+    				$status			  = trans('requests.failure.code.bad_request');
+    				$data['errors']   = true;
+        			$data['respuesta'] = $val;
+    			} else {
+    				$rol->nombre      = $request->nombre;
+                    $rol->save();
+
+    				$status			  = trans('requests.success.code');
+    				$data['errors']   = false;
+        			$data['respuesta'] = $rol;
+    			}
+    		} else {
+    			$status			  = trans('requests.failure.code.not_founded');
+    			$data['errors']   = true;
+        		$data['respuesta'] = trans('registros.reg');
+    		}
+    	} else {
+    		$status			  = trans('requests.failure.code.bad_request');
+    		$data['errors']   = false;
+        	$data['respuesta'] = trans('validation.required');
+    	}
+   		return Response::json($data, $status);
     }
 
     public function RolDelete(Request $request) {
