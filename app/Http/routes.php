@@ -233,3 +233,22 @@ Route::get(
        return view('userjugador.recintos');
     }
 );
+
+
+///////////////////// CRUD ROLES ///////////////////////7
+
+Route::post('rol/crear','RolController@RolCreate')->name(
+	'rol.crear'
+);
+Route::post('rol/obtener','RolController@RolRead')->name(
+	'rol.obtener'
+);
+Route::post('rol/actualizar','RolController@RolUpdate')->name(
+	'rol.actualizar'
+);
+Route::post('rol/eliminar','RolController@RolDelete')->name(
+	'rol.eliminar'
+);
+/////////////////////////////////////////////////////////
+
+
