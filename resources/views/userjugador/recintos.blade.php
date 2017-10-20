@@ -77,7 +77,9 @@
 <div class="card" style="padding: 1% 1% 1% 1%;">
   <center>
     <div id="map"></div>
+  <input type="text" id="mi_location" />
   </center>
+
 </div>
 <!--JS de googlemaps key incorporada-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer>
@@ -132,51 +134,37 @@
 
           marker = new google.maps.Marker({
             position: mi_location,
+             draggable: true,
             animation: google.maps.Animation.BOUNCE,
             map: map,
             icon: "<?php echo url('assets/img/cancha.png'); ?>",
             title: 'Mi posicion'
           }); 
+
+          marker.addListener('click', toggleBounce);
           marker.addListener('mouseout', saltar);
           marker.addListener('mouseover', detenido);
-          marker.addListener('click', mostrarinfo);
-
-        }
-      ); 
-    } else {
+        }//function position
+      );//fin navegador geolocalition 
+   
+    } //fin de IF
+    else {
       alert("No se puede acceder a su localizacion");
     }
   }
 //fin de iniciador de mapa
-function autoUpdate() {
-  navigator.geolocation.getCurrentPosition(
-    function(position) {  
-      var newPoint = new google.maps.LatLng(
-        position.coords.latitude, 
-        position.coords.longitude
-      );
-
-      if (marker) {
-        marker.setPosition(newPoint);
-      } else {
-        marker = new google.maps.Marker({
-          position: newPoint,
-          map: map,
-          title: 'Mi posicion'
-        });
+  function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
       }
-    //map.setCenter(newPoint);
-    }
-  ); 
-  setTimeout(autoUpdate, 2000);
-}
-
-autoUpdate();
 
 </script>
 
 
-
-</div>            
+</div>
+      
 
 @endsection
