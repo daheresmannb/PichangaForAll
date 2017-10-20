@@ -28,7 +28,24 @@ class RolController extends Controller {
     }
 
     public function RolRead(Request $request) {
-    	# code...
+    	if ($request->has('id')) {
+    		$rol = Rol::find($request->id);
+    		if (isset($rol->id)) {
+    			$status			  = trans('requests.success.code');
+    			$data['errors']   = false;
+        		$data['respuesta'] = $rol;
+    		} else {
+    			$status			  = trans('requests.failure.code.not_founded');
+    			$data['errors']   = true;
+        		$data['respuesta'] = trans('registros.registro');
+    		}
+    	} else {
+    		$roles = Rol::all();
+    		$status			  = trans('requests.success.code');
+    		$data['errors'] = false;
+        	$data['respuesta']	= $roles;
+    	}
+   		return Response::json($data, $status);
     }
 
     public function RolUpdate(Request $request) {
