@@ -223,6 +223,21 @@ Route::post('usuario/actualizar','UserController@UpdateUser')->name(
 Route::post('usuario/eliminar','UserController@DeleteUser')->name(
 	'usuario.eliminar'
 );
+/////////////////////////////////////////////////////////////////////
+//////////////// recintos///////////////
+//////////////////////////////////////////////////////
+
+Route::get(
+    '/recintos',
+    function () {
+       return view('userjugador.recintos');
+    }
+);
+
+
+Route::post('recintos/crear','RecintosController@CreateRecintos')->name(
+    'recintos.crear'
+);
 
 ///////////////////// CRUD ROLES ///////////////////////7
 
@@ -239,21 +254,6 @@ Route::post('rol/eliminar','RolController@RolDelete')->name(
 	'rol.eliminar'
 );
 /////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
-//////////////// recintos///////////////
-//////////////////////////////////////////////////////
-
-Route::get(
-    '/recintos',
-    function () {
-       return view('userjugador.recintos');
-    }
-);
-
-
-Route::post('recintos/crear','RecintosController@CreateRecintos')->name(
-    'recintos.crear'
-);
 
 
 
