@@ -223,6 +223,22 @@ Route::post('usuario/actualizar','UserController@UpdateUser')->name(
 Route::post('usuario/eliminar','UserController@DeleteUser')->name(
 	'usuario.eliminar'
 );
+
+///////////////////// CRUD ROLES ///////////////////////7
+
+Route::post('rol/crear','RolController@RolCreate')->name(
+	'rol.crear'
+);
+Route::post('rol/obtener','RolController@RolRead')->name(
+	'rol.obtener'
+);
+Route::post('rol/actualizar','RolController@RolUpdate')->name(
+	'rol.actualizar'
+);
+Route::post('rol/eliminar','RolController@RolDelete')->name(
+	'rol.eliminar'
+);
+/////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 //////////////// recintos///////////////
 //////////////////////////////////////////////////////
@@ -238,3 +254,6 @@ Route::get(
 Route::post('recintos/crear','RecintosController@CreateRecintos')->name(
     'recintos.crear'
 );
+
+
+
