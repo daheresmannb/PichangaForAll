@@ -224,7 +224,7 @@ Route::post('usuario/eliminar','UserController@DeleteUser')->name(
 	'usuario.eliminar'
 );
 /////////////////////////////////////////////////////////////////////
-//////////////// recintos///////////////7
+//////////////// recintos///////////////
 //////////////////////////////////////////////////////
 
 Route::get(
@@ -232,4 +232,9 @@ Route::get(
     function () {
        return view('userjugador.recintos');
     }
+);
+
+
+Route::post('recintos/crear','RecintosController@CreateRecintos')->name(
+    'recintos.crear'
 );

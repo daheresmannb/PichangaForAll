@@ -51,26 +51,33 @@
 
 <div class="container-fluid">  
 
-			{!! Form::label('nombre','nombre de recinto')  !!}
- 								{!! Form::text(
-  											'nombre_recinto',
-  											null,[
-  											'id'=>'nombre',
-    										'class' => 'form-control',
-    										Auth::user()-> nombre,
-    										'required'
-  								])!!}
-
-
+		{!! Form::open(['route' => array('recintos.crear', )]) !!}
+						
+			{!! Form::hidden(
+   							'id_encargado',
+   							Auth::user()->id,
+   							array(
+       							'id' => 'id_encargado',
+       							'name' => 'id_encargado')
+			)!!}
+			 {!! Form::label('nombre','Nombre')  !!}
+			 {!! Form::text(
+			  				'nombre',
+			  				null,[
+			    				'class' => 'form-control',
+			    				'placeholder' => 'ingrese nombre recinto',
+			    				'required'
+			  					]
+			 )!!}
             <div class="" style="display: inline-block; background-color: transparent; padding-bottom: 20px;">
-                {!! Form::button(
-                    'Ver Recinto cercanos',
-                    array(
-                        'class' => 'btn btn-primary',
-                        'onclick' => ""
-                    )
-                )!!}
+                {!! Form::submit(
+     							'crear recinto',
+     							array(
+       								'class'=>'btn btn-primary btn-lg btn-block'))
+   				!!}
             </div>
+{!! Form::close() !!}
+
 {!! Html::style('assets/css/slider.css'); !!}
 {!! Html::script('assets/js/slider.js'); !!}
 <!--div contenedor de map-->
@@ -153,10 +160,6 @@
     var text = div.textContent;  
         }//function position
       );//fin navegador geolocalition 
-   
-
-
-
     } //fin de IF
     else {
       alert("No se puede acceder a su localizacion");
