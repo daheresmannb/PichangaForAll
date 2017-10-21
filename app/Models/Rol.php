@@ -14,10 +14,6 @@ class Rol extends Model {
         'updated_at'
     ];
 
-    public function RelUserRol() {
-        return $this->hasOne('App\Models\RelUserRol');
-    }
-
     public function Validar($array){
     	$validator = Validator::make(
     		$array, [

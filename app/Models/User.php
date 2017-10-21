@@ -1,19 +1,14 @@
 <?php
 
-
-
 namespace App\Models;
-
-use DB;
-use Illuminate\Database\Eloquent\Model;
-use Grimzy\LaravelMysqlSpatial\Types\Point;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable {
+    protected $table = 'users';
+    public $incrementing = false;
 
-protected $table = 'users';
     protected $fillable = [
         'name', 
         'email', 
@@ -26,14 +21,15 @@ protected $table = 'users';
         'password', 'remember_token',
     ];
 
-        protected $casts = [
+    protected $casts = [
         'id' => 'string'
     ];
 
-    public $incrementing = false;
-
-
-        public function Validar($array){
+    public function Rol() {
+        return $this->hasOne('App\Models\Rol');
+    }
+ 
+    public function Validar($array) {
         $validator = Validator::make(
             $array, [
                 'name'       => 'required',
@@ -45,4 +41,3 @@ protected $table = 'users';
         return $validator;
     }
 }
-

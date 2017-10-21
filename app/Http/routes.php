@@ -250,5 +250,20 @@ Route::post('rol/eliminar','RolController@RolDelete')->name(
 	'rol.eliminar'
 );
 /////////////////////////////////////////////////////////
+////////////////// CRUD RECINTO /////////////////////////
 
+Route::post('recinto/crear','RecintosController@RecintoCreate')->name(
+	'recinto.crear'
+);
 
+Route::post('recinto/obtener','RecintosController@RecintoRead')->name(
+	'recinto.obtener'
+);
+
+Route::post('recinto/actualizar','RecintosController@RecintoUpdate')->name(
+	'recinto.actualizar'
+);
+
+Route::post('recinto/eliminar','RecintosController@RecintoDelete')->name(
+	'recinto.eliminar'
+);
