@@ -59,7 +59,7 @@
     										'class' => 'form-control',
     										Auth::user()-> nombre,
     										'required'
-  											])!!}
+  								])!!}
 
 
             <div class="" style="display: inline-block; background-color: transparent; padding-bottom: 20px;">
@@ -77,7 +77,8 @@
 <div class="card" style="padding: 1% 1% 1% 1%;">
   <center>
     <div id="map"></div>
-  <input type="text" id="mi_location" />
+  <input type="text" id="marker"  />
+  <div id="textDiv"></div> 
   </center>
 
 </div>
@@ -139,14 +140,23 @@
             map: map,
             icon: "<?php echo url('assets/img/cancha.png'); ?>",
             title: 'Mi posicion'
+          
           }); 
 
           marker.addListener('click', toggleBounce);
           marker.addListener('mouseout', saltar);
           marker.addListener('mouseover', detenido);
+
+//mostrador de posicion en texto
+               var div = document.getElementById("textDiv");  
+    div.textContent = mi_location;  
+    var text = div.textContent;  
         }//function position
       );//fin navegador geolocalition 
    
+
+
+
     } //fin de IF
     else {
       alert("No se puede acceder a su localizacion");
@@ -160,6 +170,12 @@
           marker.setAnimation(google.maps.Animation.BOUNCE);
         }
       }
+
+      $(document).ready(function() {
+      var refreshId =  setInterval( function(){
+    $('#textDiv').load('recintos');//actualizas el div
+   }, 1000 );
+});
 
 </script>
 
