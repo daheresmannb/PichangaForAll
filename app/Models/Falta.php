@@ -14,6 +14,11 @@ class Falta extends Model {
         'updated_at'
     ];
 
+    protected $casts = [
+        'id' => 'string',
+        'jugador_id' => 'string'
+    ];
+
     public function Validar($array){
     	$validator = Validator::make(
     		$array, [
