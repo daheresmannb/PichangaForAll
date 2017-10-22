@@ -68,4 +68,26 @@ class FaltasController extends Controller {
     	}
    		return Response::json($data, $status);
     }
+
+    public function FaltaDelete(Request $request) {
+    	if ($request->has('id')) {
+    		$falta = Falta::find($request->id);
+    		if (isset($falta->id)) {
+    			$falta->delete();
+
+    			$status			  = trans('requests.success.code');
+    			$data['errors']   = false;
+        		$data['respuesta'] = trans('registros.del');
+    		} else {
+    			$status			  = trans('requests.failure.code.not_founded');
+    			$data['errors']   = true;
+        		$data['respuesta'] = trans('registros.reg');
+    		}
+    	} else {
+    		$status			  = trans('requests.failure.code.bad_request');
+    		$data['errors']   = false;
+        	$data['respuesta'] = trans('validation.required');
+    	}
+   		return Response::json($data, $status);
+    }
 }
