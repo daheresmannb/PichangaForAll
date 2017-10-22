@@ -151,8 +151,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
         Phaza\LaravelPostgis\DatabaseServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
         
-       // Mrblackus\LaravelStoredprocedures\LaravelStoredproceduresServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -161,7 +161,6 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
     ],
 
     /*
@@ -211,6 +210,7 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class
     ],
 

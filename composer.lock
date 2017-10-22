@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5072d02d71135ad0045cbaeba7c49843",
+    "content-hash": "3893f8ecf55d80da9946e787465a12a5",
     "packages": [
         {
             "name": "bosnadev/database",
@@ -763,6 +763,7 @@
                 "laravel",
                 "phpgmaps"
             ],
+            "abandoned": "GeneaLabs/laravel-maps",
             "time": "2017-05-16T18:50:20+00:00"
         },
         {
