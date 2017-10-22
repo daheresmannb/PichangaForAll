@@ -4,11 +4,8 @@ namespace App\Models;
 
 use Validator;
 use Illuminate\Database\Eloquent\Model;
-use Grimzy\LaravelMysqlSpatial\Types\Point;
-use DB;
 
-
-class Recintos extends Model{
+class Recintos extends Model {
 
     protected $table = 'recintos';
     protected $fillable = [
@@ -19,17 +16,10 @@ class Recintos extends Model{
         'updated_at'
     ];
 
- 	protected $postgisFields = [
-        'location'
+    protected $casts = [
+        'id' => 'string',
+        'id_encargado' => 'string'
     ];
-    
-    protected $postgisTypes = [
-        'location' => [
-            'geomtype' => 'geography',
-            'srid' => 4326
-        ]
-    ];
-
 
     public function Validar($array){
         $validator = Validator::make(

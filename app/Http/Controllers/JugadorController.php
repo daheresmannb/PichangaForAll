@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Phaza\LaravelPostgis\Geometries\Point;
 use Illuminate\Http\Request;
 use \Response;
 use App\Http\Requests;
@@ -33,11 +34,11 @@ class JugadorController extends Controller {
     			$request->lon
     		);
             $ubicacion_jug->save();
+            $jugador->localizacion = $ubicacion_jug;
 
     		$status			  = trans('requests.success.code');
     		$data['errors']   = false;
         	$data['respuesta'] = $jugador;
-            $data['respuesta2'] = $ubicacion_jug;
     	}
     	return Response::json($data, $status);
     }
@@ -120,8 +121,7 @@ class JugadorController extends Controller {
    		return Response::json($data, $status);
     }
 
-//////////////////////////////////////////////////////////////////////////
-
+///////////////////////////////////////////////////////////////////
     public function setEstadoJugador(Request $request) {
     	if ($request->has('id')) {
     		$jugador = Jugador::find($request->id);
@@ -147,15 +147,15 @@ class JugadorController extends Controller {
 
     public function setLocationJugador(Request $request) {
     	if ($request->has('id')) {
-    		$jugador = Jugador::find($request->id);
+    		$locatejug = UbicacionJug::find($request->id);
     		if (isset($jugador->id)) {
-    			$jugador->location 	 = new Point(
+    			$locatejug->location 	 = new Point(
     				$request->lat,
     				$request->lon
     			);
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respuesta'] = $jugador;
+        		$data['respuesta'] = $locatejug;
     		} else {
     			$data['errors']   = true;
         		$data['respuesta'] = trans('registros.reg');

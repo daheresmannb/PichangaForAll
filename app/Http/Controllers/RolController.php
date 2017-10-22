@@ -5,8 +5,6 @@ use Illuminate\Http\Request;
 use \Response;
 use App\Http\Requests;
 use App\Models\Rol;
-use App\Models\RelUserRol;
-
 
 class RolController extends Controller {
     public function RolCreate(Request $request) {

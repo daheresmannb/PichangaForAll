@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Validator;
 use Illuminate\Database\Eloquent\Model;
-use Grimzy\LaravelMysqlSpatial\Types\Point;
 use DB;
 
 class Jugador extends Model {
@@ -29,6 +28,10 @@ class Jugador extends Model {
             'geomtype' => 'geography',
             'srid' => 4326
         ]
+    ];
+
+    protected $casts = [
+        'id' => 'string'
     ];
 
     public function Validar($array){

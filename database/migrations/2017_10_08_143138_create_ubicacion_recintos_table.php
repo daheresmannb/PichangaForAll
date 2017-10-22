@@ -12,7 +12,7 @@ class CreateUbicacionRecintosTable extends Migration{
                     $table->uuid('id')->default(
                         DB::raw('uuid_generate_v4()')
                     );
-                    $table->uuid('recintos_id')->unique();;
+                    $table->uuid('recintos_id')->unique();
                     $table->point('location');
                     $table->timestamps();
                 

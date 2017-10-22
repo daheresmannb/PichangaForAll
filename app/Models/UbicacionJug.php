@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
+use Phaza\LaravelPostgis\Eloquent\PostgisTrait;
 use DB;
 
 class UbicacionJug extends Model {
+    use PostgisTrait;
+    
     protected $table = 'ubicacion_jugador';
 
     protected $fillable = [

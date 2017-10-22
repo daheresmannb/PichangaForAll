@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
+use Phaza\LaravelPostgis\Eloquent\PostgisTrait;
 
-class UbicacionRec extends Model
-{
+class UbicacionRec extends Model {
+    use PostgisTrait;
 
     protected $table = 'ubicacion_recintos';
     protected $fillable = [
@@ -27,7 +27,7 @@ class UbicacionRec extends Model
     ];
 
     public function Validar($array){
-        $validator = ValidatorUb::make(
+        $validator = Validator::make(
             $array, [
                 'recintos_id'  => 'required',
                 'lat'        	=> 'required',
