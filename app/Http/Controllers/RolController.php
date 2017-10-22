@@ -35,7 +35,7 @@ class RolController extends Controller {
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respuesta'] = trans('registros.registro');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$roles = Rol::all();
