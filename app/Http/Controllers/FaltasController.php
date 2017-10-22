@@ -45,4 +45,27 @@ class FaltasController extends Controller {
     	}
    		return Response::json($data, $status);
     }
+
+	public function FaltaUpdate(Request $request) {
+    	if ($request->has('id') && $request->has('jugador_id')) {
+    		$falta = Falta::find($request->id);
+    		if (isset($falta->id)) {
+    			$falta->jugador_id = $request->jugador_id;
+                $falta->save();
+
+    			$status			  = trans('requests.success.code');
+    			$data['errors']   = false;
+        		$data['respuesta'] = $falta;
+    		} else {
+    			$status			  = trans('requests.failure.code.not_founded');
+    			$data['errors']   = true;
+        		$data['respuesta'] = trans('registros.reg');
+    		}
+    	} else {
+    		$status			  = trans('requests.failure.code.bad_request');
+    		$data['errors']   = false;
+        	$data['respuesta'] = trans('validation.required');
+    	}
+   		return Response::json($data, $status);
+    }
 }
