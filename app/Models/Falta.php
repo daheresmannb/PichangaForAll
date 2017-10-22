@@ -6,7 +6,7 @@ use Validator;
 use Illuminate\Database\Eloquent\Model;
 
 class Falta extends Model {
-	protected $table = 'roles'; // NOMBRE DE LA TABLA!!!!!!!
+	protected $table = 'faltas'; // NOMBRE DE LA TABLA!!!!!!!
     protected $fillable = [
         'id',
         'jugador_id',
