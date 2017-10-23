@@ -6,8 +6,6 @@ use App\Http\Requests;
 use \Response;
 use App\Models\InfoUser;
 use App\Models\User;
-use DB;
-use Hash;
 
 class UserController extends Controller {
 
@@ -114,10 +112,7 @@ class UserController extends Controller {
     	}
    		return Response::json($data, $status);
     }
-
-
-
-///////////////////////  CRUD USER  /////////////////////////////////
+///////////////////////  CRUD USER //////////////////////////
     public function CreateUsers(Request $request) {
         $user = new User();
         $val = $user->Validar($request->all());
