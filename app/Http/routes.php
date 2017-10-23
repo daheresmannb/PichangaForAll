@@ -224,7 +224,7 @@ Route::post('usuario/eliminar','UserController@DeleteUser')->name(
 	'usuario.eliminar'
 );
 /////////////////////////////////////////////////////////////////////
-//////////////// recintos///////////////7
+//////////////// recintos///////////////
 //////////////////////////////////////////////////////
 
 Route::get(
@@ -233,7 +233,6 @@ Route::get(
        return view('userjugador.recintos');
     }
 );
-
 
 ///////////////////// CRUD ROLES ///////////////////////7
 
@@ -267,6 +266,7 @@ Route::post('recinto/actualizar','RecintosController@RecintoUpdate')->name(
 Route::post('recinto/eliminar','RecintosController@RecintoDelete')->name(
 	'recinto.eliminar'
 );
+
 /////////////////////////////////////////////////////////
 ////////////////// CRUD FALTAS /////////////////////////
 
@@ -285,6 +285,7 @@ Route::post('falta/actualizar','FaltasController@FaltaUpdate')->name(
 Route::post('falta/eliminar','FaltasController@FaltaDelete')->name(
 	'falta.eliminar'
 );
+
 /////////////////////////////////////////////////////////
 ////////////// FACEBOOK LOGIN ROUTES /////////////
 

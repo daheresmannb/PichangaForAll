@@ -46,49 +46,55 @@
 <div class="card" style="display:inline-block;">
 
 </div>
-
-
 <h1>Vista solo de administrador</h1>
 <h2>Crear Recintos</h2>
 
 <div class="container-fluid">  
 
-			{!! Form::label('nombre','nombre de recinto')  !!}
- 								{!! Form::text(
-  											'nombre_recinto',
-  											null,[
-  											'id'=>'nombre',
-    										'class' => 'form-control',
-    										Auth::user()-> nombre,
-    										'required'
-  											])!!}
-
-
+		{!! Form::open(['route' => array('recintos.crear', )]) !!}
+						
+			{!! Form::hidden(
+   							'id_encargado',
+   							Auth::user()->id,
+   							array(
+       							'id' => 'id_encargado',
+       							'name' => 'id_encargado')
+			)!!}
+			 {!! Form::label('nombre','Nombre')  !!}
+			 {!! Form::text(
+			  				'nombre',
+			  				null,[
+			    				'class' => 'form-control',
+			    				'placeholder' => 'ingrese nombre recinto',
+			    				'required'
+			  					]
+			 )!!}
             <div class="" style="display: inline-block; background-color: transparent; padding-bottom: 20px;">
-                {!! Form::button(
-                    'Ver Recinto cercanos',
-                    array(
-                        'class' => 'btn btn-primary',
-                        'onclick' => ""
-                    )
-                )!!}
+                {!! Form::submit(
+     							'crear recinto',
+     							array(
+       								'class'=>'btn btn-primary btn-lg btn-block'))
+   				!!}
             </div>
+{!! Form::close() !!}
+
 {!! Html::style('assets/css/slider.css'); !!}
 {!! Html::script('assets/js/slider.js'); !!}
 <!--div contenedor de map-->
 <div class="card" style="padding: 1% 1% 1% 1%;">
   <center>
     <div id="map"></div>
+  <input type="text" id="marker"  />
+  <div id="textDiv"></div> 
   </center>
-</div>
 
+</div>
+<!--JS de googlemaps key incorporada-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer>
 </script>
 <script type="text/javascript">
   var markers = new Array();
   var marks_coords = [];
-  var lat = "-38.738806";
-  var lon = "-72.597354";
   var markersArray = [];
   var mi_location;
   var map;
@@ -102,40 +108,6 @@
     marker.setAnimation(null);
   }
 
-  function mostrarinfo(idd) {
-    $.ajax({
-      type: 'POST',
-      url:  "<?php echo url('jugador/obtener'); ?>",
-      headers: {'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"},
-      data: {
-        id: idd, 
-        _token: {'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"}
-      },      
-      success: function(data) {
-        var dis;
-        if(data.respuesta.disponible == true) {
-          dis = "Disponible";
-        } else {
-          dis = "No Disponible";
-        }
-        $("#cuerpo").empty();
-        $("#cuerpo").append(
-          "<p>Apodo: "+data.respuesta.apodo+"</p><br>"+
-          "<p>Edad: "+data.respuesta.edad+"</p><br>"+
-          "<p>Estatura: "+data.respuesta.estatura+"</p><br>"+
-          "<p>Peso: "+data.respuesta.peso+"</p><br>"+
-          "<p>Posicion: "+data.respuesta.posicion+"</p><br>"+
-          "<p>Disponible para jugar: "+dis+"</p>"
-        );
-        document.getElementById('light').style.display='block';
-  
-      },
-      error: function(xhr, textStatus, thrownError) {
-       
-        alert(thrownError +"error "+ textStatus);
-      }
-    });
-  }
 
   function mostrarinfo2(titulo, texto) {
     $("#titulomodal").empty();
@@ -170,51 +142,48 @@
 
           marker = new google.maps.Marker({
             position: mi_location,
+             draggable: true,
             animation: google.maps.Animation.BOUNCE,
             map: map,
-            icon: "<?php echo url('assets/img/jugador2.png'); ?>",
+            icon: "<?php echo url('assets/img/cancha.png'); ?>",
             title: 'Mi posicion'
+          
           }); 
+
+          marker.addListener('click', toggleBounce);
           marker.addListener('mouseout', saltar);
           marker.addListener('mouseover', detenido);
-          marker.addListener('click', mostrarinfo);
 
-        }
-      ); 
-    } else {
+//mostrador de posicion en texto
+               var div = document.getElementById("textDiv");  
+    div.textContent = mi_location;  
+    var text = div.textContent;  
+        }//function position
+      );//fin navegador geolocalition 
+    } //fin de IF
+    else {
       alert("No se puede acceder a su localizacion");
     }
   }
-
-function autoUpdate() {
-  navigator.geolocation.getCurrentPosition(
-    function(position) {  
-      var newPoint = new google.maps.LatLng(
-        position.coords.latitude, 
-        position.coords.longitude
-      );
-
-      if (marker) {
-        marker.setPosition(newPoint);
-      } else {
-        marker = new google.maps.Marker({
-          position: newPoint,
-          map: map,
-          title: 'Mi posicion'
-        });
+//fin de iniciador de mapa
+  function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
       }
-    //map.setCenter(newPoint);
-    }
-  ); 
-  setTimeout(autoUpdate, 2000);
-}
 
-autoUpdate();
+      $(document).ready(function() {
+      var refreshId =  setInterval( function(){
+    $('#textDiv').load('recintos');//actualizas el div
+   }, 1000 );
+});
 
 </script>
 
 
-
-</div>            
+</div>
+      
 
 @endsection

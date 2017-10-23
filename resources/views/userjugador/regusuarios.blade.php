@@ -131,7 +131,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 
 
 
-{!! Form::open(['route' => array('user.crear', ), 'autocomplete' => 'off']) !!}
+{!! Form::open(['route' => array('usuario.crear', ), 'autocomplete' => 'off']) !!}
 <div class="form-horizontal">
  {!! Form::label('nombre','Nombre')  !!}
  {!! Form::text(
