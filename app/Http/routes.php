@@ -286,3 +286,8 @@ Route::post('falta/eliminar','FaltasController@FaltaDelete')->name(
 	'falta.eliminar'
 );
 /////////////////////////////////////////////////////////
+////////////// FACEBOOK LOGIN ROUTES /////////////
+
+Route::get('/redirect/{op}', 'SocialAuthController@redirect');
+Route::get('/callback', 'SocialAuthController@callback');
+/////////////////////////////////////////////////////////
