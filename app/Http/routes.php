@@ -267,3 +267,21 @@ Route::post('recinto/eliminar','RecintosController@RecintoDelete')->name(
 	'recinto.eliminar'
 );
 
+/////////////////////////////////////////////////////////
+////////////////// CRUD FALTAS /////////////////////////
+
+Route::post('falta/crear','FaltasController@FaltaCreate')->name(
+	'falta.crear'
+);
+
+Route::post('falta/obtener','FaltasController@FaltaRead')->name(
+	'falta.obtener'
+);
+
+Route::post('falta/actualizar','FaltasController@FaltaUpdate')->name(
+	'falta.actualizar'
+);
+
+Route::post('falta/eliminar','FaltasController@FaltaDelete')->name(
+	'falta.eliminar'
+);

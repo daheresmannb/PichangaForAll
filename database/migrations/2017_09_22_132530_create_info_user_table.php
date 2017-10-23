@@ -19,7 +19,9 @@ class CreateInfoUserTable extends Migration
                 $table->string('telefono');
                 $table->timestamps();
                 $table->primary('id');
-                $table->foreign('id_user')->references('id')->on('users'); 
+                $table->foreign('id_user')
+                    ->references('id')
+                ->on('users'); 
             }
         );
     }

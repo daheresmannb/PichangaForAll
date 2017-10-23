@@ -12,15 +12,14 @@ class CreateRecintosTable extends Migration{
                 $table->uuid('id')->default(
                     DB::raw('uuid_generate_v4()')
                 );
-                $table->uuid('id_encargado');
+                $table->uuid('id_encargado')->unique();
                 $table->string('nombre');
                 $table->timestamps();
-                
-                $table->primary('id');
                 $table->foreign('id_encargado')
                     ->references('id')
                     ->on('users')
-                    ->onDelete('cascade'); 
+                ->onDelete('cascade'); 
+                $table->primary('id');
             }
         );
     }

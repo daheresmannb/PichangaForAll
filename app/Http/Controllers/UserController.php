@@ -15,7 +15,7 @@ class UserController extends Controller {
     	if ($val->fails()) {
     		$status			   = trans('requests.failure.code.bad_request');
     		$data['errors']    = true;
-        	$data['respuesta'] = $val;
+        	$data['respuesta'] = $val->messages();
     	} else {
     		$infouser->id_user  = $request->id_user;
     		$infouser->nombre   = $request->nombre;
@@ -41,7 +41,7 @@ class UserController extends Controller {
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respuesta'] = trans('registros.registro');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$partidos = InfoUser::all();
@@ -154,10 +154,10 @@ class UserController extends Controller {
             } else {
                 $status           = trans('requests.failure.code.not_founded');
                 $data['errors']   = true;
-                $data['respuesta'] = trans('registros.registro');
+                $data['respuesta'] = trans('registros.reg');
             }
         } else {
-            $partidos = InfoUser::all();
+            $partidos = User::all();
             $status           = trans('requests.success.code');
             $data['errors'] = false;
             $data['respuesta']   = $partidos;

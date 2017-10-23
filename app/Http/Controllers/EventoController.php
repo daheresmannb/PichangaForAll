@@ -51,7 +51,7 @@ class EventoController extends Controller {
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.registro');
+        		$data['respesta'] = trans('registros.reg');
     		}
     	} else {
     		$partidos = Partidos::all();

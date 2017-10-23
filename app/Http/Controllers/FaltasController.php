@@ -4,41 +4,41 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \Response;
 use App\Http\Requests;
-use App\Models\Rol;
+use App\Models\Falta;
 
-class RolController extends Controller {
-    public function RolCreate(Request $request) {
-    	$rol = new Rol();
-    	$val = $rol->Validar($request->all());
+class FaltasController extends Controller {
+    public function FaltaCreate(Request $request) {
+    	$falta = new Falta();
+    	$val = $falta->Validar($request->all());
     	if ($val->fails()) {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = true;
         	$data['respuesta'] = $val->messages();
     	} else {
-    		$rol->nombre    = $request->nombre;
-            $rol->save();
+    		$falta->jugador_id    = $request->jugador_id;
+            $falta->save();
 
     		$status			  = trans('requests.success.code');
     		$data['errors']   = false;
-        	$data['respuesta'] = $rol;
+        	$data['respuesta'] = $falta;
     	}
     	return Response::json($data, $status);
     }
 
-    public function RolRead(Request $request) {
+	public function FaltaRead(Request $request) {
     	if ($request->has('id')) {
-    		$rol = Rol::find($request->id);
-    		if (isset($rol->id)) {
+    		$falta = Falta::find($request->id);
+    		if (isset($falta->id)) {
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respuesta'] = $rol;
+        		$data['respuesta'] = $falta;
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
         		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
-    		$roles = Rol::all();
+    		$roles = Falta::all();
     		$status			  = trans('requests.success.code');
     		$data['errors'] = false;
         	$data['respuesta']	= $roles;
@@ -46,23 +46,16 @@ class RolController extends Controller {
    		return Response::json($data, $status);
     }
 
-    public function RolUpdate(Request $request) {
-    	if ($request->has('id')) {
-    		$rol = Rol::find($request->id);
-    		if (isset($rol->id)) {
-    			$val = $rol->Validar($request->all());
-    			if ($val->fails()) {
-    				$status			  = trans('requests.failure.code.bad_request');
-    				$data['errors']   = true;
-        			$data['respuesta'] = $val;
-    			} else {
-    				$rol->nombre      = $request->nombre;
-                    $rol->save();
+	public function FaltaUpdate(Request $request) {
+    	if ($request->has('id') && $request->has('jugador_id')) {
+    		$falta = Falta::find($request->id);
+    		if (isset($falta->id)) {
+    			$falta->jugador_id = $request->jugador_id;
+                $falta->save();
 
-    				$status			  = trans('requests.success.code');
-    				$data['errors']   = false;
-        			$data['respuesta'] = $rol;
-    			}
+    			$status			  = trans('requests.success.code');
+    			$data['errors']   = false;
+        		$data['respuesta'] = $falta;
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
@@ -76,11 +69,11 @@ class RolController extends Controller {
    		return Response::json($data, $status);
     }
 
-    public function RolDelete(Request $request) {
+    public function FaltaDelete(Request $request) {
     	if ($request->has('id')) {
-    		$rol = Rol::find($request->id);
-    		if (isset($rol->id)) {
-    			$rol->delete();
+    		$falta = Falta::find($request->id);
+    		if (isset($falta->id)) {
+    			$falta->delete();
 
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;

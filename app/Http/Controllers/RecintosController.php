@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use \Response;
 use App\Http\Requests;
@@ -8,7 +9,7 @@ use App\Models\Recintos;
 use App\Models\UbicacionRec;
 use Phaza\LaravelPostgis\Geometries\Point;
 
-class RecintosController extends Controller{
+class RecintosController extends Controller {
 
     public function RecintoCreate(Request $request) {
     	$recintos = new Recintos();
@@ -16,7 +17,7 @@ class RecintosController extends Controller{
     	if ($val->fails()) {
     		$status			   = trans('requests.failure.code.bad_request');
     		$data['errors']    = true;
-        	$data['respuesta'] = $val;
+        	$data['respuesta'] = $val->messages();
     	} else {
             $recintos->id_encargado    	= $request->id_encargado;
             $recintos->nombre         	= $request->nombre;
@@ -28,8 +29,9 @@ class RecintosController extends Controller{
                 $request->lat,
                 $request->lon
             );
+            
             $ubicacion_rec->save();
-            $recintos->localizacion = $recintos;
+            $recintos->localizacion = $ubicacion_rec;
 
     		$status			   = trans('requests.success.code');
     		$data['errors']    = false;
@@ -39,11 +41,75 @@ class RecintosController extends Controller{
     }
 
     public function RecintoRead(Request $request) {
+        if ($request->has('id')) {
+            $recinto = Recinto::find($request->id);
+            if (isset($recinto->id)) {
+                $status           = trans('requests.success.code');
+                $data['errors']   = false;
+                $data['respuesta'] = $recinto;
+            } else {
+                $status           = trans('requests.failure.code.not_founded');
+                $data['errors']   = true;
+                $data['respuesta'] = trans('registros.reg');
+            }
+        } else {
+            $recintoes = Recinto::all();
+            $status           = trans('requests.success.code');
+            $data['errors'] = false;
+            $data['respuesta']  = $recintoes;
+        }
+        return Response::json($data, $status);
     }
 
     public function RecintoUpdate(Request $request) {
+        if ($request->has('id')) {
+            $recinto = Recinto::find($request->id);
+            if (isset($recinto->id)) {
+                $val = $recinto->Validar($request->all());
+                if ($val->fails()) {
+                    $status           = trans('requests.failure.code.bad_request');
+                    $data['errors']   = true;
+                    $data['respuesta'] = $val;
+                } else {
+                    $recinto->nombre      = $request->nombre;
+                    $recinto->save();
+
+                    $status           = trans('requests.success.code');
+                    $data['errors']   = false;
+                    $data['respuesta'] = $recinto;
+                }
+            } else {
+                $status           = trans('requests.failure.code.not_founded');
+                $data['errors']   = true;
+                $data['respuesta'] = trans('registros.reg');
+            }
+        } else {
+            $status           = trans('requests.failure.code.bad_request');
+            $data['errors']   = false;
+            $data['respuesta'] = trans('validation.required');
+        }
+        return Response::json($data, $status);
     }
 
     public function RecintoDelete(Request $request) {
+        if ($request->has('id')) {
+            $recinto = Recinto::find($request->id);
+            if (isset($recinto->id)) {
+                $recinto->delete();
+
+                $status           = trans('requests.success.code');
+                $data['errors']   = false;
+                $data['respuesta'] = trans('registros.del');
+            } else {
+                $status           = trans('requests.failure.code.not_founded');
+                $data['errors']   = true;
+                $data['respuesta'] = trans('registros.reg');
+            }
+        } else {
+            $status           = trans('requests.failure.code.bad_request');
+            $data['errors']   = false;
+            $data['respuesta'] = trans('validation.required');
+        }
+        return Response::json($data, $status);
     }
 }
