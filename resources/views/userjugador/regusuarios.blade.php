@@ -189,8 +189,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
      ))
    !!}
 </div>
-
-
 {!! Form::close() !!}
 
                         </div>
