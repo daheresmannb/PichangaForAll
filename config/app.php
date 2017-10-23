@@ -27,7 +27,9 @@ return [
     */
 
     'debug' => env('APP_DEBUG', false),
-
+    'FB_CLIENT_ID' => env('FB_CLIENT_ID', false),
+    'FB_CLIENT_SECRET' => env('FB_CLIENT_SECRET', false),
+ 
     /*
     |--------------------------------------------------------------------------
     | Application URL
@@ -153,6 +155,7 @@ return [
         Phaza\LaravelPostgis\DatabaseServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         
+\SocialiteProviders\Manager\ServiceProvider::class,
 
         /*
          * Application Service Providers...

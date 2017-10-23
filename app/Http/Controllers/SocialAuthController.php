@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Socialite;
 
 class SocialAuthController extends Controller {
-    public function redirect(Requests $request) {
-    	$redsocial = '';
-        switch ($request->op) {
+    public static $redsocial = '';
+    public function redirect($op) {
+
+        switch ($op) {
         	case 'f':
-        		$redsocial = 'facebook';
+        		self::$redsocial = 'facebook';
         		break;
 
         	case 'g':
@@ -28,11 +29,25 @@ class SocialAuthController extends Controller {
         }
 
         return Socialite::driver(
-        	$redsocial
+        	'facebook'
        	)->redirect();   
     }   
 
     public function callback() {
-        // when facebook call us a with token   
+        $user = Socialite::driver('facebook')->user();
+        $token = $user->token;
+        $refreshToken = $user->refreshToken; // not always provided
+        $expiresIn = $user->expiresIn;
+
+        // OAuth One Providers
+        $token = $user->token;
+        $tokenSecret = $user->tokenSecret;
+
+        // All Providers
+        $user->getId();
+        $user->getNickname();
+        $user->getName();
+        $user->getEmail();
+        $user->getAvatar();
     }
 }
