@@ -1,6 +1,35 @@
 @extends('layouts.diseñopichanga')
 @extends('funcionesjs')
 @section('recintos')
+<script type="text/javascript">
+$(document).ready(
+	function(e) {
+		$("#crearrecinto").click(
+			function(e) {
+				$.ajax({
+           			type: "POST",
+           			url:  "<?php echo url('recinto/crear'); ?>",
+           			headers: {'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"},
+           			data: {
+           				_token: 		"<?php echo csrf_token(); ?>",  
+           				id_encargado: 	"<?php echo Auth::user()->id ?>",
+           				nombre: 		document.getElementById('nombre').value,
+           				lat: 			marker.getPosition().lat(),
+           				lon: 			marker.getPosition().lng()
+           			},
+           			success: function(data) {
+   						alert(data.respuesta);
+
+           			},
+           			error: function(xhr, textStatus, thrownError) {
+           				alert("error");
+		           	}
+       			});
+			}
+		);  
+	}
+);
+</script>
 
 <!--Script que carga el mapa-->
 {!! Html::style('assets/css/perfil_en_mapa.css'); !!}
@@ -48,17 +77,13 @@
 <h2>Crear Recintos</h2>
 
 <div class="container-fluid">  
-			 {!! Form::label('nombre','Nombre')  !!}
-			 {!! Form::text(
-			  				'nombre',
-			  				null,[
-			    				'class' => 'form-control',
-			    				'placeholder' => 'ingrese nombre recinto',
-			    				'required'
-			  					]
-			 )!!}
+					{!! Form::label('name','name')  !!}
+					
+					<input type="text" name="nombre" id="nombre">
+
+					 
             <div class="" style="display: inline-block; background-color: transparent; padding-bottom: 20px;">
-            <button id="crearrecinto" >Crear Recinto</button>
+            <button id="crearrecinto"  >Crear Recinto</button>
             </div>
 
 {!! Html::style('assets/css/slider.css'); !!}
@@ -131,7 +156,7 @@
           
           }); 
 
-          marker.addListener('drag');
+          marker.addListener('drag',toggleBounce);
           marker.addListener('mouseout', saltar);
           marker.addListener('mouseover', detenido);
 
@@ -148,7 +173,7 @@
     }
   }
 //fin de iniciador de mapa
-  function toggleBounce() {
+  	function toggleBounce() {
         if (marker.getAnimation() !== null) {
           marker.setAnimation(null);
         } else {
@@ -156,44 +181,9 @@
           var div = document.getElementById("lat");  
     	  div.textContent = marker.getPosition().lat();  
     	  var div2 = document.getElementById("lon");  
-    	  div2.textContent = marker.getPosition().lon();  
+    	  div2.textContent = marker.getPosition().lng();
         }
-      }
-      $(document).ready(function() {
-      var refreshId =  setInterval( function(){
-    $('#lon').load('recintos');
-   }, 1000 );
-});
-
-$(document).ready(
-	function(e){
-
-		$("#crearrecinto").click(
-			function() {
-				$.ajax({
-           type: "POST",
-           url:  "<?php echo url('recinto/crear'); ?>",
-           headers: {'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"},
-           data: {
-           		_token: 		"<?php echo csrf_token(); ?>",  
-           		id_encargado: 	"<?php echo Auth::user()->id ?>",
-           		nombre: 		$('nombre').val() ,
-           		lat: 			$('lat').val(),
-           		lon: 			$('lon').val() 
-           },
-           success: function(data) {
-   							alert("caca");
-           },
-           error: function(xhr, textStatus, thrownError) {
-		           }
-       			});
-			});  
-			}
-		);
-
-
-		
-
+   	}
 </script>
 </div>     
 @endsection
