@@ -24,9 +24,7 @@
 {!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
 
 </head>
-
 <!-- inicio modal-->
-               
               <div  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
                     <div class="modal-dialog" role="documen">
                         <div class="modal-content">
@@ -42,7 +40,6 @@
                                 </select>
                                 <br>
                                 <label>fecha y hora de inicio</label>
-                                   
                                    <input id="datetime">
                                    <script>
                                        $("#datetime").datetimepicker({autoclose: true });
@@ -59,11 +56,13 @@
                             </div> <!-- fin del modal-body-->
                             <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">cancelar</button>
-                            <button type="button" class="btn btn-primary">crear evento</button>  
+                            <button type="button" class="btn btn-primary">crear evento</button>
                             </div>
                         </div>
                     </div>
                 </div>        <!-- fin modal -->
+
+                
 <body>
     <div class=”container”>
     @yield('sidebar')

@@ -56,8 +56,6 @@ Route::post('titodelivery','TitoController@ganjah');
 //fin ejemplo
 
 //#########################################################################
-
-
 //#########################################################################
 
 Route::get('/gmaps', 'GmapsController@index');
@@ -223,16 +221,6 @@ Route::post('usuario/actualizar','UserController@UpdateUser')->name(
 Route::post('usuario/eliminar','UserController@DeleteUser')->name(
 	'usuario.eliminar'
 );
-/////////////////////////////////////////////////////////////////////
-//////////////// recintos///////////////
-//////////////////////////////////////////////////////
-
-Route::get(
-    '/recintos',
-    function () {
-       return view('userjugador.recintos');
-    }
-);
 
 ///////////////////// CRUD ROLES ///////////////////////7
 
@@ -250,6 +238,15 @@ Route::post('rol/eliminar','RolController@RolDelete')->name(
 );
 /////////////////////////////////////////////////////////
 ////////////////// CRUD RECINTO /////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+Route::get(
+    '/recintos',
+    function () {
+       return view('userjugador.recintos');
+    }
+);
+
 
 Route::post('recinto/crear','RecintosController@RecintoCreate')->name(
 	'recinto.crear'

@@ -1,6 +1,35 @@
 @extends('layouts.diseñopichanga')
 @extends('funcionesjs')
 @section('recintos')
+<script type="text/javascript">
+$(document).ready(
+	function(e) {
+		$("#crearrecinto").click(
+			function(e) {
+				$.ajax({
+           			type: "POST",
+           			url:  "<?php echo url('recinto/crear'); ?>",
+           			headers: {'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"},
+           			data: {
+           				_token: 		"<?php echo csrf_token(); ?>",  
+           				id_encargado: 	"<?php echo Auth::user()->id ?>",
+           				nombre: 		document.getElementById('nombre').value,
+           				lat: 			marker.getPosition().lat(),
+           				lon: 			marker.getPosition().lng()
+           			},
+           			success: function(data) {
+   						alert(data.respuesta);
+
+           			},
+           			error: function(xhr, textStatus, thrownError) {
+           				alert("error");
+		           	}
+       			});
+			}
+		);  
+	}
+);
+</script>
 
 <!--Script que carga el mapa-->
 {!! Html::style('assets/css/perfil_en_mapa.css'); !!}
@@ -27,13 +56,11 @@
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 </style>
-
 <!--datos para cargar el mapa-->
 <style>
   #map {
@@ -50,33 +77,14 @@
 <h2>Crear Recintos</h2>
 
 <div class="container-fluid">  
+					{!! Form::label('name','name')  !!}
+					
+					<input type="text" name="nombre" id="nombre">
 
-		{!! Form::open(['route' => array('recintos.crear', )]) !!}
-						
-			{!! Form::hidden(
-   							'id_encargado',
-   							Auth::user()->id,
-   							array(
-       							'id' => 'id_encargado',
-       							'name' => 'id_encargado')
-			)!!}
-			 {!! Form::label('nombre','Nombre')  !!}
-			 {!! Form::text(
-			  				'nombre',
-			  				null,[
-			    				'class' => 'form-control',
-			    				'placeholder' => 'ingrese nombre recinto',
-			    				'required'
-			  					]
-			 )!!}
+					 
             <div class="" style="display: inline-block; background-color: transparent; padding-bottom: 20px;">
-                {!! Form::submit(
-     							'crear recinto',
-     							array(
-       								'class'=>'btn btn-primary btn-lg btn-block'))
-   				!!}
+            <button id="crearrecinto"  >Crear Recinto</button>
             </div>
-{!! Form::close() !!}
 
 {!! Html::style('assets/css/slider.css'); !!}
 {!! Html::script('assets/js/slider.js'); !!}
@@ -84,8 +92,8 @@
 <div class="card" style="padding: 1% 1% 1% 1%;">
   <center>
     <div id="map"></div>
-  <input type="text" id="marker"  />
-  <div id="textDiv"></div> 
+    <div id="lat"></div>
+    <div id="lon"></div>
   </center>
 
 </div>
@@ -108,7 +116,6 @@
     marker.setAnimation(null);
   }
 
-
   function mostrarinfo2(titulo, texto) {
     $("#titulomodal").empty();
     $("#titulomodal").append("<p>"+titulo+"</p>");
@@ -128,7 +135,6 @@
             position.coords.latitude, 
             position.coords.longitude
           );
-
           map = new google.maps.Map(
             document.getElementById('map'), {
               center: mi_location,
@@ -150,14 +156,15 @@
           
           }); 
 
-          marker.addListener('click', toggleBounce);
+          marker.addListener('drag',toggleBounce);
           marker.addListener('mouseout', saltar);
           marker.addListener('mouseover', detenido);
 
 //mostrador de posicion en texto
-               var div = document.getElementById("textDiv");  
-    div.textContent = mi_location;  
-    var text = div.textContent;  
+    var div  = document.getElementById("lat");  
+    var text = div.textContent; 
+    var div2 = document.getElementById("lon");
+    var text = div2.textContent;
         }//function position
       );//fin navegador geolocalition 
     } //fin de IF
@@ -166,24 +173,17 @@
     }
   }
 //fin de iniciador de mapa
-  function toggleBounce() {
+  	function toggleBounce() {
         if (marker.getAnimation() !== null) {
           marker.setAnimation(null);
         } else {
           marker.setAnimation(google.maps.Animation.BOUNCE);
+          var div = document.getElementById("lat");  
+    	  div.textContent = marker.getPosition().lat();  
+    	  var div2 = document.getElementById("lon");  
+    	  div2.textContent = marker.getPosition().lng();
         }
-      }
-
-      $(document).ready(function() {
-      var refreshId =  setInterval( function(){
-    $('#textDiv').load('recintos');//actualizas el div
-   }, 1000 );
-});
-
+   	}
 </script>
-
-
-</div>
-      
-
+</div>     
 @endsection
