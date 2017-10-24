@@ -8,8 +8,8 @@ use App\Http\Requests;
 
 class SocialAuthController extends Controller {
     public static $redsocial = '';
-    public function redirect($op) {
-
+    public function redirect() {
+        $op = 'facebook';
         switch ($op) {
         	case 'f':
         		self::$redsocial = 'facebook';

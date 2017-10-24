@@ -289,6 +289,10 @@ Route::post('falta/eliminar','FaltasController@FaltaDelete')->name(
 /////////////////////////////////////////////////////////
 ////////////// FACEBOOK LOGIN ROUTES /////////////
 
-Route::get('/redirect/{op}', 'SocialAuthController@redirect');
+Route::get('/redirect', 'SocialAuthController@redirect');
 Route::get('/callback', 'SocialAuthController@callback');
 /////////////////////////////////////////////////////////
+
+Route::post('infoperfil','JugadorController@ReadInfoJugador')->name(
+	'infoperfil'
+);

@@ -7,6 +7,7 @@ use \Response;
 use App\Http\Requests;
 use App\Models\Jugador;
 use App\Models\UbicacionJug;
+use Auth;
 use DB;
 
 class JugadorController extends Controller {
@@ -149,7 +150,7 @@ class JugadorController extends Controller {
     	if ($request->has('id')) {
     		$locatejug = UbicacionJug::find($request->id);
     		if (isset($jugador->id)) {
-    			$locatejug->location 	 = new Point(
+    			$locatejug->location = new Point(
     				$request->lat,
     				$request->lon
     			);
@@ -184,5 +185,22 @@ class JugadorController extends Controller {
         $data['respuesta'] = $jugadores;
 
         return Response::json($data);
+    }
+
+    public function ReadInfoJugador(Request $request) {
+        $jugador = Jugador::find(Auth::user()->id);
+        if (isset($jugador->id)) {
+            $status           = trans('requests.success.code');
+            $data['errors']   = false;
+            $data['respuesta'] = $jugador;
+        } else {
+            $status           = trans('requests.failure.code.not_founded');
+            $data['errors']   = true;
+            $data['respuesta'] = trans('registros.registro');
+        }
+        return redirect('/home')->with(
+                'info', 
+                $data
+        );
     }
 }
