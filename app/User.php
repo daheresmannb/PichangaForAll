@@ -28,6 +28,10 @@ class User extends Authenticatable {
     public function Rol() {
         return $this->hasOne('App\Models\Rol');
     }
+
+    public function social() {
+        return $this->hasMany(SocialLogin::class); 
+    }
  
     public function Validar($array) {
         $validator = Validator::make(

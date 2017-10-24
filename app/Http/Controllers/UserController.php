@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use \Response;
 use App\Models\InfoUser;
-use App\Models\User;
+use App\User;
 
 class UserController extends Controller {
 
