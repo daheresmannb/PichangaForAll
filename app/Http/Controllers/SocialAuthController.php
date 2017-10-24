@@ -3,51 +3,60 @@
 namespace App\Http\Controllers;
 
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
 class SocialAuthController extends Controller {
-    public static $redsocial = '';
-    public function redirect() {
-        $op = 'facebook';
-        switch ($op) {
-        	case 'f':
-        		self::$redsocial = 'facebook';
-        		break;
+     
+    public function getSocialRedirect($provider) {
 
-        	case 'g':
-        		# code...
-        		break;
-
-        	case 't':
-        		# code...
-        		break;
-        	
-        	default:
-        		# code...
-        		break;
+        $providerKey = Config::get('services.' . $provider);
+        if (empty($providerKey)) {
+            return view('pages.status')
+                ->with('error','No such provider');
         }
+        return Socialite::driver($provider)->redirect();
 
-        return Socialite::driver(
-        	'facebook'
-       	)->redirect();   
-    }   
+    }
+//Recibe el login exitoso del proveedor, crea el usuario si no existe y si existe actualiza valores, también guarda el id de usuario del proveedor.
+    public function getSocialHandle($provider) {
+        if (Input::get('denied') != '')
+            abort(500, "No le diste permiso a nuestra aplicación para acceder a tu cuenta.");
+        //Datos de usuario retornados por el proveedor de servicio
+        $socialUser = Socialite::driver($provider)->user();
 
-    public function callback() {
-        $user = Socialite::driver('facebook')->user();
-        $token = $user->token;
-        $refreshToken = $user->refreshToken; // not always provided
-        $expiresIn = $user->expiresIn;
+        dd($socialUser->email);
 
-        // OAuth One Providers
-        $token = $user->token;
-        $tokenSecret = $user->tokenSecret;
+        /*
+        //Verifica si el email ya lo tiene un usuario
+        $userInDB = User::where('email', '=', $socialUser->email)->first();
+        if(empty($userInDB)) {//Si no lo tiene crea el usuario
+            $userInDB = new User;
+            $userInDB->password = bcrypt(str_random(16));
+            $userInDB->token = str_random(64);
+            $userInDB->email = $socialUser->email;
+        }
+        $userInDB->name = $socialUser->name; //Actualiza el name
 
-        // All Providers
-        $user->getId();
-        $user->getNickname();
-        $user->getName();
-        $user->getEmail();
-        $user->getAvatar();
+        $userInDB->save();
+        //Guarda el id oauth del proveedor de Oauth
+        $sameSocialId = SocialEntity::
+            where('social_id', '=', $socialUser->id)
+            ->where('provider', '=', $provider )
+            ->first();
+
+        if (empty($sameSocialId)) {
+            $socialData = new SocialEntity;
+            $socialData->social_id = $socialUser->id;
+            $socialData->provider= $provider;
+            $userInDB->social()->save($socialData);
+        }
+        auth()->login($userInDB, true);//Autentica al usuario
+        return redirect('/home');//Redirecciona al home
+        
+    }
+    */
     }
 }

@@ -46,16 +46,6 @@ Route::post('/datosjugador', 'GmapsController@LatLngbyDirect')->name('datos.jug'
 
 Route::post('/buscar', 'GmapsController@LatLngbyDirect')->name('buscar.jug');
 
-
-
-
-
-//ejemplo
-          //nombre_ruta  nombre_controller  nombre_funcion
-Route::post('titodelivery','TitoController@ganjah');
-//fin ejemplo
-
-//#########################################################################
 //#########################################################################
 
 Route::get('/gmaps', 'GmapsController@index');
@@ -293,3 +283,14 @@ Route::get('/callback', 'SocialAuthController@callback');
 Route::post('infoperfil','JugadorController@ReadInfoJugador')->name(
 	'infoperfil'
 );
+
+
+Route::get(
+	'/social/redirect/{provider}', 
+	'SocialAuthController@getSocialRedirect'
+)->name('redirectSocialLite');
+
+Route::get(
+	'/social/handle/{provider}', 
+	'SocialAuthController@getSocialHandle'
+)->name('handleSocialLite');

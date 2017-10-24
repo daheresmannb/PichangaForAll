@@ -29,6 +29,8 @@ return [
     'debug' => env('APP_DEBUG', false),
     'FB_CLIENT_ID' => env('FB_CLIENT_ID', false),
     'FB_CLIENT_SECRET' => env('FB_CLIENT_SECRET', false),
+    'GOOGLE_ID' => env('GOOGLE_ID'),
+    'GOOGLE_SECRET' => env('GOOGLE_SECRET'),
  
     /*
     |--------------------------------------------------------------------------
@@ -154,8 +156,7 @@ return [
         GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
         Phaza\LaravelPostgis\DatabaseServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        
-\SocialiteProviders\Manager\ServiceProvider::class,
+       
 
         /*
          * Application Service Providers...

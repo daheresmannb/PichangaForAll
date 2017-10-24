@@ -37,6 +37,9 @@
 
 
 <style type="text/css">
+  body {
+    background: transparent;
+  }
     
     video { 
     position: fixed;
@@ -108,14 +111,7 @@ a:hover{
   #bgvid { display: none; }
 }
 </style>
-        <div class="top-content" style="background: rgba(98,125,77,1);
-background: -moz-linear-gradient(left, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(98,125,77,1)), color-stop(100%, rgba(31,59,8,0.76)));
-background: -webkit-linear-gradient(left, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-background: -o-linear-gradient(left, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-background: -ms-linear-gradient(left, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-background: linear-gradient(to right, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', endColorstr='#1f3b08', GradientType=1 );">
+
 <script type="text/javascript">
     var vid = document.getElementById("bgvid");
 var pauseButton = document.querySelector("#polina button");
@@ -157,103 +153,95 @@ pauseButton.addEventListener("click", function() {
 <source src="{{ url('video/fondolog.mp4') }}" type="video/webm">
 <source src="{{ url('video/fondolog.mp4') }}" type="video/mp4">
 </video>
-            <div class="inner-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>PichangaForAll</strong> </h1>
-             
-                        </div>
-                    </div>
+                   <div class="container" style="background: transparent;">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
-                        		<div class="form-top-left">
-                        			<h3>Inicio de sesion</h3>
-                            		<p>
-                                        Ingresa el correo, y contraseña asociado a tu cuenta:
-                                    </p>
-                        		</div>
-                        		<div class="form-top-right">
-                        			<i class="fa fa-key"></i>
-                        		</div>
+
+
+                          <div class="form-top">
+                
+
+                            <h3>Inicia o registrate con: </h3>
+
+
+<div class="row">
+<div class="col-sm-6">
+
+  <a style="background: #c23321;" class="btn btn-block btn-social btn-google" href="{{ route('redirectSocialLite', ['provider' => 'google']) }}">
+                              <span class="fa fa-google-plus"></span>
+                             
+                                Inicio Google
+                               
+                            </a>  
+</div>
+<div class="col-sm-6">
+  <a href="{{ url('/registro') }}" class="btn btn-block btn-social btn-twitter">
+    <span class="fa fa-futbol-o"></span> Registro Normal
+  </a>
+</div>
+</div>  
+
+
                             </div>
+
                             <div class="form-bottom">
 
-
-                                <form role="form" action="{{ url('/signin') }}" method="POST" class="form-horizontal">
+    <form role="form" action="{{ url('/signin') }}" method="POST" class="form-horizontal">
                                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Correo</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
+            <div style="height: 
+            35px;" class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
+              <span style="height: 35px;" class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </span>
+              <input style="height: 35px;" id="email" type="email" class="form-control" name="email" placeholder="correo">
+       @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                                @endif       
+  </div>
+            <span class="help-block"></span>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Contraseña</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Recordar cuenta
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+        <div style="height: 35px;" class="input-group{{ $errors->has('password') ? ' has-error' : '' }}">
+          <span style="height: 35px;" class="input-group-addon">
+            <i class="fa fa-lock"></i>
+          </span>
+          <input style="height: 35px;" id="password" type="password" class="form-control" name="password" placeholder="Password">
+          @if ($errors->has('password'))                      
+            <span class="help-block">
+              <strong>{{ $errors->first('password') }}</strong>
+            </span>
+          @endif
+        </div> 
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> iniciar
-                                </button>
+        <span class="help-block"></span>
+                    
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          iniciar
+        </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Olvidaste tu contraseña?</a>
-                            </div>
-                        </div>
-			                    </form>
-		                    </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 social-login">
-                        	<h3>Inicia con redes sociales:</h3>
-                        	<div class="social-login-buttons">
-	                        	<a class="btn btn-link-1 btn-link-1-facebook" href="#">
-	                        		<i class="fa fa-facebook"></i> Facebook
-	                        	</a>
-	                        	<a class="btn btn-link-1 btn-link-1-twitter" href="#">
-	                        		<i class="fa fa-twitter"></i> Twitter
-	                        	</a>
-	                        	<a class="btn btn-link-1 btn-link-1-google-plus" href="#">
-	                        		<i class="fa fa-google-plus"></i> Google Plus
-	                        	</a>
-                        	</div>
+<div class="row">
+<div class="col-sm-6">
+  <div class="checkbox">
+      <label>
+          <input type="checkbox" name="remember"> Recordar cuenta
+      </label>
+  </div>
+</div>
+<div class="col-sm-6">
+  <a class="btn btn-link" href="{{ url('/password/reset') }}">¿Olvidaste tu contraseña?</a>
+</div>
+</div>                        
+                          </form>
+
                         </div>
                     </div>
                 </div>
-            </div>
-            
-        </div>
+
+
         {!! Html::script('assets2/js/jquery-1.11.1.min.js'); !!}
         {!! Html::script('assets2/bootstrap/js/bootstrap.min.js'); !!}
         {!! Html::script('assets2/js/jquery.backstretch.min.js'); !!}

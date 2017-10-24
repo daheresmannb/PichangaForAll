@@ -39,12 +39,15 @@ return [
         'maps' => [
             'api-key' => env('GOOGLE_MAPS_API_KEY'),
         ],
+        'client_id'     => env('GOOGLE_ID'),
+        'client_secret' => env('GOOGLE_SECRET'),
+        'redirect'      => env('GOOGLE_REDIRECT'),
     ],
 
     'facebook' => [
         'client_id' =>  env('FB_CLIENT_ID'),
         'client_secret' => env('FB_CLIENT_SECRET'),
-        'redirect' => 'http://localhost:8000/callback',
+        'redirect' => env('FB_CLIENT_REDIRECT'),
     ],
 
 ];

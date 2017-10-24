@@ -199,8 +199,8 @@ class JugadorController extends Controller {
             $data['respuesta'] = trans('registros.registro');
         }
         return redirect('/home')->with(
-                'info', 
-                $data
+            'info', 
+            $data
         );
     }
 }
