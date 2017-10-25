@@ -77,9 +77,9 @@ $(document).ready(
 <h2>Crear Recintos</h2>
 
 <div class="container-fluid">  
-					{!! Form::label('name','name')  !!}
+					{!! Form::label('name','nombre de recinto')  !!}
 					
-					<input type="text" name="nombre" id="nombre">
+					<input type="text" name="nombre" class="form-control" id="nombre" >
 
 					 
             <div class="" style="display: inline-block; background-color: transparent; padding-bottom: 20px;">

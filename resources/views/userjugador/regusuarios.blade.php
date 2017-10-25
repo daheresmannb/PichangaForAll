@@ -24,7 +24,6 @@
 
 {!! Html::style('assets2/font-awesome/css/font-awesome.min.css'); !!}
 {!! Html::style('assets2/font-awesome/css/font-awesome.css'); !!}
-
 {!! Html::style('assets2/css/form-elements.css'); !!}
 {!! Html::style('assets2/css/style.css'); !!}
 
@@ -37,14 +36,30 @@
 
 
 <style type="text/css">
+  body {
+    background: transparent;
+  }
     
+    video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+  transition: 1s opacity;
+}
 .stopfade { 
    opacity: .5;
 }
 
 #polina { 
   font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
-  font-weight:300; 
+  font-weight:100; 
   background: rgba(0,0,0,0.3);
   color: white;
   padding: 2rem;
@@ -65,7 +80,7 @@ h1 {
   padding: .4rem;
   border: none; 
   margin: 1rem auto; 
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   background: rgba(255,255,255,0.23);
   color: #fff;
   border-radius: 3px; 
@@ -95,39 +110,67 @@ a:hover{
   #bgvid { display: none; }
 }
 </style>
-        <div class="top-content" style="background: rgba(98,125,77,1);
-background: -moz-linear-gradient(left, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(98,125,77,1)), color-stop(100%, rgba(31,59,8,0.76)));
-background: -webkit-linear-gradient(left, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-background: -o-linear-gradient(left, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-background: -ms-linear-gradient(left, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-background: linear-gradient(to right, rgba(98,125,77,1) 0%, rgba(31,59,8,0.76) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', endColorstr='#1f3b08', GradientType=1 );">
+
+<script type="text/javascript">
+    var vid = document.getElementById("bgvid");
+var pauseButton = document.querySelector("#polina button");
+
+if (window.matchMedia('(prefers-reduced-motion)').matches) {
+    vid.removeAttribute("autoplay");
+    vid.pause();
+    pauseButton.innerHTML = "Paused";
+}
+
+function vidFade() {
+  vid.classList.add("stopfade");
+}
+
+vid.addEventListener('ended', function()
+{
+// only functional if "loop" is removed 
+vid.pause();
+// to capture IE10
+vidFade();
+}); 
 
 
+pauseButton.addEventListener("click", function() {
+  vid.classList.toggle("stopfade");
+  if (vid.paused) {
+    vid.play();
+    pauseButton.innerHTML = "Pause";
+  } else {
+    vid.pause();
+    pauseButton.innerHTML = "Paused";
+  }
+})
 
 </script>
-<!--empesada de formulario de registro -->
 
-            <div class="inner-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>PichangaForAll</strong> </h1>
-             
-                        </div>
-                    </div>
+<video poster="{{ url('video/fondolog.mp4') }}" id="bgvid" playsinline autoplay muted loop>
+  <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+<source src="{{ url('video/fondolog.mp4') }}" type="video/webm">
+<source src="{{ url('video/fondolog.mp4') }}" type="video/mp4">
+</video>
+   
+<!--fin de documentos de videos-->
+
+<!--inicio de formulario de registro -->
+
+              <div class="container" style="background: transparent;">
+
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                           <div class="form-top">
                             <div class="form-top-left">
-                              <h3>Registro de Usuarios</h3>
+                              <h2>Registro de Usuarios</h2>
                             </div>
                             <div class="form-top-right">
                               <i class="fa fa-key"></i>
                             </div>
                             </div>
-                            <div class="form-bottom">
+                            
+            <div class="form-bottom">
 
 
 
@@ -180,36 +223,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#627d4d', end
 !!}                        
 </div>
 
-
-<div class="form-horizontal">
-   {!! Form::submit(
-     'Registrar',
-     array(
-       'class'=>'btn btn-primary btn-lg btn-block'
-     ))
-   !!}
-</div>
+ <span class="help-block"></span>
+                    
+        <button id="Registrar" class="btn btn-lg btn-primary btn-block" type="submit">
+          Registrar
+        </button>
 {!! Form::close() !!}
 
-                        </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-<!--
-<div class="Form-group">
-  
-  <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> registrar
-                                </button>
-
-</div>
--->
-<!-- fin de formulario registro-->
 
 
         {!! Html::script('assets2/js/jquery-1.11.1.min.js'); !!}

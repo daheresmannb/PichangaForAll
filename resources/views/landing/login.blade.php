@@ -24,7 +24,6 @@
 
 {!! Html::style('assets2/font-awesome/css/font-awesome.min.css'); !!}
 {!! Html::style('assets2/font-awesome/css/font-awesome.css'); !!}
-
 {!! Html::style('assets2/css/form-elements.css'); !!}
 {!! Html::style('assets2/css/style.css'); !!}
 
@@ -156,11 +155,7 @@ pauseButton.addEventListener("click", function() {
                    <div class="container" style="background: transparent;">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
-
-
-                          <div class="form-top">
-                
-
+                          <div class="form-top">               
                             <h3>Inicia o registrate con: </h3>
 
 
@@ -169,9 +164,7 @@ pauseButton.addEventListener("click", function() {
 
   <a style="background: #c23321;" class="btn btn-block btn-social btn-google" href="{{ route('redirectSocialLite', ['provider' => 'google']) }}">
                               <span class="fa fa-google-plus"></span>
-                             
-                                Inicio Google
-                               
+                                Inicio Google  
                             </a>  
 </div>
 <div class="col-sm-6">
@@ -180,13 +173,11 @@ pauseButton.addEventListener("click", function() {
   </a>
 </div>
 </div>  
-
-
                             </div>
 
                             <div class="form-bottom">
 
-    <form role="form" action="{{ url('/signin') }}" method="POST" class="form-horizontal">
+<form role="form" action="{{ url('/signin') }}" method="POST" class="form-horizontal">
                                         {{ csrf_field() }}
 
             <div style="height: 
@@ -200,10 +191,8 @@ pauseButton.addEventListener("click", function() {
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif       
-  </div>
+            </div>
             <span class="help-block"></span>
-
-
 
         <div style="height: 35px;" class="input-group{{ $errors->has('password') ? ' has-error' : '' }}">
           <span style="height: 35px;" class="input-group-addon">
@@ -239,6 +228,7 @@ pauseButton.addEventListener("click", function() {
 
                         </div>
                     </div>
+                </div>
                 </div>
 
 

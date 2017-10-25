@@ -24,6 +24,7 @@
 {!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
 
 </head>
+
 <!-- inicio modal-->
               <div  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
                     <div class="modal-dialog" role="documen">
