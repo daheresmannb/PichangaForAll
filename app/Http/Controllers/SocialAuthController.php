@@ -34,30 +34,34 @@ class SocialAuthController extends Controller {
         $socialUser = Socialite::driver($provider)->user();
 
         //Verifica si el email ya lo tiene un usuario
-        $userInDB = User::where(
-            'email', '=', $socialUser->email)->first();
-        if(empty($userInDB)) {//Si no lo tiene crea el usuario
-            $userInDB = new User;
-            $userInDB->password = bcrypt(str_random(16));
-            $userInDB->token = str_random(64);
-            $userInDB->email = $socialUser->email;
-        }
-        $userInDB->name = $socialUser->name; //Actualiza el name
+        $user = User::where(
+            'email', 
+            $socialUser->email
+        )->first();
 
-        $userInDB->save();
+        if(empty($user)) {//Si no lo tiene crea el usuario
+            $user = new User;
+            $user->password = bcrypt(str_random(16));
+            $user->token = str_random(64);
+            $user->email = $socialUser->email;
+        }
+        $user->name = $socialUser->name; //Actualiza el name
+        $user->save();
         //Guarda el id oauth del proveedor de Oauth
-        $sameSocialId = SocialLogin::
-            where('social_id', '=', $socialUser->id)
-            ->where('provider', '=', $provider )
-            ->first();
+        $sameSocialId = SocialLogin::where(
+            'social_id', $socialUser->id
+            )->where(
+                'provider', 
+                $provider
+        )->first();
 
         if (empty($sameSocialId)) {
             $socialData = new SocialLogin;
             $socialData->social_id = $socialUser->id;
             $socialData->provider= $provider;
-            $userInDB->social()->save($socialData);
+            $user->social()->save($socialData);
         }
-        auth()->login($userInDB, true);//Autentica al usuario
+        auth()->login($user, true);//Autentica al usuario
         return redirect('/home');//Redirecciona al home
     }
 }

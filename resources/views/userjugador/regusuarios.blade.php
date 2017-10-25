@@ -154,86 +154,84 @@ pauseButton.addEventListener("click", function() {
 </video>
    
 <!--fin de documentos de videos-->
-
 <!--inicio de formulario de registro -->
 
-              <div class="container" style="background: transparent;">
-
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
-                          <div class="form-top">
-                            <div class="form-top-left">
-                              <h2>Registro de Usuarios</h2>
-                            </div>
-                            <div class="form-top-right">
-                              <i class="fa fa-key"></i>
-                            </div>
-                            </div>
-                            
-            <div class="form-bottom">
 
 
 
-{!! Form::open(['route' => array('usuario.crear', ), 'autocomplete' => 'off']) !!}
-<div class="form-horizontal">
- {!! Form::label('nombre','Nombre')  !!}
- {!! Form::text(
-  'name',
-  null,[
-    'class' => 'form-control',
-    'placeholder' => 'nombre',
-    'required'
-  ]
- )!!}
 
-</div>
+<div class="container" style="background: transparent;">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 form-box">
+      <div class="form-top">               
+        <h3>Formulario de registro</h3> 
+      </div>
+      <div class="form-bottom">
+        <form role="form" action="{{ url('/signin') }}" method="POST" class="form-horizontal">
+          {{ csrf_field() }}
 
-<div class="form-horizontal">
- {!! Form::label('email','email')  !!}
- {!! Form::text('email',
-    null,['class' => 'form-control',
-              'placeholder' =>'email',
-              'required'])!!}
+          <!-- nombreeee -->
+          <div style="height: 35px;" class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <span style="height: 35px;" class="input-group-addon">
+              <i class="fa fa-futbol-o"></i>
+            </span>
+            <input style="height: 35px;" id="name" type="email" class="form-control" name="name" placeholder="nombre">    
+          </div>
+          <span class="help-block"></span>
 
-</div>
+          <!-- correo -->
+          <div style="height: 35px;" class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <span style="height: 35px;" class="input-group-addon">
+              <i class="fa fa-user"></i>
+            </span>
+            <input style="height: 35px;" id="email" type="email" class="form-control" name="email" placeholder="correo">
+            @if ($errors->has('email'))
+              <span class="help-block">
+                <strong>
+                  {{ $errors->first('email') }}
+                </strong>
+              </span>
+            @endif       
+          </div>
+          <span class="help-block"></span>
 
-<div class="form-horizontal">
-{!! Form::label('password') !!}
-{!! Form::password(
-  'password',[
-  'class' => 'form-control',
-  'name'=>'password',
-  'autocomplete'=>'new-password',
-  'placeholder' => 'Password',
-  'type' => 'password'
-  ])
-!!}                        
-</div>
+          <div style="height: 35px;" class="input-group{{ $errors->has('password') ? ' has-error' : '' }}">
+          <span style="height: 35px;" class="input-group-addon">
+            <i class="fa fa-lock"></i>
+          </span>
+          <input style="height: 35px;" id="password" type="password" class="form-control" name="password" placeholder="Password">
+          @if ($errors->has('password'))                      
+            <span class="help-block">
+              <strong>{{ $errors->first('password') }}</strong>
+            </span>
+          @endif
+        </div> 
+        <span class="help-block"></span>
+        <div style="height: 35px;" class="input-group{{ $errors->has('password') ? ' has-error' : '' }}">
+          <span style="height: 35px;" class="input-group-addon">
+            <i class="fa fa-lock"></i>
+          </span>
+          <input style="height: 35px;" id="password2" type="password" class="form-control" name="password2" placeholder="confirmacion password">
+          @if ($errors->has('password'))                      
+            <span class="help-block">
+              <strong>{{ $errors->first('password') }}</strong>
+            </span>
+          @endif
+        </div> 
 
-<div class="form-horizontal">
-{!! Form::label('re-password') !!}
-{!! Form::password(
-  'password2',[
-  'class' => 'form-control',
-  'name'=>'password2',
-  'autocomplete'=>'new-password',
-  'placeholder' => 'Password2',
-  'type' => 'password'
-  ])
-!!}                        
-</div>
-
- <span class="help-block"></span>
+        <span class="help-block"></span>
                     
         <button id="Registrar" class="btn btn-lg btn-primary btn-block" type="submit">
           Registrar
         </button>
-{!! Form::close() !!}
+
+                       
+                          </form>
 
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
 
 
         {!! Html::script('assets2/js/jquery-1.11.1.min.js'); !!}
