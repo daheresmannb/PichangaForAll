@@ -53,11 +53,8 @@ class UserController extends Controller {
 	}
 
     public function UpdateInfoUser(Request $request) { 
-    	
     	if ($request->has('id_user')) {
-//dd($request->id_user);
     		$infouser = InfoUser::where('id_user',"".$request->id_user)->first();
-//dd($infouser);
     		if (isset($infouser->id)) {
     			$val = $infouser->Validar($request->all());
     			if ($val->fails()) {
@@ -116,24 +113,27 @@ class UserController extends Controller {
     public function CreateUsers(Request $request) {
         $user = new User();
         $val = $user->Validar($request->all());
-        
         if ($val->fails()) {
             $status            = trans('requests.failure.code.bad_request');
             $data['errors']    = true;
             $data['respuesta'] = $val->messages();
+        } elseif (strcmp($request->password , $request->password2) == 0) {
+            if(!isset(User::where('email', $request->email)->first()->id)) {
+                $user->name     = $request->name;
+                $user->email    = $request->email;
+                $user->password = $request->password;
+                $user->rol      = 1;
+                $user->save();
 
-        } elseif (strcmp($request->password , $request->password2)== 0) {
-            $user->name     = $request->name;
-            $user->email    = $request->email;
-            $user->password = $request->password;
-            $user->rol      = 1;
-            $user->save();
-
-            $status            = trans('requests.success.code');
-            $data['errors']    = false;
-            $data['respuesta'] = $user;
-
-        }else {
+                $status            = trans('requests.success.code');
+                $data['errors']    = false;
+                $data['respuesta'] = $user;
+            } else {
+                $status            = trans('requests.failure.code.bad_request');
+                $data['errors']    = true;
+                $data['respuesta'] = "El correo ya se encuentra en uso";
+            }
+        } else {
             $status            = trans('requests.success.code');
             $data['errors']    = true;
             $data['respuesta'] = 'La confimacion de contraseña no coincide';

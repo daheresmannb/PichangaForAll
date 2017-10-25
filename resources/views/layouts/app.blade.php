@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
       
     <title>PichangaForAll</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
     {!! Html::style('assets/css/font-awesome.min.css'); !!}
     {!! Html::style('assets/css/bootstrap.min.css'); !!}
@@ -14,8 +13,8 @@
     {!! Html::style('assets/css/bootstrap.css'); !!}
     {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
     {!! Html::script('assets/js/bootstrap.min.js'); !!}
-    {!! Html::style('css/busqueda.css') !!}
-    {!! Html::script('js/busqueda.js') !!}
+    {!! Html::style('assets/css/busqueda.css'); !!}
+    {!! Html::script('assets/js/busqueda.js'); !!}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="application/x-javascript"> 
         addEventListener(
@@ -46,8 +45,6 @@
             }
         );
     </script>
-<!-- start-smoth-scrolling -->
-<!-- animated-css -->
     {!! Html::style('assets/css/animate.css'); !!}
     {!! Html::script('assets/js/wow.min.js'); !!}
     <script>

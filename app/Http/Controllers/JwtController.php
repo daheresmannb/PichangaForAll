@@ -13,11 +13,9 @@ class JwtController extends Controller {
 	public function login(Request $request) {
         $credentials = $request->only('email', 'password');
         $user = User::where('email', $credentials['email'])->first();
-
         if (isset($user->id)) {
         	if (!$token = Auth::attempt($credentials)) {
         		$data['msg'] = trans('auth.failed');
-            	
                 return redirect('/login')->with(
                     'respuesta', 
                     $data

@@ -3,19 +3,19 @@
 @section('login')
 
 @if(session('respuesta'))
-    <?php 
-        $resp = session('respuesta');
-    ?>
-    <script type="text/javascript">
-        $(document).ready(
-            function(e) {
-                InfoModal(
-                    "Respuesta",
-                    "<?php echo $resp['msg'];?>"
-                );
-            }
+  <?php 
+    $resp = session('respuesta');
+  ?>
+  <script type="text/javascript">
+    $(document).ready(
+      function(e) {
+        InfoModal(
+          "Respuesta",
+          "<?php echo $resp['msg'];?>"
         );
-    </script>
+      }
+    );
+  </script>
 @endif
 
 {!! Html::style('assets2/bootstrap/css/bootstrap.min.css'); !!}
