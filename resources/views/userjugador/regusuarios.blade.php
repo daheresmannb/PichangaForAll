@@ -255,8 +255,8 @@
     </div>
   </div>
 </div>
-        {!! Html::script('assets2/js/jquery-1.11.1.min.js'); !!}
-        {!! Html::script('assets2/bootstrap/js/bootstrap.min.js'); !!}
-        {!! Html::script('assets2/js/jquery.backstretch.min.js'); !!}
-        {!! Html::script('assets2/js/scripts.js'); !!}
+{!! Html::script('assets2/js/jquery-1.11.1.min.js'); !!}
+{!! Html::script('assets2/bootstrap/js/bootstrap.min.js'); !!}
+{!! Html::script('assets2/js/jquery.backstretch.min.js'); !!}
+{!! Html::script('assets2/js/scripts.js'); !!}
 @endsection
