@@ -25,6 +25,8 @@
 
 </head>
 
+      <!-- fin modal -->            
+<body>
 <!-- inicio modal-->
               <div  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
                     <div class="modal-dialog" role="documen">
@@ -61,26 +63,19 @@
                             </div>
                         </div>
                     </div>
-                </div>        <!-- fin modal -->
-
-                
-<body>
-    <div class=”container”>
+                </div>  
+    <div class="container">
     @yield('sidebar')
+
+    
     <div class="wrapper">
-   
-        <div class="main-panel" >
-            
-            <div id="content" class="content">
-                    @yield('contenido')
+    
+      @yield('contenido')
                     @yield('busquedajugador')
                     @yield('infouser')
                     @yield('crearpartido')
                     @yield('creacapeonato')
                     @yield('recintos')
-
-            </div>
-        </div>
     </div>
     
 <div id="fade" class="overlay"></div>

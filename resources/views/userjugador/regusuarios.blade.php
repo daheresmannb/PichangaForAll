@@ -185,7 +185,7 @@
           <div class="col-sm-6">
           <br>
           <span class="help-block"></span>
-            <a href="{{ url('/registro') }}" class="btn btn-block btn-social btn-twitter">
+            <a href="{{ url('/login') }}" class="btn btn-block btn-social btn-twitter">
               <span class="fa fa-futbol-o"></span> 
               Iniciar
             </a>
