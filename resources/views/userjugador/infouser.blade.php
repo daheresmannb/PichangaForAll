@@ -29,27 +29,14 @@
 								)!!}
 
 
-								<div class="form-horizontal">
+								
  								{!! Form::label('nombre','nombre')  !!}
- 								{!! Form::text(
-  											'nombre',
-  											null,[
-  											'id'=>'nombre',
-    										'class' => 'form-control',
-    										Auth::user()-> nombre,
-    										'required'
-  											])!!}
-								</div>
+                <input id="nombre" type="text" class="form-control" placeholder="nombre">
+
 
 								<div class="form-horizontal">
  								{!! Form::label('apellido','apellido')  !!}
- 									{!! Form::text('apellido',
-        							null,[
-        							'id'=>'apellido',
-        							'class' => 'form-control',
-              						'placeholder' =>'apellido',
-            						'required'])
-            					!!}
+ 									 <input id="apellido" type="text" class="form-control" placeholder="apellido">
 								</div>
 
 								<div class="form-horizontal">

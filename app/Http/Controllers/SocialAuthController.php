@@ -30,7 +30,7 @@ class SocialAuthController extends Controller {
                 "No le diste permiso a nuestra aplicación para acceder a tu cuenta."
             );
 
-        //Datos de usuario retornados por el proveedor de servicio
+        //Datos de usuario retornados por el proveedor de servicio libreria socialite
         $socialUser = Socialite::driver($provider)->user();
 
         //Verifica si el email ya lo tiene un usuario
@@ -47,7 +47,7 @@ class SocialAuthController extends Controller {
         }
         $user->name = $socialUser->name; //Actualiza el name
         $user->save();
-        //Guarda el id oauth del proveedor de Oauth
+        //Guarda el id 0auth del proveedor de Oauth
         $sameSocialId = SocialLogin::where(
             'social_id', $socialUser->id
             )->where(

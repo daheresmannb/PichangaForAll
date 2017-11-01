@@ -197,7 +197,7 @@
           {{ csrf_field() }}
 
           <!-- nombreeee -->
-          <div style="height: 35px;" class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
+          <div style="height: 35px;" class="input-group">
             <span style="height: 35px;" class="input-group-addon">
               <i class="fa fa-futbol-o"></i>
             </span>
