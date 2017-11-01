@@ -63,19 +63,21 @@
                             </div>
                         </div>
                     </div>
-                </div>  
-    <div class="container">
-    @yield('sidebar')
-
-    
+                </div> 
+    @yield('funcionesjs')
     <div class="wrapper">
-    
-      @yield('contenido')
+        @yield('sidebar')
+        <div class="main-panel">
+            @yield('navbar')
+            <div id="content" class="content">
+                    @yield('contenido')
                     @yield('busquedajugador')
                     @yield('infouser')
                     @yield('crearpartido')
                     @yield('creacapeonato')
-                    @yield('recintos')
+
+            </div>
+        </div>
     </div>
     
 <div id="fade" class="overlay"></div>
@@ -128,5 +130,11 @@
     {!! Html::script('admin/assets/js/bootstrap-notify.js'); !!}
     {!! Html::script('admin/assets/js/paper-dashboard.js'); !!}
 
+<style type="text/css">
+    body {
+        margin-top: 0%;
+        padding-top: 0%;
+    }
+</style>
 </body>
 </html>
