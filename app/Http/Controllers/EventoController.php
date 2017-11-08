@@ -46,7 +46,11 @@ class EventoController extends Controller {
             }
 
     	}
-    	return Response::json($data, $status);
+          return redirect('/home')->with(
+                    'data', 
+                    $data
+                );
+    	//return Response::json($data, $status);
     }
     
     public function ReadPartido(Request $request) {
