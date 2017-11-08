@@ -27,15 +27,24 @@ class EventoController extends Controller {
     		$data['errors']    = true;
         	$data['respuesta'] = $val->messages();
     	} else {
-            $partido->nombre     = $request->nombre;
-            $partido->inicio     = $request->inicio;
-            $partido->termino    = $request->termino;
-            $partido->recinto_id = $request->recinto_id;
-            $partido->save();
 
-    		$status			   = trans('requests.success.code');
-    		$data['errors']    = false;
-        	$data['respuesta'] = $partido;
+            if ($request->numjugadores <= 20) {
+                        $partido->nombre     = $request->nombre;
+                        $partido->inicio     = $request->inicio;
+                        $partido->termino    = $request->termino;
+                        $partido->recinto_id = $request->recinto_id;
+                        $partido->numjugadores = $request->numjugadores;
+                        $partido->save();
+
+                        $status            = trans('requests.success.code');
+                        $data['errors']    = false;
+                        $data['respuesta'] = $partido;
+            } else {
+                $status            = trans('requests.success.code');
+                $data['errors']    = true;
+                    $data['respuesta'] = $partido;
+            }
+
     	}
     	return Response::json($data, $status);
     }
