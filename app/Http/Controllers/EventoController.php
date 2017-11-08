@@ -19,19 +19,18 @@ asi como estan ahora las funciones
 */
 
 class EventoController extends Controller {
-    
     public function CreatePartido(Request $request) {
     	$partido = new Partidos();
     	$val = $partido->Validar($request->all());
     	if ($val->fails()) {
     		$status			   = trans('requests.failure.code.bad_request');
     		$data['errors']    = true;
-        	$data['respuesta'] = $val;
+        	$data['respuesta'] = $val->messages();
     	} else {
-            $partido->recinto_id    = $request->recinto_id;
-            $partido->fecha         = $request->fecha;
-            $partido->hora_i        = $request->hora_i;
-            $partido->hora_t        = $request->hora_t;
+            $partido->nombre     = $request->nombre;
+            $partido->inicio     = $request->inicio;
+            $partido->termino    = $request->termino;
+            $partido->recinto_id = $request->recinto_id;
             $partido->save();
 
     		$status			   = trans('requests.success.code');

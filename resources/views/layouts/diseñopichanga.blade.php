@@ -65,6 +65,7 @@
                         </div>
                     </div>
                 </div> 
+                {!!Html::script('assets/js/bootsrap-select.js'); !!}
     @yield('funcionesjs')
     <div class="wrapper">
         @yield('sidebar')
@@ -125,11 +126,12 @@
         </div>
     </div>
     </div>
+
     {!! Html::script('assets/js/jquery-3.2.1.js'); !!}
-    {!! Html::script('admin/assets/js/bootstrap.min.js'); !!}
     {!! Html::script('admin/assets/js/chartist.min.js'); !!}
     {!! Html::script('admin/assets/js/bootstrap-notify.js'); !!}
     {!! Html::script('admin/assets/js/paper-dashboard.js'); !!}
+
 
 <style type="text/css">
     body {
