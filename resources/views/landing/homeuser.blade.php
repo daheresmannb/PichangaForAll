@@ -36,10 +36,13 @@
 
                         <div class="media-body">
                             <hr>
-                            <h3><strong>Perfil</strong></h3>
+                            <h3><strong>Holaa :)</strong></h3>
                             <hr>
-                            <p>Nombre</p>
-                            <p>Apellido</p>
+                            <p>
+                            @if (!Auth::guest())
+                                {{ Auth::user()->name }}
+                            @endif
+                            </p>
                             <hr>
                             <h3><strong>Historial</strong></h3>
                             <hr>

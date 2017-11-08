@@ -8,10 +8,16 @@
                         <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
                     </div>
                     <div class="col-sm-6 col-md-8">
-                        <h4>Username</h4>
+                        <h4>
+                            @if (!Auth::guest())
+                                {{ Auth::user()->name }}
+                            @endif
+                        </h4>
                         <p>
                             <i class="glyphicon glyphicon-user"></i>
-                            Juan Peres
+                            @if (!Auth::guest())
+                                {{ Auth::user()->name }}
+                            @endif
                             <br/>
                             <i class="glyphicon glyphicon-envelope"></i>
                             jperes@example.com
