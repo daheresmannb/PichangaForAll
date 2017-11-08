@@ -23,9 +23,10 @@
 {!!Html::style('assets/css/jquery.datetimepicker.min.css'); !!}
 {!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
 
+
+
 </head>
 
-      <!-- fin modal -->            
 <body>
 <!-- inicio modal-->
               <div  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">

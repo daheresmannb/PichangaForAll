@@ -42,7 +42,7 @@ class RecintosController extends Controller {
 
     public function RecintoRead(Request $request) {
         if ($request->has('id')) {
-            $recinto = Recinto::find($request->id);
+            $recinto = Recintos::find($request->id);
             if (isset($recinto->id)) {
                 $status           = trans('requests.success.code');
                 $data['errors']   = false;
@@ -53,12 +53,13 @@ class RecintosController extends Controller {
                 $data['respuesta'] = trans('registros.reg');
             }
         } else {
-            $recintoes = Recinto::all();
+            $recintos = Recintos::all();
             $status           = trans('requests.success.code');
             $data['errors'] = false;
-            $data['respuesta']  = $recintoes;
+            $data['respuesta']  = $recintos;
         }
         return Response::json($data, $status);
+        //return view('prices.create', compact('id', 'items'));
     }
 
     public function RecintoUpdate(Request $request) {

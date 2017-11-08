@@ -32,4 +32,5 @@ class Recintos extends Model {
         );
         return $validator;
     }
+
 }

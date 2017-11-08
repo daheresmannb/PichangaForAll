@@ -1,6 +1,37 @@
 @extends('layouts.diseñopichanga')
 @extends('funcionesjs')
 
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $("#btnalert").change(function(){
+      alert("wena jonhyyy");
+        var deptid = $(this).val();
+
+        $.ajax({
+            url: 'getUsers.php',
+            type: 'post',
+            data: {depart:deptid},
+            dataType: 'json',
+            success:function(response){
+
+                var len = response.length;
+
+                $("#listrecinto").empty();
+                for( var i = 0; i<len; i++){
+                    var id = response[i]['id'];
+                    var name = response[i]['name'];
+                    
+                    $("#sel_user").append("<option value='"+id+"'>"+name+"</option>");
+
+                }
+            }
+        });
+    });
+
+});
+
+</script>
 
 <!--datepicker-->
 {!!Html::style('assets/css/jquery.datetimepicker.min.css'); !!}
@@ -16,12 +47,13 @@
  <div class="row">
       <div class="col-sm-6 col-sm-offset-3 form-box">                         
           <div class="form-group row">
-                               <div class="form-horizontal row">
-                                <label class="col-md-6 col">seleccione recinto</label>
-                                         <select class="custom-select col-md-6 col">
-                                               <option selected>recinto</option>
-                                             <option value="1">quilas</option>
-                                         </select>
+          <!-- ruta : partido.crear-->
+{!! Form::open(['route' => array('partido.crear', )]) !!}
+                    <div class="form-horizontal row">
+                        <label class="col-md-6 col">seleccione recinto</label>
+                           <select id="listrecinto">
+                               <option value="0">- Select -</option>
+                            </select>
                                 </div>
                                 <span class="help-block"></span> 
                                 <div class="form-horizontal row" >
@@ -30,7 +62,7 @@
                                   <script>
                                        $("#partidotime").datetimepicker({
                                         autoclose: true
-                                       });
+                                       });    
                                   </script>
                                 </div>
                                 <span class="help-block"></span>
@@ -45,13 +77,13 @@
                                 </div>
                                 <span class="help-block"></span>   
                                 <div class="col-md-6 col-md-offset-3 ">
-                                {!! Form::submit(
-                                            'crear partido',
-                                            array(
-                                            'class'=>'btn btn-primary  btn-block'))
-                                !!}
+                                <input class="btn btn-primary  btn-block" type="submit" value="crearpartido" id="btnpartido">
+                                 
                                 </div>
+{!! Form::close() !!}
 
                 </div>
     </div>
 </div>
+
+ <button class="btn   btn-block" type="submit"  id="btnalert"> holi</button> 
