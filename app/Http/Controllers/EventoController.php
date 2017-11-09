@@ -15,7 +15,6 @@ asi como estan ahora las funciones
     Read
     Update
     Delete
-
 */
 
 class EventoController extends Controller {
@@ -32,6 +31,10 @@ class EventoController extends Controller {
             $partido->termino    = $request->termino;
             $partido->recinto_id = $request->recinto_id;
             $partido->save();
+
+            Event::fire(
+                new AmigosConectadosEvent($usuario)
+            );
 
     		$status			   = trans('requests.success.code');
     		$data['errors']    = false;
