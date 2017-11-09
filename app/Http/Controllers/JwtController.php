@@ -7,7 +7,11 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\User;
+use Illuminate\Support\Facades\Event;
+use App\Events\AmigosConectadosEvent;
 use Response;
+use Illuminate\Support\Facades\Session;
+use Activity;
 
 class JwtController extends Controller {
 	public function login(Request $request) {
@@ -23,6 +27,14 @@ class JwtController extends Controller {
         	} else {
                 $data['errors'] = Auth::user();
         		$data['token']	 = $token;
+
+                Event::fire(
+                    new AmigosConectadosEvent(
+                        Auth::user()->id
+                    )
+                );
+
+                
                 
                 return redirect('/home')->with(
                     'data', 

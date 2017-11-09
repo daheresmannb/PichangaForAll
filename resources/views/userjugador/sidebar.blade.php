@@ -83,6 +83,18 @@
                     );
                 }
             );
+
+            $('#nav').on(
+                'click', 
+                '#usonline', 
+                function(e) {
+                    e.preventDefault();
+                    $('#content').empty();
+                    $('#content').load(
+                        "<?php echo url('usonline'); ?>"
+                    );
+                }
+            );
         }
     );
 </script>
@@ -136,6 +148,13 @@
                         <p>Admin recintos </p>
                     </a>
                 </li>
+                <li id="usonline" class="">
+                    <a href="#">
+                        <i class="ti-map"></i>
+                        <p>Usuarios Online </p>
+                    </a>
+                </li>
+                
                 
 
             </ul>

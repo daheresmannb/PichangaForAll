@@ -6,6 +6,7 @@ use App\Http\Requests;
 use \Response;
 use App\Models\InfoUser;
 use App\User;
+use Activity;
 
 class UserController extends Controller {
 
@@ -221,5 +222,18 @@ class UserController extends Controller {
             $data['respuesta'] = trans('validation.required');
         }
         return Response::json($data, $status);
+    }
+
+    public function getUsersOnline(Request $request) {
+        $usuarios = Activity::users(10)->get();
+        foreach ($usuarios as $usuario) {
+            $inf = InfoUser::where(
+                'id_user', 
+                $usuario->user_id
+            )->first();
+            $usuario->info = $inf;
+        }
+        $data['respuesta'] = $usuarios;
+        return Response::json($data);
     }
 }

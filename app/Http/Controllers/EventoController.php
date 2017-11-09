@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use \Response;
 use App\Http\Requests;
 use App\Models\Partidos;
+use Illuminate\Support\Facades\Event;
+use App\Events\AmigosConectadosEvent;
 use DB;
 /*
 Alex
@@ -26,21 +28,32 @@ class EventoController extends Controller {
     		$data['errors']    = true;
         	$data['respuesta'] = $val->messages();
     	} else {
-            $partido->nombre     = $request->nombre;
-            $partido->inicio     = $request->inicio;
-            $partido->termino    = $request->termino;
-            $partido->recinto_id = $request->recinto_id;
-            $partido->save();
+            if ($request->numjugadores <= 20) {
+                $partido->nombre     = $request->nombre;
+                $partido->inicio     = $request->inicio;
+                $partido->termino    = $request->termino;
+                $partido->recinto_id = $request->recinto_id;
+                $partido->numjugadores = $request->numjugadores;
+                $partido->save();
 
-            Event::fire(
-                new AmigosConectadosEvent($usuario)
-            );
+                Event::fire(
+                    new AmigosConectadosEvent($partido->id)
+                );
 
-    		$status			   = trans('requests.success.code');
-    		$data['errors']    = false;
-        	$data['respuesta'] = $partido;
+                $status            = trans('requests.success.code');
+                $data['errors']    = false;
+                $data['respuesta'] = $partido;
+            } else {
+                $status            = trans('requests.success.code');
+                $data['errors']    = true;
+                $data['respuesta'] = "El partido contiene muchos jugadores";
+            }
     	}
-    	return Response::json($data, $status);
+          return redirect('/home')->with(
+                    'data', 
+                    $data
+                );
+    	//return Response::json($data, $status);
     }
     
     public function ReadPartido(Request $request) {

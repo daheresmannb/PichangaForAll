@@ -19,6 +19,10 @@ class InfoUser extends Model {
         'updated_at'
     ];
 
+    protected $casts = [
+        'id' => 'string',
+        'id_user' => 'string'
+    ];
 
     public function Validar($array){
         $validator = Validator::make(

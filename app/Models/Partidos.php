@@ -13,6 +13,7 @@ class Partidos extends Model {
         'inicio',
         'termino',
         'recinto_id',
+        'numjugadores',
         'created_at',
         'updated_at'
     ];
@@ -23,7 +24,8 @@ class Partidos extends Model {
     			'nombre'     => 'required',
                 'inicio'     => 'required',
                 'termino'    => 'required',
-                'recinto_id' => 'required',
+                'recinto_id'    => 'required',
+                'numjugadores'  => 'required'
 			]
 		);
 		return $validator;

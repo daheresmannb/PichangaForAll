@@ -86,6 +86,14 @@ Route::group(
     			return view('landing.homeuser');
 			}
 		);
+
+		Route::get('/usonline', 
+			function () {
+    			return view('userjugador.jugonline');
+			}
+		);
+
+		
 	}
 );
 
@@ -294,3 +302,8 @@ Route::get(
 	'/social/handle/{provider}', 
 	'SocialAuthController@getSocialHandle'
 )->name('handleSocialLite');
+
+
+
+
+Route::post('usuarioenlinea/obtener','UserController@getUsersOnline');

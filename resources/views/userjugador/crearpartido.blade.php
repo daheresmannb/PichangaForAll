@@ -44,7 +44,7 @@ $(document).ready(
 
 {!!Html::style('assets/css/jquery.datetimepicker.min.css'); !!}
 {!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
-<button id="ej">gg</button>
+
 <div style="background-color: #fbfbfb;" class="card">
 	<div class="container-fluid">
 	<div class="row">
@@ -73,10 +73,19 @@ $(document).ready(
 	<label class="col-md-6 col">fecha y hora de termino</label>
 	<input id="partidotime2" name="termino" class="col-md-6 col">
 	<script>
-		$("input").datetimepicker({
+		$("#partidotime").datetimepicker({
 			autoclose: true
 		});
+    $("#partidotime2").datetimepicker({
+      autoclose: true
+    });
+
 	</script>
+</div>
+<span class="help-block"></span>
+<div class="form-horizontal row">
+<label class="col-md-6 col">numero de jugadores</label>
+ <input type="number" name="numjugadores" min="6" max="20" step="2"  required="required" class="col-md-6 col">
 </div>
 <span class="help-block"></span>   
 <div style="padding-top: 20px;" class="col-md-6 col-md-offset-3 ">

@@ -156,6 +156,7 @@ return [
         GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
         Phaza\LaravelPostgis\DatabaseServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Kim\Activity\ActivityServiceProvider::class,
        
 
         /*
@@ -215,6 +216,7 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Activity' => Kim\Activity\ActivityFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class
     ],
