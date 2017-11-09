@@ -18,6 +18,8 @@
     </script>
 @endif
 
+
+
 <div>
     <a href="{{ url('/signout') }}">Cerrar sesion</a>
 </div>

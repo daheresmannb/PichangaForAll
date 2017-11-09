@@ -49,10 +49,10 @@ class EventoController extends Controller {
                 $data['respuesta'] = "El partido contiene muchos jugadores";
             }
     	}
-          return redirect('/home')->with(
-                    'data', 
-                    $data
-                );
+        return redirect('/home')->with(
+            'respuesta', 
+            $data
+        );
     	//return Response::json($data, $status);
     }
     

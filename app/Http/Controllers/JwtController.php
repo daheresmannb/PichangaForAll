@@ -34,10 +34,8 @@ class JwtController extends Controller {
                     )
                 );
 
-                
-                
                 return redirect('/home')->with(
-                    'data', 
+                    'respuesta', 
                     $data
                 );
         	}
