@@ -301,3 +301,6 @@ Route::post('torneos/crear','TorneoController@CreateTorneo')->name(
 	'torneo.crear'
 );
 
+Route::post('torneos/obtener','TorneoController@ReadTorneo')->name(
+	'torneo.obtener'
+);

@@ -35,6 +35,26 @@ class TorneoController extends Controller
     	}
       return Response::json($data, $status);
     }
+    public function ReadTorneo(Request $request) {
+        if ($request->has('id')) {
+            $torneos = torneos::find($request->id);
+            if (isset($torneos->id)) {
+                $status           = trans('requests.success.code');
+                $data['errors']   = false;
+                $data['respesta'] = $torneos;
+            } else {
+                $status           = trans('requests.failure.code.not_founded');
+                $data['errors']   = true;
+                $data['respesta'] = trans('registros.reg');
+            }
+        } else {
+            $torneos = torneos::all();
+            $status           = trans('requests.success.code');
+            $data['errors'] = false;
+            $data['respesta']   = $torneos;
+        }
+        return Response::json($data, $status);    
+    }
     
 
 
