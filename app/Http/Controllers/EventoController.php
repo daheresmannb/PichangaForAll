@@ -46,10 +46,10 @@ class EventoController extends Controller {
             }
 
     	}
-          return redirect('/home')->with(
-                    'data', 
-                    $data
-                );
+        return redirect('/home')->with(
+            'respuesta', 
+            $data
+        );
     	//return Response::json($data, $status);
     }
     

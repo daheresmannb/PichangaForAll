@@ -23,9 +23,11 @@ class JwtController extends Controller {
         	} else {
                 $data['errors'] = Auth::user();
         		$data['token']	 = $token;
+                $data['respuesta']   = "Bienvenido!!!!!";
+
                 
                 return redirect('/home')->with(
-                    'data', 
+                    'respuesta', 
                     $data
                 );
         	}

@@ -150,7 +150,6 @@ Route::get(
 	}
 );
 
-
 /////////////////////////////////////////////////////////////////////
 
 /////////////// RUTAS CRUD INFO_USER ////////////////////////////////
@@ -294,3 +293,11 @@ Route::get(
 	'/social/handle/{provider}', 
 	'SocialAuthController@getSocialHandle'
 )->name('handleSocialLite');
+
+///////////////////////////////////////////
+/////////torneos rutas//
+
+Route::post('torneos/crear','TorneoController@CreateTorneo')->name(
+	'torneo.crear'
+);
+

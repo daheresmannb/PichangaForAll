@@ -32,7 +32,12 @@ class User extends Authenticatable {
     public function social() {
         return $this->hasMany(SocialLogin::class); 
     }
- 
+    
+    public function setPasswordAttribute($value) {
+       if(!empty($value)) {
+           $this->attributes['password'] = bcrypt($value);
+       }
+   }
     public function Validar($array) {
         $validator = Validator::make(
             $array, [

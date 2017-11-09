@@ -1,6 +1,6 @@
 @extends('layouts.diseñopichanga')
 @extends('funcionesjs')
-@section('recintos')
+
 <script type="text/javascript">
 $(document).ready(
 	function(e) {
@@ -186,4 +186,3 @@ $(document).ready(
    	}
 </script>
 </div>     
-@endsection

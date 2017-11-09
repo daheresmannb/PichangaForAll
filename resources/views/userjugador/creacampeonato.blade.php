@@ -1,7 +1,7 @@
 @extends('layouts.diseñopichanga')
 @extends('funcionesjs')
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>﻿
+
 
 <div class="container-fluid">  
             <div class="" style="display: inline-block; background-color: transparent; padding-bottom: 20px;">
@@ -13,7 +13,7 @@
                     )
                 )!!}
                
-               <button  class="btn btn-primary" data-toggle="modal" data-target="#creartorneo">crear torneo</button>
+               <button  id ="creartorneo" class="btn btn-primary" data-toggle="modal" data-target="#creartorneo">crear torneo</button>
                 
 
             </div>
