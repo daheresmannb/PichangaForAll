@@ -9,8 +9,8 @@ use LRedis;
 use Response;
 
 class AmigosConectadosEventListener {
-    CONST EVENT   = 'amigos';
-    CONST CHANNEL = 'amigos';
+    CONST EVENT   = 'message';
+    CONST CHANNEL = 'message';
     
     public function __construct() {
     }

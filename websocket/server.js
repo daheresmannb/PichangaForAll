@@ -1,27 +1,23 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var Redis = require('ioredis');
-var redis = new Redis();
 
-redis.subscribe(
-    'amigos', 
-    function(err, count) {
-    }
-);
+//creación de cliente de redis
+var redis = require('redis');
+var r = redis.createClient();
+//suscripción a canal de redis
+r.subscribe('message');
+//evento de conección de cliente de sockets
+io.on('connection', function(socket){
+  //console.log('usuario conectado');
+});
+//cuando llegue un mensaje a redis 
+r.on('message', function(channel, messageStr){
+    var message = JSON.parse(messageStr);
+    console.log(message);
+    io.emit('message', message);    
+});
 
-redis.on(
-    'message', 
-    function(channel, message) {
-        console.log('Message Recieved: ' + message);
-        message = JSON.parse(message);
-        
-        io.emit(channel + ':' + message.event, message.data);
-    }
-);
-http.listen(
-    3200, 
-    function() {
-        console.log('Listening on Port 3200');
-    }
-);
+http.listen(3200, function(){
+  console.log('listening on *:3200');
+});

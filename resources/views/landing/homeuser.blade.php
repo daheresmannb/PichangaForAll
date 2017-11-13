@@ -1,5 +1,4 @@
-
-@extends('funcionesjs')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 @if(session('respuesta'))
     <?php 
         $resp = session('respuesta');
@@ -104,38 +103,43 @@
 
 
 <div id="contus" class="container">
-<div class="col-lg-12 col-sm-12">
-    <div class="card hovercard">
-        <div class="card-background">
-            <img class="card-bkimg" alt="" src="http://lorempixel.com/100/100/people/9/">
-            <!-- http://lorempixel.com/850/280/people/9/ -->
+    <div class="col-lg-12 col-sm-12">
+        <div class="card hovercard">
+            <div class="card-background">
+                <img class="card-bkimg" alt="" src="http://lorempixel.com/100/100/people/9/">
+            </div>
+            <div class="useravatar">
+                <img alt="" src="http://lorempixel.com/100/100/people/9/">
+            </div>
+            <div class="card-info"> 
+                <span class="card-title">
+                    @if (!Auth::guest())
+                        {{ Auth::user()->name }}
+                    @endif
+                </span>
+            </div>
+            </div>
+            <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab">
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <div class="hidden-xs">Stars</div>
+                    </button>
+                </div>
+            <div class="btn-group" role="group">
+                <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab">
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                    <div class="hidden-xs">Favorites</div>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <div class="hidden-xs">Following</div>
+                </button>
+            </div>
         </div>
-        <div class="useravatar">
-            <img alt="" src="http://lorempixel.com/100/100/people/9/">
-        </div>
-        <div class="card-info"> <span class="card-title">Pamela Anderson</span>
-
-        </div>
-    </div>
-    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <div class="hidden-xs">Stars</div>
-            </button>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <div class="hidden-xs">Favorites</div>
-            </button>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">Following</div>
-            </button>
-        </div>
-    </div>
-
-        <div class="well">
+            <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
           <h3>This is tab 1</h3>
@@ -148,35 +152,5 @@
         </div>
       </div>
     </div>
-    
     </div>
 </div>
-    <!--
-<script type="application/x-javascript"> 
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-
-    $(function () {
-      $('[data-toggle="popover"]').popover()
-    })
-</script>
-    -->
-    <!--
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading"></div>
-
-                <div class="panel-body">
-                    @if (!Auth::guest())
-                        <h2>
-                            Bienvenido {{ Auth::user()->name }}
-                        </h2>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    -->

@@ -62,6 +62,6 @@ class SocialAuthController extends Controller {
             $user->social()->save($socialData);
         }
         auth()->login($user, true);//Autentica al usuario
-        return redirect('/home');//Redirecciona al home
+        return redirect('/index');//Redirecciona al home
     }
 }

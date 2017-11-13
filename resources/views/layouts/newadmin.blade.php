@@ -26,4 +26,17 @@
 	<script src="js/sb-admin-datatables.min.js"></script>
 	<script src="js/sb-admin-charts.min.js"></script>
 </body>
+
+
+	<script src="growl/javascripts/jquery.growl.js" type="text/javascript"></script>
+	<link href="growl/stylesheets/jquery.growl.css" rel="stylesheet" type="text/css" />
+
+<script src="http://localhost:3200/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost:3200');
+  socket.on('message', function(msg){
+  	console.log(msg);
+    $.growl.notice({ title: "En linea", message: msg.mensaje });	 
+  });
+</script>
 </html>

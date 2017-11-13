@@ -1,6 +1,4 @@
-@extends('layouts.diseñopichanga')
 @extends('funcionesjs')
-
 <script type="text/javascript">
 $(document).ready(
 	function() {
@@ -45,6 +43,7 @@ $(document).ready(
 {!!Html::style('assets/css/jquery.datetimepicker.min.css'); !!}
 {!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
 
+<div id="contus" class="container">
 <div style="background-color: #fbfbfb;" class="card">
 	<div class="container-fluid">
 	<div class="row">
@@ -95,5 +94,6 @@ $(document).ready(
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 </div>

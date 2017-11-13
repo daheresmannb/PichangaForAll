@@ -18,6 +18,6 @@ class AmigosConectadosEvent extends Event {
     }
 
     public function broadcastOn() {
-        return ['amigos'];
+        return ['message'];
     }
 }
