@@ -35,15 +35,10 @@ $(document).ready(
 );
 </script>
 
-{!!Html::style('assets/css/jquery.datetimepicker.min.css'); !!}
-{!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
-
  <div style="padding-left: 10%; padding-right: 10%;" class="container" id="tourpackages-carousel">
-
- 		<div class="col-lg-6">
-        	<h4>Jugadores en Linea</h4>
-        </div>
-      <div id="rowcont"  class="row">
-
-      </div><!-- End row -->
-    </div><!-- End container -->
+ 	<div class="col-lg-6">
+        <h4>Jugadores en Linea</h4>
+    </div>
+    <div id="rowcont"  class="row">
+    </div>
+</div>

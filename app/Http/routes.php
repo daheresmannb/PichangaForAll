@@ -68,6 +68,14 @@ Route::get('/login',
 Route::group(
 	['middleware' => ['auth']], 
 	function () {
+
+		Route::get(
+			'/index',
+			function () {
+				return view('newadmin.index');
+			}
+		);
+
 		Route::get('/home', 
 			function () {
     			return view('userjugador.indexuser');

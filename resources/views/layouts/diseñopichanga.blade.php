@@ -113,7 +113,6 @@ $(document).ready(
                             <button type="button" class="btn btn-default" data-dismiss="modal">crear torneo</button>
                            {!! Form::close() !!}
                             </div>
-
                         </div>
                     </div>
                 </div> 
@@ -129,7 +128,6 @@ $(document).ready(
                     @yield('infouser')
                     @yield('crearpartido')
                     @yield('creacapeonato')
-
             </div>
         </div>
     </div>
@@ -183,13 +181,5 @@ $(document).ready(
     {!! Html::script('admin/assets/js/chartist.min.js'); !!}
     {!! Html::script('admin/assets/js/bootstrap-notify.js'); !!}
     {!! Html::script('admin/assets/js/paper-dashboard.js'); !!}
-
-
-<style type="text/css">
-    body {
-        margin-top: 0%;
-        padding-top: 0%;
-    }
-</style>
 </body>
 </html>
