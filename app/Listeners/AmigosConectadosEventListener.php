@@ -26,3 +26,6 @@ class AmigosConectadosEventListener {
         $redis->publish(self::CHANNEL, json_encode($event));
     }
 }
+
+
+
