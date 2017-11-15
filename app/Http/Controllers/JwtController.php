@@ -25,7 +25,7 @@ class JwtController extends Controller {
 
 				Event::fire(
 					new AmigosConectadosEvent(
-						Auth::user()->id
+						Auth::user()
 					)
 				);
 

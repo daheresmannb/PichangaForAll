@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
+use App\Events\AmigosConectadosEvent;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use App\SocialLogin;
 
 class SocialAuthController extends Controller {
-     
+
     public function getSocialRedirect($provider) {
 
         $providerKey = Config::get('services.' . $provider);
@@ -26,7 +29,7 @@ class SocialAuthController extends Controller {
     public function getSocialHandle($provider) {
         if (Input::get('denied') != '')
             abort(
-                500, 
+                500,
                 "No le diste permiso a nuestra aplicación para acceder a tu cuenta."
             );
 
@@ -35,7 +38,7 @@ class SocialAuthController extends Controller {
 
         //Verifica si el email ya lo tiene un usuario
         $user = User::where(
-            'email', 
+            'email',
             $socialUser->email
         )->first();
 
@@ -51,7 +54,7 @@ class SocialAuthController extends Controller {
         $sameSocialId = SocialLogin::where(
             'social_id', $socialUser->id
             )->where(
-                'provider', 
+                'provider',
                 $provider
         )->first();
 
@@ -61,7 +64,13 @@ class SocialAuthController extends Controller {
             $socialData->provider= $provider;
             $user->social()->save($socialData);
         }
+
         auth()->login($user, true);//Autentica al usuario
+        Event::fire(
+					new AmigosConectadosEvent(
+						Auth::user()
+					)
+				);
         return redirect('/index');//Redirecciona al home
     }
 }

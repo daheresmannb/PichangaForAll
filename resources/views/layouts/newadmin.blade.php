@@ -27,16 +27,21 @@
 	<script src="js/sb-admin-charts.min.js"></script>
 </body>
 
-
-	<script src="growl/javascripts/jquery.growl.js" type="text/javascript"></script>
-	<link href="growl/stylesheets/jquery.growl.css" rel="stylesheet" type="text/css" />
-
+<script src="growl/javascripts/jquery.growl.js" type="text/javascript"></script>
+<link href="growl/stylesheets/jquery.growl.css" rel="stylesheet" type="text/css" />
 <script src="http://localhost:3200/socket.io/socket.io.js"></script>
 <script>
   var socket = io.connect('http://localhost:3200');
-  socket.on('message', function(msg){
-  	console.log(msg);
-    $.growl.notice({ title: "En linea", message: msg.mensaje });	 
-  });
+  socket.on(
+		'message',
+		function(msg) {
+			miid = "<?php echo Auth::user()->id; ?>";
+			if (msg.data.msg.id != miid) {
+				$.growl.notice({
+					title: "En linea",
+					message: msg.data.msg.name
+				});
+			}
+  	});
 </script>
 </html>

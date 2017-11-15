@@ -324,9 +324,12 @@ Route::post('torneos/obtener','TorneoController@ReadTorneo')->name(
 );
 
 
-Route::post('amigo/agregar','UserController@AddFriend');
+Route::post('amigo/solicitud/enviar','UserController@AddFriend');
 Route::post('amigo/solicitud/rechazar','UserController@DenySolFriend');
-Route::post('amigo/eliminar','UserController@DeleteFriend');
+Route::post('amigo/solicitud/aceptar','UserController@AceptarSolicitud');
 
+
+Route::post('amigo/eliminar','UserController@DeleteFriend');
 Route::post('amigo/obtener','UserController@GetFriends');
-Route::post('amigo/solicitudes/obtener','UserController@PendingFriends');
+
+Route::post('amigo/solicitudes/pendientes','UserController@SolicitudesPendientes');

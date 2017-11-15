@@ -13,7 +13,7 @@ class AmigosConectadosEvent extends Event {
 
     public function __construct($dato) {
         $this->data = array(
-            'id'=> $dato
+            'msg'=> $dato
         );
     }
 

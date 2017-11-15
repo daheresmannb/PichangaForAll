@@ -5,6 +5,35 @@
 <script type="text/javascript">
     $(document).ready(
         function(e) {
+          $("#messagesDropdown").click(
+            function () {
+              $.ajax({
+                    type: 'POST',
+                    url:  "<?php echo url('amigo/solicitudes/pendientes'); ?>",
+                    headers: {
+                      'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"
+                    },
+                    data: {
+                      _token: "<?php echo csrf_token(); ?>",
+                      id: "<?php echo Auth::user()->id; ?>"
+                    },
+                    success: function(data) {
+                      console.log(data);
+                      $("#solicitudes").empty();
+                      for (var i = data.respuesta.length - 1; i >= 0; i--) {
+                				var nombre = data.respuesta[i].user.name;
+                        $("#solicitudes").append(
+                          "<div class='dropdown-item'><strong>"+nombre+"</strong><span class='small float-right text-muted'>11:21 AM</span><div class='dropdown-message small' style='padding-left: 20%; padding-right: 20%;'><button value='"+data.respuesta[i].user.id+"' onclick='AceptarSolicitud(value)' type='button' class='btn btn-primary btn-xs btn-block'> Aceptar </button></div> </div>"
+                        );
+                      }
+                    },
+                    error: function(xhr, textStatus, thrownError) {
+                      console.log(thrownError +"error "+ textStatus);
+                    }
+                });
+            }
+          );
+
           $('#content').empty();
           $('#content').load(
             "<?php echo url('homeuser'); ?>"
@@ -12,8 +41,8 @@
           $('#userli').addClass('active');
 
             $('#exampleAccordion').on(
-                'click', 
-                'li', 
+                'click',
+                'li',
                 function(e) {
                     e.preventDefault();
                     $('#exampleAccordion li.active').removeClass('active');
@@ -22,8 +51,8 @@
             );
 
             $('#exampleAccordion').on(
-                'click', 
-                '#userli', 
+                'click',
+                '#userli',
                 function(e) {
                     e.preventDefault();
                     $('#content').empty();
@@ -34,8 +63,8 @@
             );
 
             $('#exampleAccordion').on(
-                'click', 
-                '#mapli', 
+                'click',
+                '#mapli',
                 function(e) {
                     e.preventDefault();
                     $('#content').empty();
@@ -46,8 +75,8 @@
             );
 
             $('#exampleAccordion').on(
-                'click', 
-                '#partli', 
+                'click',
+                '#partli',
                 function(e) {
                     e.preventDefault();
                     $('#content').empty();
@@ -58,8 +87,8 @@
             );
 
             $('#nav').on(
-                'click', 
-                '#torli', 
+                'click',
+                '#torli',
                 function(e) {
                     e.preventDefault();
                     $('#content').empty();
@@ -70,8 +99,8 @@
             );
 
             $('#nav').on(
-                'click', 
-                '#infouser', 
+                'click',
+                '#infouser',
                 function(e) {
                     e.preventDefault();
                     $('#content').empty();
@@ -81,8 +110,8 @@
                 }
             );
             $('#nav').on(
-                'click', 
-                '#recin', 
+                'click',
+                '#recin',
                 function(e) {
                     e.preventDefault();
                     $('#content').empty();
@@ -93,8 +122,8 @@
             );
 
             $('#exampleAccordion').on(
-                'click', 
-                '#usonline', 
+                'click',
+                '#usonline',
                 function(e) {
                     e.preventDefault();
                     $('#content').empty();
@@ -105,6 +134,27 @@
             );
         }
     );
+    function AceptarSolicitud(amigoid) {
+              $.ajax({
+                    type: 'POST',
+                    url:  "<?php echo url('amigo/solicitud/aceptar'); ?>",
+                    headers: {
+                      'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"
+                    },
+                    data: {
+                      _token: "<?php echo csrf_token(); ?>",
+                      id: "<?php echo Auth::user()->id; ?>",
+                      amigo_id: amigoid
+                    },
+                    success: function(data) {
+                      console.log(data);
+                      $("#solicitudes").empty();
+                    },
+                    error: function(xhr, textStatus, thrownError) {
+                      console.log(thrownError +"error "+ textStatus);
+                    }
+                });
+    }
 </script>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">PichangaForAll</a>
@@ -213,33 +263,17 @@
               <i class="fa fa-fw fa-circle"></i>
             </span>
           </a>
-          <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-            <h6 class="dropdown-header">New Messages:</h6>
+          <div class="dropdown-menu" aria-labelledby="messagesDropdown" style="min-width: 300px;">
+            <div id="solicitudes" class="">
+
+            </div>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <strong>David Miller</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <strong>Jane Smith</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <strong>John Doe</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item small" href="#">View all messages</a>
+            <a class="dropdown-item small" href="#">Mostrar todos</a>
           </div>
         </li>
         <li>
 
-          
+
           <a href="">
             @if (!Auth::guest())
               {{ Auth::user()->name }}
@@ -289,7 +323,7 @@
             <a class="dropdown-item small" href="#">View all alerts</a>
           </div>
         </li>
-        
+
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Cerrar</a>

@@ -240,7 +240,7 @@ class UserController extends Controller {
     public function AddFriend(Request $request) {
       if ($request->has('id') && $request->has('amigo_id')) {
           $user = User::find($request->id);
-          $amigo = User::find($request->id);
+          $amigo = User::find($request->amigo_id);
 
           if (isset($user->id) && isset($amigo->id)) {
               $status           = trans('requests.success.code');
@@ -262,7 +262,7 @@ class UserController extends Controller {
     public function DeleteFriend(Request $request) {
       if ($request->has('id') && $request->has('amigo_id')) {
           $user = User::find($request->id);
-          $amigo = User::find($request->id);
+          $amigo = User::find($request->amigo_id);
 
           if (isset($user->id) && isset($amigo->id)) {
               $status           = trans('requests.success.code');
@@ -284,7 +284,7 @@ class UserController extends Controller {
     public function DenySolFriend(Request $request) {
       if ($request->has('id') && $request->has('amigo_id')) {
           $user = User::find($request->id);
-          $amigo = User::find($request->id);
+          $amigo = User::find($request->amigo_id);
 
           if (isset($user->id) && isset($amigo->id)) {
               $status           = trans('requests.success.code');
@@ -310,7 +310,7 @@ class UserController extends Controller {
           if (isset($user->id)) {
               $status           = trans('requests.success.code');
               $data['errors']   = false;
-              $data['respuesta'] = $user->getAllFriendships();
+              $data['respuesta'] = $user->getAcceptedFriendships();
           } else {
               $status           = trans('requests.failure.code.not_founded');
               $data['errors']   = true;
@@ -324,15 +324,21 @@ class UserController extends Controller {
       return Response::json($data, $status);
     }
 
-
-    public function PendingFriends(Request $request) {
+    public function SolicitudesPendientes(Request $request) {
       if ($request->has('id')) {
           $user = User::find($request->id);
 
           if (isset($user->id)) {
+              $sols = $user->getFriendRequests();
+
+              foreach ($sols as $sol) {
+                  $user = User::find($sol->sender_id);
+                  $sol->user = $user;
+              }
+
               $status           = trans('requests.success.code');
               $data['errors']   = false;
-              $data['respuesta'] = $user->getAllFriendships();
+              $data['respuesta'] = $sols;
           } else {
               $status           = trans('requests.failure.code.not_founded');
               $data['errors']   = true;
@@ -346,4 +352,25 @@ class UserController extends Controller {
       return Response::json($data, $status);
     }
 
+    public function AceptarSolicitud(Request $request) {
+        if ($request->has('id') && $request->has('amigo_id')) {
+            $user = User::find($request->id);
+            $amigo = User::find($request->amigo_id);
+
+            if (isset($user->id) && isset($amigo->id)) {
+                $status           = trans('requests.success.code');
+                $data['errors']   = false;
+                $data['respuesta'] = $user->acceptFriendRequest($amigo);
+            } else {
+                $status           = trans('requests.failure.code.not_founded');
+                $data['errors']   = true;
+                $data['respuesta'] = trans('registros.reg');
+            }
+        } else {
+            $status           = trans('requests.failure.code.bad_request');
+            $data['errors']   = false;
+            $data['respuesta'] = trans('validation.required');
+        }
+        return Response::json($data, $status);
+    }
 }
