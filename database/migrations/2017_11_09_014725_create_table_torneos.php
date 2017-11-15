@@ -12,8 +12,9 @@ class CreateTableTorneos extends Migration
      */
     public function up()
     {
+    if (!Schema::hasTable('torneos')) {  
          Schema::create(
-            'torneos', 
+            'torneos',
             function(Blueprint $table) {
                 $table->uuid('id')->default(
                     DB::raw('uuid_generate_v4()')
@@ -25,14 +26,15 @@ class CreateTableTorneos extends Migration
                 $table->foreign('id_encargado')
                     ->references('id')
                     ->on('users')
-                ->onDelete('cascade'); 
+                ->onDelete('cascade');
                 $table->foreign('id_recinto')
                     ->references('id')
                     ->on('recintos')
-                ->onDelete('cascade'); 
+                ->onDelete('cascade');
                 $table->primary('id');
             }
         );
+      }
     }
 
     /**

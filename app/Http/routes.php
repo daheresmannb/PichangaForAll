@@ -2,20 +2,20 @@
 
 //Route::auth();
 Route::get(
-	'/', 
+	'/',
 	function () {
     	return view('landing.index');
 	}
 );
 
 Route::get(
-	'/listaj', 
+	'/listaj',
 	function () {//nombre_carpeta .   nombre_vista
     	return view('userjugador.listaj');
 	}
 );
 Route::get(
-	'/formulariojugador', 
+	'/formulariojugador',
 	function () {
     	return view('userjugador.formjugador');
 	}
@@ -24,20 +24,20 @@ Route::get(
 Route::post('/regjugador', 'GmapsController@LatLngbyDirect')->name('reg.jug');
 
 Route::get(
-	'/datosjugador', 
+	'/datosjugador',
 	function () {
     	return view('userjugador.datosjug');
 	}
 );
 
 Route::get(
-	'/perfil', 
+	'/perfil',
 	function () {
     	return view('userjugador.perfil');
 	}
 );
 Route::get(
-	'/crearpartido', 
+	'/crearpartido',
 	function () {
     	return view('userjugador.crearpartido');
 	}
@@ -57,7 +57,7 @@ Route::post('obtener/ejemplo','EjemploController@ejemplo');
 Route::post('/signin', 'JwtController@login');
 Route::get('/signout', 'JwtController@logout');
 
-Route::get('/login', 
+Route::get('/login',
 	function () {
     	return view('landing.login');
 	}
@@ -66,7 +66,7 @@ Route::get('/login',
 
 ////////////// rutas para el usuario logeado //////////////////////
 Route::group(
-	['middleware' => ['auth']], 
+	['middleware' => ['auth']],
 	function () {
 
 		Route::get(
@@ -76,52 +76,52 @@ Route::group(
 			}
 		);
 
-		Route::get('/home', 
+		Route::get('/home',
 			function () {
     			return view('userjugador.indexuser');
 			}
 		);
 
 		Route::get(
-			'/jugadorescercanos', 
+			'/jugadorescercanos',
 			function () {
     			return view('userjugador.gmaps');
 			}
 		);
 
-		Route::get('/homeuser', 
+		Route::get('/homeuser',
 			function () {
     			return view('landing.homeuser');
 			}
 		);
 
-		Route::get('/usonline', 
+		Route::get('/usonline',
 			function () {
     			return view('userjugador.jugonline');
 			}
 		);
 
-		
+
 	}
 );
 
 /////////////// rutas para el usuario logeado /////////////////////////
 
 Route::get(
-	'/indexj', 
+	'/indexj',
 	function () {
     	return view('userjugador.indexuser');
 	}
 );
 
 Route::group(
-	['middleware' => ['admin']], 
+	['middleware' => ['admin']],
 	function () {
 
 	}
 );
 
-/////////////// RUTAS CRUD JUGADOR //////////////////////////////////	
+/////////////// RUTAS CRUD JUGADOR //////////////////////////////////
 Route::post('jugador/crear','JugadorController@CreateJugador')->name(
 	'jugador.obtener'
 );
@@ -175,7 +175,7 @@ Route::get(
 //Route::post('/infoUser','UserController@updateinfouser');
 
 Route::get(
-	'/infouser', 
+	'/infouser',
 	function () {
     	return view('userjugador.infouser');
 	}
@@ -199,7 +199,7 @@ Route::post('infouser/eliminar','UserController@DeleteInfoUser')->name(
 /////////////// RUTAS CRUD USER /////////////////////////////////////
 
 Route::get(
-	'/buscar', 
+	'/buscar',
 	function () {
     	return view('userjugador.buscarjug');
 	}
@@ -301,12 +301,12 @@ Route::post('infoperfil','JugadorController@ReadInfoJugador')->name(
 
 
 Route::get(
-	'/social/redirect/{provider}', 
+	'/social/redirect/{provider}',
 	'SocialAuthController@getSocialRedirect'
 )->name('redirectSocialLite');
 
 Route::get(
-	'/social/handle/{provider}', 
+	'/social/handle/{provider}',
 	'SocialAuthController@getSocialHandle'
 )->name('handleSocialLite');
 
@@ -322,3 +322,11 @@ Route::post('torneos/crear','TorneoController@CreateTorneo')->name(
 Route::post('torneos/obtener','TorneoController@ReadTorneo')->name(
 	'torneo.obtener'
 );
+
+
+Route::post('amigo/agregar','UserController@AddFriend');
+Route::post('amigo/solicitud/rechazar','UserController@DenySolFriend');
+Route::post('amigo/eliminar','UserController@DeleteFriend');
+
+Route::post('amigo/obtener','UserController@GetFriends');
+Route::post('amigo/solicitudes/obtener','UserController@PendingFriends');

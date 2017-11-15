@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Ghanem\Friendship\Contracts\Friendable;
+use Ghanem\Friendship\Traits\Friendable as FriendableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Validator;
 
 class User extends Authenticatable {
+	use FriendableTrait;
 	protected $table = 'users';
 	public $incrementing = false;
 

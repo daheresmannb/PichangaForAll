@@ -50,10 +50,10 @@ class UserController extends Controller {
     		$data['errors'] = false;
         	$data['respuesta']	= $partidos;
     	}
-   		return Response::json($data, $status);    
+   		return Response::json($data, $status);
 	}
 
-    public function UpdateInfoUser(Request $request) { 
+    public function UpdateInfoUser(Request $request) {
     	if ($request->has('id_user')) {
     		$infouser = InfoUser::where('id_user',"".$request->id_user)->first();
     		if (isset($infouser->id)) {
@@ -85,7 +85,7 @@ class UserController extends Controller {
         	$data['respuesta'] = trans('validation.required');
     	}
    		    return redirect('/home')->with(
-                'respuesta', 
+                'respuesta',
                 $data
             );
     }
@@ -140,11 +140,11 @@ class UserController extends Controller {
             $data['respuesta'] = 'La confimacion de contraseña no coincide';
         }
         return redirect('/registro')->with(
-            'respuesta', 
+            'respuesta',
             $data
         );
     }
-    
+
     public function ReadUser(Request $request) {
         if ($request->has('id')) {
             $user = User::find($request->id);
@@ -163,11 +163,11 @@ class UserController extends Controller {
             $data['errors'] = false;
             $data['respuesta']   = $partidos;
         }
-        return Response::json($data, $status);    
-    }  
+        return Response::json($data, $status);
+    }
 
-    public function UpdateUser(Request $request) { 
-        
+    public function UpdateUser(Request $request) {
+
         if ($request->has('id')) {
             $user = User::find($request->id);
             if (isset($user->id)) {
@@ -189,7 +189,7 @@ class UserController extends Controller {
                         $data['respuesta'] = $user;
                     }
                 }
-            } else {    
+            } else {
                 $status           = trans('requests.failure.code.not_founded');
                 $data['errors']   = true;
                 $data['respuesta'] = trans('registros.reg');
@@ -228,7 +228,7 @@ class UserController extends Controller {
         $usuarios = Activity::users(10)->get();
         foreach ($usuarios as $usuario) {
             $inf = InfoUser::where(
-                'id_user', 
+                'id_user',
                 $usuario->user_id
             )->first();
             $usuario->info = $inf;
@@ -236,4 +236,114 @@ class UserController extends Controller {
         $data['respuesta'] = $usuarios;
         return Response::json($data);
     }
+
+    public function AddFriend(Request $request) {
+      if ($request->has('id') && $request->has('amigo_id')) {
+          $user = User::find($request->id);
+          $amigo = User::find($request->id);
+
+          if (isset($user->id) && isset($amigo->id)) {
+              $status           = trans('requests.success.code');
+              $data['errors']   = false;
+              $data['respuesta'] = $user->befriend($amigo);
+          } else {
+              $status           = trans('requests.failure.code.not_founded');
+              $data['errors']   = true;
+              $data['respuesta'] = trans('registros.reg');
+          }
+      } else {
+        $status           = trans('requests.failure.code.bad_request');
+        $data['errors']   = false;
+        $data['respuesta'] = trans('validation.required');
+      }
+      return Response::json($data, $status);
+    }
+
+    public function DeleteFriend(Request $request) {
+      if ($request->has('id') && $request->has('amigo_id')) {
+          $user = User::find($request->id);
+          $amigo = User::find($request->id);
+
+          if (isset($user->id) && isset($amigo->id)) {
+              $status           = trans('requests.success.code');
+              $data['errors']   = false;
+              $data['respuesta'] = $user->unfriend($amigo);
+          } else {
+              $status           = trans('requests.failure.code.not_founded');
+              $data['errors']   = true;
+              $data['respuesta'] = trans('registros.reg');
+          }
+      } else {
+        $status           = trans('requests.failure.code.bad_request');
+        $data['errors']   = false;
+        $data['respuesta'] = trans('validation.required');
+      }
+      return Response::json($data, $status);
+    }
+
+    public function DenySolFriend(Request $request) {
+      if ($request->has('id') && $request->has('amigo_id')) {
+          $user = User::find($request->id);
+          $amigo = User::find($request->id);
+
+          if (isset($user->id) && isset($amigo->id)) {
+              $status           = trans('requests.success.code');
+              $data['errors']   = false;
+              $data['respuesta'] = $user->denyFriendRequest($amigo);
+          } else {
+              $status           = trans('requests.failure.code.not_founded');
+              $data['errors']   = true;
+              $data['respuesta'] = trans('registros.reg');
+          }
+      } else {
+        $status           = trans('requests.failure.code.bad_request');
+        $data['errors']   = false;
+        $data['respuesta'] = trans('validation.required');
+      }
+      return Response::json($data, $status);
+    }
+
+    public function GetFriends(Request $request) {
+      if ($request->has('id')) {
+          $user = User::find($request->id);
+
+          if (isset($user->id)) {
+              $status           = trans('requests.success.code');
+              $data['errors']   = false;
+              $data['respuesta'] = $user->getAllFriendships();
+          } else {
+              $status           = trans('requests.failure.code.not_founded');
+              $data['errors']   = true;
+              $data['respuesta'] = trans('registros.reg');
+          }
+      } else {
+        $status           = trans('requests.failure.code.bad_request');
+        $data['errors']   = false;
+        $data['respuesta'] = trans('validation.required');
+      }
+      return Response::json($data, $status);
+    }
+
+
+    public function PendingFriends(Request $request) {
+      if ($request->has('id')) {
+          $user = User::find($request->id);
+
+          if (isset($user->id)) {
+              $status           = trans('requests.success.code');
+              $data['errors']   = false;
+              $data['respuesta'] = $user->getAllFriendships();
+          } else {
+              $status           = trans('requests.failure.code.not_founded');
+              $data['errors']   = true;
+              $data['respuesta'] = trans('registros.reg');
+          }
+      } else {
+        $status           = trans('requests.failure.code.bad_request');
+        $data['errors']   = false;
+        $data['respuesta'] = trans('validation.required');
+      }
+      return Response::json($data, $status);
+    }
+
 }
