@@ -44,7 +44,7 @@ $(document).ready(
 {!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
 
 <div id="contus" class="container">
-<div style="background-color: #fbfbfb;" class="card">
+<div style="background-color: #fbfbfb;" >
 	<div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2 text">
@@ -52,7 +52,7 @@ $(document).ready(
 		</div>
 	</div>
  	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3 form-box">                         
+		<div class="col-sm-6 col-sm-offset-3 form-box" class="card"  >                         
 			<div class="form-group row">	
 {!! Form::open(['route' => array('partido.crear', )]) !!}
 <input type="hidden" id="recinto_id" name="recinto_id">
@@ -62,13 +62,13 @@ $(document).ready(
 		<option value="0">waaa</option>
 	</select>
 </div>
-<span class="help-block"></span> 
-<div class="form-horizontal row" >
+
+<div class="form-horizontal row" style="padding-top: 10px">
 	<label class="col-md-6 col">fecha y hora de inicio</label>
 	<input id="partidotime" name="inicio" class="col-md-6 col">
 </div>
-<span class="help-block"></span>
-<div class="form-horizontal row">
+
+<div class="form-horizontal row" style="padding-top: 10px">
 	<label class="col-md-6 col">fecha y hora de termino</label>
 	<input id="partidotime2" name="termino" class="col-md-6 col">
 	<script>
@@ -82,7 +82,7 @@ $(document).ready(
 	</script>
 </div>
 <span class="help-block"></span>
-<div class="form-horizontal row">
+<div class="form-horizontal row" style="padding-top: 10px">
 <label class="col-md-6 col">numero de jugadores</label>
  <input type="number" name="numjugadores" min="6" max="20" step="2"  required="required" class="col-md-6 col">
 </div>

@@ -1,16 +1,17 @@
-@extends('layouts.diseñopichanga')
 @extends('funcionesjs')
 
 
 
-<div class="container-fluid" >
+<div class="container-fluid">  
 	<div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h3><strong>Informacion de usuario</strong> </h3>
              
                         </div>
   </div>
-      <div class="row">
+      
+  <div>
+       <div class="card" style="padding-bottom: 1%;">
               <div class="col-sm-6 col-sm-offset-3 form-box">                         
                       <div class="form">
                     				{!! Form::open(['route' => array('infouser.actualizar', )]) !!}
@@ -53,7 +54,7 @@
                     								</div>           
                                     <span class="help-block"></span>                        
                                     
-                    								<div class="col-md-6 col-md-offset-3 ">
+                    								<div class="col-md-6 col-md-offset-3 " style="padding: 30px">
                        								{!! Form::submit(
                          										'Actualizar',
                          										array(
@@ -65,6 +66,7 @@
 
                     </div><!--fin de containr botton-->
               </div>
-       </div>
+       </div><!--fin row-->
+
 </div>
                     

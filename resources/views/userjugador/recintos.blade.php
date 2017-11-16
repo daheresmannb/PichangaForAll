@@ -1,4 +1,3 @@
-@extends('layouts.diseñopichanga')
 @extends('funcionesjs')
 
 <script type="text/javascript">
@@ -91,11 +90,12 @@ $(document).ready(
 <!--div contenedor de map-->
 <div class="card" style="padding: 1% 1% 1% 1%;">
   <center>
+  <div class="card">
     <div id="map"></div>
     <div id="lat"></div>
     <div id="lon"></div>
   </center>
-
+</div>
 </div>
 <!--JS de googlemaps key incorporada-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpd08Tu7zozwrj3-Sb3RIBUv13gnY3SQ&callback=initMap" async defer>
