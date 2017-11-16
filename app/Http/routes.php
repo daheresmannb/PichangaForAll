@@ -349,3 +349,5 @@ Route::group(
     Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 	}
 );
+
+Route::post('partido/sumarse','EventoController@SumarsePartido');

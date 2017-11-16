@@ -14,8 +14,7 @@
 	{!! Html::style('admin/assets/css/themify-icons.css'); !!}
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-	@yield('navbar')
-	@yield('contenido')
+
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -25,6 +24,8 @@
 	<script src="js/sb-admin.min.js"></script>
 	<script src="js/sb-admin-datatables.min.js"></script>
 	<script src="js/sb-admin-charts.min.js"></script>
+	@yield('navbar')
+	@yield('contenido')
 </body>
 
 <script src="growl/javascripts/jquery.growl.js" type="text/javascript"></script>

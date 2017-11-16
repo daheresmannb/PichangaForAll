@@ -18,6 +18,10 @@ class Partidos extends Model {
         'updated_at'
     ];
 
+		protected $casts = [
+        'id' => 'string'
+    ];
+
     public function Validar($array){
     	$validator = Validator::make(
     		$array, [

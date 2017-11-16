@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumNumIntegrantesTablaPartidos extends Migration
+class AddcolumnTablaPartidos extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,7 @@ class AddColumNumIntegrantesTablaPartidos extends Migration
      */
     public function up()
     {
-         Schema::table(
-               'partidos',
-           function (Blueprint $table) {
-                    $table->string('nombre')->nullable();
-                }
-            );
+        //
     }
 
     /**

@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use \Response;
 use App\Http\Requests;
 use App\Models\Partidos;
+use App\User;
+use App\Models\ParticipantePartido;
 use Illuminate\Support\Facades\Event;
 use App\Events\AmigosConectadosEvent;
 use DB;
@@ -36,10 +38,6 @@ class EventoController extends Controller {
                 $partido->numjugadores = $request->numjugadores;
                 $partido->save();
 
-                Event::fire(
-                    new AmigosConectadosEvent($partido->id)
-                );
-
                 $status            = trans('requests.success.code');
                 $data['errors']    = false;
                 $data['respuesta'] = $partido;
@@ -49,34 +47,34 @@ class EventoController extends Controller {
                 $data['respuesta'] = "El partido contiene muchos jugadores";
             }
     	}
-        return redirect('/home')->with(
-            'respuesta', 
+        return redirect('/index')->with(
+            'respuesta',
             $data
         );
     	//return Response::json($data, $status);
     }
-    
+
     public function ReadPartido(Request $request) {
     	if ($request->has('id')) {
     		$partido = Partidos::find($request->id);
     		if (isset($partido->id)) {
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respesta'] = $partido;
+        		$data['respuesta'] = $partido;
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.reg');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$partidos = Partidos::all();
     		$status			  = trans('requests.success.code');
     		$data['errors'] = false;
-        	$data['respesta']	= $partidos;
+        $data['respuesta']	= $partidos;
     	}
-   		return Response::json($data, $status);    
+   		return Response::json($data, $status);
 	}
- 
+
  	public function UpdatePartido(Request $request) {
     	if ($request->has('id')) {
     		$partido = Partidos::find($request->id);
@@ -85,7 +83,7 @@ class EventoController extends Controller {
     			if ($val->fails()) {
     				$status			  = trans('requests.failure.code.bad_request');
     				$data['errors']   = true;
-        			$data['respesta'] = $val;
+        			$data['respuesta'] = $val;
     			} else {
                     $partido->recinto_id    = $request->recinto_id;
                     $partido->fecha         = $request->fecha;
@@ -95,17 +93,17 @@ class EventoController extends Controller {
 
     				$status			  = trans('requests.success.code');
     				$data['errors']   = false;
-        			$data['respesta'] = $partido;
+        			$data['respuesta'] = $partido;
     			}
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.reg');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = false;
-        	$data['respesta'] = trans('validation.required');
+        	$data['respuesta'] = trans('validation.required');
     	}
    		return Response::json($data, $status);
     }
@@ -118,17 +116,47 @@ class EventoController extends Controller {
 
     			$status			  = trans('requests.success.code');
     			$data['errors']   = false;
-        		$data['respesta'] = trans('registros.del');
+        		$data['respuesta'] = trans('registros.del');
     		} else {
     			$status			  = trans('requests.failure.code.not_founded');
     			$data['errors']   = true;
-        		$data['respesta'] = trans('registros.reg');
+        		$data['respuesta'] = trans('registros.reg');
     		}
     	} else {
     		$status			  = trans('requests.failure.code.bad_request');
     		$data['errors']   = false;
-        	$data['respesta'] = trans('validation.required');
+        	$data['respuesta'] = trans('validation.required');
     	}
    		return Response::json($data, $status);
     }
+
+    public function SumarsePartido(Request $request) {
+
+    	if ($request->has('partido_id') && $request->has('jugador_id')) {
+        $partido = Partidos::find($request->partido_id);
+        $participante = User::find($request->jugador_id);
+
+
+          if (isset($partido->id) && isset($participante->id)) {
+            $addpart = new ParticipantePartido();
+            $addpart->partido_id = $request->partido_id;
+            $addpart->jugador_id = $request->jugador_id;
+            $addpart->save();
+
+      			$status			  = trans('requests.success.code');
+      			$data['errors']   = false;
+            $data['respuesta'] = $addpart;
+      		} else {
+      			$status			  = trans('requests.failure.code.not_founded');
+      			$data['errors']   = true;
+          	$data['respuesta'] = trans('registros.reg');
+      		}
+    		
+    	} else {
+    		$status			  = trans('requests.success.code');
+    		$data['errors'] = false;
+        $data['respuesta']	= "Datos requeridos";
+    	}
+   		return Response::json($data, $status);
+	}
 }
