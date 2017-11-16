@@ -86,7 +86,7 @@
                 }
             );
 
-            $('#nav').on(
+            $('#exampleAccordion').on(
                 'click',
                 '#torli',
                 function(e) {
@@ -98,7 +98,7 @@
                 }
             );
 
-            $('#nav').on(
+            $('#exampleAccordion').on(
                 'click',
                 '#infouser',
                 function(e) {
@@ -109,9 +109,9 @@
                     );
                 }
             );
-            $('#nav').on(
+            $('#exampleAccordion').on(
                 'click',
-                '#recin',
+                '#recint',
                 function(e) {
                     e.preventDefault();
                     $('#content').empty();
@@ -120,6 +120,7 @@
                     );
                 }
             );
+
 
             $('#exampleAccordion').on(
                 'click',
@@ -163,50 +164,58 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li id="userli" class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="#">
+      
+   
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="ti-user"></i>
             <span class="nav-link-text">Mi Perfil</span>
           </a>
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            <li>
+              <a id="userli">Ver Perfil</a>
+            </li>
+            <li>
+              <a id="infouser">Informacion usuario</a>
+            </li>
+
+          </ul>
         </li>
-        <li id="mapli" class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+
+       <li id="mapli" class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="#">
             <i class="ti-map"></i>
             <span class="nav-link-text">Jugadores Cercanos</span>
           </a>
         </li>
-        <li id="partli" class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Partidos</span>
-          </a>
-        </li>
+
         <li id="usonline" class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="#">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Jugadores en linea</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Example Pages</span>
+         <li id="partli" class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="#">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Partidos</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li>
-              <a href="login.html">Login Page</a>
-            </li>
-            <li>
-              <a href="register.html">Registration Page</a>
-            </li>
-            <li>
-              <a href="forgot-password.html">Forgot Password Page</a>
-            </li>
-            <li>
-              <a href="blank.html">Blank Page</a>
-            </li>
-          </ul>
         </li>
+       <li id="torli" class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="#">
+            <i class="fa fa-fw fa-sitemap"></i>
+            <span class="nav-link-text">torneos</span>
+          </a>
+        </li>
+
+          <li id="recint" class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="#">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Recintos</span>
+          </a>
+        </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
