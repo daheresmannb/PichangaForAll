@@ -95,6 +95,7 @@ $(document).ready(
     <div id="lat"></div>
     <div id="lon"></div>
   </center>
+  </div>
 </div>
 </div>
 <!--JS de googlemaps key incorporada-->
