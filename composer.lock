@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcd2964d2e59d32b2a6a2ae307fd15b0",
+    "content-hash": "75bc95c969d51c3312378b2c8814bee0",
     "packages": [
         {
             "name": "bosnadev/database",
@@ -113,6 +113,67 @@
                 "preload"
             ],
             "time": "2016-09-16T12:50:15+00:00"
+        },
+        {
+            "name": "cmgmyr/messenger",
+            "version": "2.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cmgmyr/laravel-messenger.git",
+                "reference": "3da74c4edd8f0caa292ba1fbfc2f42d209519f1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cmgmyr/laravel-messenger/zipball/3da74c4edd8f0caa292ba1fbfc2f42d209519f1b",
+                "reference": "3da74c4edd8f0caa292ba1fbfc2f42d209519f1b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/database": "~5.0",
+                "illuminate/support": "~5.0",
+                "nesbot/carbon": "~1.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "adamwathan/faktory": "0.3.*",
+                "friendsofphp/php-cs-fixer": "^2.5",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "4.*|5.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cmgmyr\\Messenger\\MessengerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cmgmyr\\Messenger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Gmyr",
+                    "email": "cmgmyr@gmail.com",
+                    "homepage": "https://github.com/cmgmyr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple user messaging tool for Laravel",
+            "keywords": [
+                "Messenger",
+                "laravel",
+                "messaging",
+                "user messaging"
+            ],
+            "time": "2017-10-06T20:41:20+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -712,16 +773,16 @@
         },
         {
             "name": "genealabs/phpgmaps",
-            "version": "0.4.1",
+            "version": "0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GeneaLabs/Phpgmaps.git",
-                "reference": "3799573539a93ae1841bbd3a7dcd95bc50d7439c"
+                "reference": "2aa79643d1b231fa952997062d6240b97b5cf668"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GeneaLabs/Phpgmaps/zipball/3799573539a93ae1841bbd3a7dcd95bc50d7439c",
-                "reference": "3799573539a93ae1841bbd3a7dcd95bc50d7439c",
+                "url": "https://api.github.com/repos/GeneaLabs/Phpgmaps/zipball/2aa79643d1b231fa952997062d6240b97b5cf668",
+                "reference": "2aa79643d1b231fa952997062d6240b97b5cf668",
                 "shasum": ""
             },
             "require": {
@@ -764,7 +825,7 @@
                 "phpgmaps"
             ],
             "abandoned": "GeneaLabs/laravel-maps",
-            "time": "2017-05-16T18:50:20+00:00"
+            "time": "2017-10-14T12:23:53+00:00"
         },
         {
             "name": "geo-io/interface",
@@ -1082,6 +1143,59 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "hamedmehryar/laravel-chat",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamedmehryar/laravel-chat.git",
+                "reference": "2c40b842c516ccd5c4a4d25429eae07d5a38ef91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamedmehryar/laravel-chat/zipball/2c40b842c516ccd5c4a4d25429eae07d5a38ef91",
+                "reference": "2c40b842c516ccd5c4a4d25429eae07d5a38ef91",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/database": "~5.0",
+                "illuminate/support": "~5.0",
+                "nesbot/carbon": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "adamwathan/faktory": "0.3.*",
+                "fabpot/php-cs-fixer": "1.0.*@dev",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Hamedmehryar\\Chat\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hamed mehryar",
+                    "email": "hamed@netlinks.af",
+                    "homepage": "https://github.com/hamedmehryar",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Chat feature for laravel",
+            "keywords": [
+                "chat",
+                "laravel",
+                "messaging",
+                "user messaging"
+            ],
+            "time": "2015-12-26T11:34:33+00:00"
         },
         {
             "name": "irazasyed/jwt-auth-guard",
@@ -1856,7 +1970,7 @@
         },
         {
             "name": "mtdowling/cron-expression",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mtdowling/cron-expression.git",
@@ -2115,16 +2229,16 @@
         },
         {
             "name": "paulvl/jwt-guard",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paulvl/jwt-guard.git",
-                "reference": "29e64e643e2b0ce8a54ef8f29a3d403da37ba7ab"
+                "reference": "1c1ee61d506126c5da5b8eb726e21c5780f314a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paulvl/jwt-guard/zipball/29e64e643e2b0ce8a54ef8f29a3d403da37ba7ab",
-                "reference": "29e64e643e2b0ce8a54ef8f29a3d403da37ba7ab",
+                "url": "https://api.github.com/repos/paulvl/jwt-guard/zipball/1c1ee61d506126c5da5b8eb726e21c5780f314a7",
+                "reference": "1c1ee61d506126c5da5b8eb726e21c5780f314a7",
                 "shasum": ""
             },
             "require": {
@@ -2133,6 +2247,13 @@
                 "php": ">=5.5.9"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Paulvl\\JWTGuard\\Auth\\AuthServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Paulvl\\JWTGuard\\": "src/"
@@ -2157,7 +2278,7 @@
                 "token",
                 "web"
             ],
-            "time": "2017-08-28T16:34:30+00:00"
+            "time": "2017-10-16T01:08:52+00:00"
         },
         {
             "name": "phaza/laravel-postgis",
@@ -2690,16 +2811,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.3.9",
+            "version": "v3.3.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "54ca9520a00386f83bca145819ad3b619aaa2485"
+                "reference": "271d8c27c3ec5ecee6e2ac06016232e249d638d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/54ca9520a00386f83bca145819ad3b619aaa2485",
-                "reference": "54ca9520a00386f83bca145819ad3b619aaa2485",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/271d8c27c3ec5ecee6e2ac06016232e249d638d9",
+                "reference": "271d8c27c3ec5ecee6e2ac06016232e249d638d9",
                 "shasum": ""
             },
             "require": {
@@ -2749,7 +2870,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-29T21:54:42+00:00"
+            "time": "2017-11-05T15:47:03+00:00"
         },
         {
             "name": "symfony/finder",
@@ -2937,16 +3058,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
                 "shasum": ""
             },
             "require": {
@@ -2958,7 +3079,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -2992,20 +3113,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca"
+                "reference": "265fc96795492430762c29be291a371494ba3a5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/e85ebdef569b84e8709864e1a290c40f156b30ca",
-                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/265fc96795492430762c29be291a371494ba3a5b",
+                "reference": "265fc96795492430762c29be291a371494ba3a5b",
                 "shasum": ""
             },
             "require": {
@@ -3015,7 +3136,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -3048,20 +3169,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "67925d1cf0b84bd234a83bebf26d4eb281744c6d"
+                "reference": "6e719200c8e540e0c0effeb31f96bdb344b94176"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/67925d1cf0b84bd234a83bebf26d4eb281744c6d",
-                "reference": "67925d1cf0b84bd234a83bebf26d4eb281744c6d",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/6e719200c8e540e0c0effeb31f96bdb344b94176",
+                "reference": "6e719200c8e540e0c0effeb31f96bdb344b94176",
                 "shasum": ""
             },
             "require": {
@@ -3070,7 +3191,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -3100,7 +3221,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2017-07-05T15:09:33+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/process",
@@ -4746,16 +4867,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.9",
+            "version": "v3.3.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "1d8c2a99c80862bdc3af94c1781bf70f86bccac0"
+                "reference": "0938408c4faa518d95230deabb5f595bf0de31b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/1d8c2a99c80862bdc3af94c1781bf70f86bccac0",
-                "reference": "1d8c2a99c80862bdc3af94c1781bf70f86bccac0",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/0938408c4faa518d95230deabb5f595bf0de31b9",
+                "reference": "0938408c4faa518d95230deabb5f595bf0de31b9",
                 "shasum": ""
             },
             "require": {
@@ -4797,7 +4918,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-29T21:54:42+00:00"
+            "time": "2017-11-10T18:26:04+00:00"
         },
         {
             "name": "webmozart/assert",

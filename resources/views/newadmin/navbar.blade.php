@@ -121,6 +121,26 @@
                 }
             );
 
+            $("#msgs").click(
+                function (e) {
+                  e.preventDefault();
+                  $('#content').empty();
+                  $('#content').load(
+                      "<?php echo url('messages'); ?>"
+                  );
+                }
+            );
+
+            $("#crearmsg").click(
+                function (e) {
+                  e.preventDefault();
+                  $('#content').empty();
+                  $('#content').load(
+                      "<?php echo url('messages/create'); ?>"
+                  );
+                }
+            );
+
             $('#exampleAccordion').on(
                 'click',
                 '#usonline',
@@ -271,9 +291,27 @@
             <a class="dropdown-item small" href="#">Mostrar todos</a>
           </div>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="chat" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-envelope"></i>
+            <span class="d-lg-none">mensajes
+              <span class="badge badge-pill badge-primary">12 New</span>
+            </span>
+            <span class="indicator text-primary d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="messagesDropdown" style="min-width: 300px;">
+            <div align="center">
+                <a id="crearmsg" href="#">enviar mensaje</a>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a id="msgs" class="dropdown-item small" href="#">Mostrar todos</a>
+          </div>
+        </li>
+
         <li>
-
-
           <a href="">
             @if (!Auth::guest())
               {{ Auth::user()->name }}

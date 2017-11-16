@@ -158,7 +158,8 @@ return [
 		Laravel\Socialite\SocialiteServiceProvider::class,
 		Kim\Activity\ActivityServiceProvider::class,
 		Ghanem\Friendship\FriendshipServiceProvider::class,
-
+		Hamedmehryar\Chat\ChatServiceProvider::class,
+		Cmgmyr\Messenger\MessengerServiceProvider::class,
 		/*
 			         * Application Service Providers...
 		*/
