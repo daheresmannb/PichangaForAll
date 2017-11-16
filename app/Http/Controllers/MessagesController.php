@@ -119,6 +119,7 @@ class MessagesController extends Controller {
         if (Input::has('recipients')) {
             $thread->addParticipant(Input::get('recipients'));
         }
+        
         return redirect()->route('messages.show', $id);
     }
 }
