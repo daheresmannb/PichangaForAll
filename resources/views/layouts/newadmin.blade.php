@@ -32,8 +32,8 @@
 <link href="growl/stylesheets/jquery.growl.css" rel="stylesheet" type="text/css" />
 <script src="http://localhost:3200/socket.io/socket.io.js"></script>
 <script>
-  var socket = io.connect('http://localhost:3200');
-  socket.on(
+  	var socket = io.connect('http://localhost:3200');
+  	socket.on(
 		'message',
 		function(msg) {
 			miid = "<?php echo Auth::user()->id; ?>";
@@ -43,6 +43,7 @@
 					message: msg.data.msg.name
 				});
 			}
-  	});
+  		}
+  	);
 </script>
 </html>
