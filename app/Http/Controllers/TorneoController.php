@@ -9,23 +9,24 @@ use \Response;
 
 class TorneoController extends Controller {
 	public function CreateTorneo(Request $request) {
-		$torneos = new Torneos();
-		$val = $torneos->Validar($request->all());
+		$torneo = new Torneos();
+		$val = $torneo->Validar($request->all());
 		if ($val->fails()) {
 			$status = trans('requests.failure.code.bad_request');
 			$data['errors'] = true;
 			$data['respuesta'] = $val->messages();
 		} else {
 
-			$torneos->id_recinto = $request->id_recinto;
-			$torneos->id_encargado = $request->id_encargado;
-			$torneos->inicio = $request->inicio;
-			$torneos->termino = $request->termino;
-			$torneos->save();
+			$torneo->id_recinto = $request->id_recinto;
+			$torneo->id_encargado = $request->id_encargado;
+			$torneo->nombre_torneo = $request->nombre_torneo;
+			$torneo->inicio = $request->inicio;
+			$torneo->termino = $request->termino;
+			$torneo->save();
 
 			$status = trans('requests.success.code');
 			$data['errors'] = false;
-			$data['respuesta'] = $torneos;
+			$data['respuesta'] = $torneo;
 
 		}
 		return Response::json($data, $status);

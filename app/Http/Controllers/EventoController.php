@@ -32,11 +32,11 @@ class EventoController extends Controller {
     	} else {
             if ($request->numjugadores <= 20) {
                 $partido->nombre_partido =$request->nombre_partido;
-                $partido->nombre     = $request->nombre;
-                $partido->inicio     = $request->inicio;
-                $partido->termino    = $request->termino;
-                $partido->recinto_id = $request->recinto_id;
-                $partido->numjugadores = $request->numjugadores;
+                $partido->nombre         = $request->nombre;
+                $partido->inicio         = $request->inicio;
+                $partido->termino        = $request->termino;
+                $partido->recinto_id     = $request->recinto_id;
+                $partido->numjugadores   = $request->numjugadores;
                 $partido->save();
 
                 $status            = trans('requests.success.code');

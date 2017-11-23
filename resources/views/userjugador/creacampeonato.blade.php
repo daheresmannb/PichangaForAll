@@ -22,10 +22,10 @@ $(document).ready(
     function() {
         $("#listrecinto").change(
             function () {
-                $("#recinto_id").val(
+                $("#id_recinto").val(
                     $('#listrecinto').find(":selected").val()
                 );
-                $("#recinto_id:text").val(
+                $("#id_recinto:text").val(
                     $('#listrecinto').find(":selected").val()
                 );
             }
@@ -84,6 +84,7 @@ $(document).ready(
                     <label class="col-md-6 col">fecha y hora de termino</label>
                     <input id="partidotime2" name="termino" class="col-md-6 col">
                     <script>
+
                         $("#partidotime").datetimepicker({
                             autoclose: true
                         });
@@ -137,7 +138,6 @@ $(document).ready(
                <tbody>
                     @if(!empty($torneos['respuesta'][0]['id']))
                         @foreach($torneos['respuesta'] as $torneo)
-
                             <td>{{ $torneo->id }}</td>
                             <td>{{ $torneo->inicio }}</td>
                             <td>{{ $torneo->termino }}</td>

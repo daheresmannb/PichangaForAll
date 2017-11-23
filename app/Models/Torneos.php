@@ -33,5 +33,4 @@ class Torneos extends Model {
 		);
 		return $validator;
 	}
-
 }
