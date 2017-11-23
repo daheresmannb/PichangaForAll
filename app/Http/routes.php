@@ -165,12 +165,8 @@ Route::post('partido/obtener','EventoController@ReadPartido')->name(
 
 //////////////// Rutas Torneos///////////////////////////////////////
 
-Route::get(
-	'/creacapeonato',
-		function () {
-			return view('userjugador.creacampeonato');
-	}
-);
+Route::get('/creacapeonato','TorneoController@ReadTorneo');
+
 
 /////////////////////////////////////////////////////////////////////
 
@@ -351,3 +347,7 @@ Route::group(
 );
 
 Route::post('partido/sumarse','EventoController@SumarsePartido');
+
+//torneos 
+
+Route::post('torneos/sumarse','TorneoController@SumarseTorneo');

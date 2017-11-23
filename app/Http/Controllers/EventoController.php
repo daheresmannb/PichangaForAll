@@ -31,6 +31,7 @@ class EventoController extends Controller {
         	$data['respuesta'] = $val->messages();
     	} else {
             if ($request->numjugadores <= 20) {
+                $partido->nombre_partido =$request->nombre_partido;
                 $partido->nombre     = $request->nombre;
                 $partido->inicio     = $request->inicio;
                 $partido->termino    = $request->termino;

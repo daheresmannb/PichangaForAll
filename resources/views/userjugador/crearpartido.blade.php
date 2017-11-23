@@ -131,20 +131,22 @@ $(document).ready(
  	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3 form-box" class="card"  >
 			<div class="form-group row">
+
+
 {!! Form::open(['route' => array('partido.crear', )]) !!}
 <input type="hidden" id="recinto_id" name="recinto_id">
 <div class="form-horizontal row">
+<label>nombre del partido</label>
+<input type="text" name="nombre_partido">
 	<label class="col-md-6 col">seleccione recinto</label>
 	<select class="selectpicker" id="listrecinto" name="nombre">
 		<option value="0">waaa</option>
 	</select>
 </div>
-
 <div class="form-horizontal row" style="padding-top: 10px">
 	<label class="col-md-6 col">fecha y hora de inicio</label>
 	<input id="partidotime" name="inicio" class="col-md-6 col">
 </div>
-
 <div class="form-horizontal row" style="padding-top: 10px">
 	<label class="col-md-6 col">fecha y hora de termino</label>
 	<input id="partidotime2" name="termino" class="col-md-6 col">

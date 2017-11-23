@@ -14,6 +14,7 @@ class Partidos extends Model {
         'termino',
         'recinto_id',
         'numjugadores',
+        'nombre_partido',
         'created_at',
         'updated_at'
     ];
@@ -28,6 +29,7 @@ class Partidos extends Model {
     			'nombre'     => 'required',
                 'inicio'     => 'required',
                 'termino'    => 'required',
+                'nombre_partido'=>'required',
                 'recinto_id'    => 'required',
                 'numjugadores'  => 'required'
 			]

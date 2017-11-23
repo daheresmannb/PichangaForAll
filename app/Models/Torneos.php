@@ -12,7 +12,8 @@ class torneos extends Model {
         'id',
         'id_recinto',
         'id_encargado',
-        'fono_contacto'
+        'inicio',
+        'termino',
     ];
 
     protected $casts = [
@@ -26,7 +27,8 @@ class torneos extends Model {
             $array, [
                 'id_encargado'       => 'required',
                 'id_recinto'         => 'required',
-                'fono_contacto'      => 'required',
+                'inicio'            =>'required',
+                'termino'           =>'required',
             ]
         );
         return $validator;
