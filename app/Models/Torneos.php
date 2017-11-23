@@ -2,36 +2,36 @@
 
 namespace App\Models;
 
-use Validator;
 use Illuminate\Database\Eloquent\Model;
+use Validator;
 
-class torneos extends Model {
+class Torneos extends Model {
 
-    protected $table = 'torneos';
-    protected $fillable = [
-        'id',
-        'id_recinto',
-        'id_encargado',
-        'inicio',
-        'termino',
-    ];
+	protected $table = 'torneos';
+	protected $fillable = [
+		'id',
+		'id_recinto',
+		'id_encargado',
+		'inicio',
+		'termino',
+	];
 
-    protected $casts = [
-        'id' => 'string',
-        'id_recinto' => 'string',
-        'id_encargado' => 'string'
-    ];
+	protected $casts = [
+		'id' => 'string',
+		'id_recinto' => 'string',
+		'id_encargado' => 'string',
+	];
 
-    public function Validar($array){
-        $validator = Validator::make(
-            $array, [
-                'id_encargado'       => 'required',
-                'id_recinto'         => 'required',
-                'inicio'            =>'required',
-                'termino'           =>'required',
-            ]
-        );
-        return $validator;
-    }
+	public function Validar($array) {
+		$validator = Validator::make(
+			$array, [
+				'id_encargado' => 'required',
+				'id_recinto' => 'required',
+				'inicio' => 'required',
+				'termino' => 'required',
+			]
+		);
+		return $validator;
+	}
 
 }

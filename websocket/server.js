@@ -1,8 +1,6 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
-//creación de cliente de redis
 var redis = require('redis');
 var r = redis.createClient();
 //suscripción a canal de redis
@@ -52,6 +50,8 @@ http.listen(
 
 
 
+/*
+
 // sending to sender-client only
 socket.emit('message', "this is a test");
 
@@ -70,7 +70,8 @@ socket.broadcast.to('game').emit(
 io.in('game').emit('message', 'cool game');
 
 // sending to sender client, only if they are in 'game' room(channel)
-socket.to('game').emit('message', 'enjoy the game');
+socket.to('game').emit(
+	'message', 'enjoy the game');
 
 // sending to all clients in namespace 'myNamespace', include sender
 io.of('myNamespace').emit('message', 'gg');
@@ -80,3 +81,5 @@ socket.broadcast.to(socketid).emit(
 	'message', 
 	'for your eyes only'
 );
+
+*/
