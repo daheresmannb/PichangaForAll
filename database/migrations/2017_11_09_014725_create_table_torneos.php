@@ -22,15 +22,17 @@ class CreateTableTorneos extends Migration
                 $table->uuid('id_recinto')->unique();
                 $table->uuid('id_encargado')->unique();
                 $table->string('fono_contacto');
-                $table->timestamps();
+
                 $table->foreign('id_encargado')
                     ->references('id')
                     ->on('users')
                 ->onDelete('cascade');
+
                 $table->foreign('id_recinto')
                     ->references('id')
                     ->on('recintos')
                 ->onDelete('cascade');
+                $table->timestamps();
                 $table->primary('id');
             }
         );

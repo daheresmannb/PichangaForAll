@@ -1,10 +1,23 @@
 @extends('funcionesjs')
 
+@if(session('torneos'))
+<script type="text/javascript">
+    $(document).ready(
+        function () {
+            alert("holaaaaaa");
+        }
+    );
+</script>
+@endif
+
+
+
+
 <!--datepicker-->
 {!!Html::style('assets/css/jquery.datetimepicker.min.css'); !!}
 {!!Html::script('assets/js/jquery.datetimepicker.full.js'); !!}
 
-   <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(
     function() {
         $("#listrecinto").change(
@@ -117,10 +130,13 @@ $(document).ready(
                     <th>lugar</th>
                     <th>ver</th>    
                 </thead>
-                <tbody>
-                    <td>aqui</td>
-                    <td>aca</td>
-                    <td>alla</td>
+               <tbody>
+                    @if(!empty($torneos['respuesta'][0]['id']))
+                        @foreach($torneos['respuesta'] as $torneo)
+                            
+                            <td>{{ $torneo->id }}</td>
+                        @endforeach
+                    @endif
                 </tbody>
                 </table>
             </div>
