@@ -76,6 +76,11 @@ $(document).ready(
                 </select>
                 <span class="help-block"></span>
                 <div class="form-horizontal row" >
+                    <label class="col-md-6 col">Nombre Torneo</label>
+                    <input name="nombre_torneo" class="col-md-6 col">
+                </div>
+                <span class="help-block"></span>
+                <div class="form-horizontal row" >
                     <label class="col-md-6 col">fecha y hora de inicio</label>
                     <input id="partidotime" name="inicio" class="col-md-6 col">
                 </div>
@@ -132,6 +137,7 @@ $(document).ready(
                 <table id="" class="table table-hover table-striped">
                 <thead>
                     <th>partido</th>
+                    <th>nombre</th>
                     <th>inicio</th>
                     <th>termino</th>
                 </thead>
@@ -139,6 +145,7 @@ $(document).ready(
                     @if(!empty($torneos['respuesta'][0]['id']))
                         @foreach($torneos['respuesta'] as $torneo)
                             <td>{{ $torneo->id }}</td>
+                            <td>{{ $torneo->nombre_torneo }}</td>
                             <td>{{ $torneo->inicio }}</td>
                             <td>{{ $torneo->termino }}</td>
                         @endforeach

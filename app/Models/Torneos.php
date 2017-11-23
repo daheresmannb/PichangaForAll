@@ -27,6 +27,7 @@ class Torneos extends Model {
 			$array, [
 				'id_encargado' => 'required',
 				'id_recinto' => 'required',
+				'nombre_torneo' => 'required',
 				'inicio' => 'required',
 				'termino' => 'required',
 			]
