@@ -22,10 +22,10 @@ $(document).ready(
     function() {
         $("#listrecinto").change(
             function () {
-                $("#recinto_id").val(
+                $("#id_recinto").val(
                     $('#listrecinto').find(":selected").val()
                 );
-                $("#recinto_id:text").val(
+                $("#id_recinto:text").val(
                     $('#listrecinto').find(":selected").val()
                 );
             }
@@ -59,53 +59,67 @@ $(document).ready(
 </script>
 
 <!-- inicio modal-->
-              <div  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
-                    <div class="modal-dialog" role="documen">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"> Crear Torneo</h4>   
-                            </div> <!-- fin modal-header-->
-                            <div class="modal-body">
-{!! Form::open(['route' => array('torneo.crear', ), 'autocomplete' => 'off']) !!}
+<div  class="modal face" id="creartorneo" tabindex="1" role="dialog" aria-labelledby="creartorneo" aria-hidden="true">
+<div class="modal-dialog" role="documen">
+<div class="modal-content">
+    <div class="modal-header">
+               <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <h4 class="modal-title"> Crear Torneo</h4>   
+    </div> <!-- fin modal-header-->
+     <div class="modal-body">
 
-                                
-    <label class="col-md-6 col">seleccione recinto</label>
-    <select class="selectpicker" id="listrecinto" name="nombre">
-        <option value="0">waaa</option>
-    </select>
+   <form role="form" action="{{ url('torneos/crear') }}" method="POST" class="form-horizontal">
+          {{ csrf_field() }}
 
-                                <span class="help-block"></span> 
-                                <div class="form-horizontal row" >
-                                    <label class="col-md-6 col">fecha y hora de inicio</label>
-                                    <input id="partidotime" name="inicio" class="col-md-6 col">
-                                </div>
-                                <span class="help-block"></span>
-                                <div class="form-horizontal row">
-                                    <label class="col-md-6 col">fecha y hora de termino</label>
-                                    <input id="partidotime2" name="termino" class="col-md-6 col">
-                                    <script>
-                                        $("#partidotime").datetimepicker({
-                                            autoclose: true
-                                        });
-                                    $("#partidotime2").datetimepicker({
-                                      autoclose: true
-                                    });
-                                    </script>
-                                </div>
-                                <span class="help-block"></span>
-                                 <div class="form-horizontal row">
-                            <label class="col-md-6 col">numero de jugadores</label>
-                             <input type="number" name="numjugadores" min="2" max="12" step="1"  required="required" class="col-md-6 col">
-                            </div>
-                            </div> <!-- fin del modal-body-->
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">crear torneo</button>
-                           {!! Form::close() !!}
-                            </div>
-                        </div>
-                    </div>
-                </div> 
+<input type="hidden" id="id_recinto" name="id_recinto">
+    {!! Form::hidden(
+              'id_user',
+              Auth::user()->id,
+              array(
+                 'id' => 'id_encargado',
+                 'name' => 'id_encargado')
+    )!!}
+            <label class="col-md-6 col">nombre de torneo</label> 
+            <input type="text" name="nombre_torneo">
+            <label class="col-md-6 col">seleccione recinto</label>
+            <select class="selectpicker" id="listrecinto" name="nombre">
+            <option value="0">waaa</option>
+            </select>
+         
+            <div class="form-horizontal row" >
+                <label class="col-md-6 col">fecha y hora de inicio</label>
+                <input id="partidotime" name="inicio" class="col-md-6 col">
+            </div>
+                <span class="help-block"></span>
+            <div class="form-horizontal row">
+                <label class="col-md-6 col">fecha y hora de termino</label>
+            <input id="partidotime2" name="termino" class="col-md-6 col">
+                   <script>
+                        $("#partidotime").datetimepicker({
+                            autoclose: true
+                        });
+                        $("#partidotime2").datetimepicker({
+                            autoclose: true
+                        });
+                    </script>
+            </div>
+            <div class="form-horizontal row">
+                <label class="col-md-6 col">numero de jugadores</label>
+                <input type="number" name="numjugadores" min="2" max="12" step="1"  required="required" class="col-md-6 col">
+            </div>
+
+               <!--input name="registrar" class="btn btn-lg btn-primary btn-block" type="submit" data-dismiss="modal"-->
+                <input  class="btn btn-primary  btn-block" type="submit" value="crearpartido" id="btnpartido">
+</form> 
+    </div>
+    <div class="modal-footer">
+   
+    </div>
+</div>
+</div>
+</div>
+
+<!--modal final-->
 
 <div class="container-fluid">  
             <div class="" style="display: inline-block; background-color: transparent; padding-bottom: 20px;">
@@ -126,7 +140,7 @@ $(document).ready(
            <div class="table-responsive">
                 <table id="" class="table table-hover table-striped">
                 <thead>
-                    <th>partido</th>
+                    <th>nombre_torneo</th>
                     <th>lugar</th>
                     <th>ver</th>    
                 </thead>
@@ -134,7 +148,7 @@ $(document).ready(
                     @if(!empty($torneos['respuesta'][0]['id']))
                         @foreach($torneos['respuesta'] as $torneo)
                             
-                            <td>{{ $torneo->id }}</td>
+                            <td>{{ $torneo->nombre_torneo }}</td>
                         @endforeach
                     @endif
                 </tbody>

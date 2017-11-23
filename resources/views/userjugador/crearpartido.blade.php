@@ -16,7 +16,7 @@
 						$("#conttabla").empty();
 						for (var i = data.respuesta.length - 1; i >= 0; i--) {
 							$("#conttabla").append(
-								"<tr><td>"+data.respuesta[i].nombre+"</td><td>"+data.respuesta[i].inicio+"</td><td>"+data.respuesta[i].termino+"</td><td>"+data.respuesta[i].numjugadores+"</td><td>"+data.respuesta[i].created_at+"</td><td>"+data.respuesta[i].updated_at+"</td><td><button value='"+data.respuesta[i].id+"' onclick='sumar_a_partido(value)' class='btn btn-primary btn-xs' type='button' name='button'> unirse </button> </td> </tr>"
+								"<tr><td>"+data.respuesta[i].nombre_partido+"</td><td>"+data.respuesta[i].inicio+"</td><td>"+data.respuesta[i].termino+"</td><td>"+data.respuesta[i].numjugadores+"</td><td>"+data.respuesta[i].created_at+"</td><td>"+data.respuesta[i].updated_at+"</td><td><button value='"+data.respuesta[i].id+"' onclick='sumar_a_partido(value)' class='btn btn-primary btn-xs' type='button' name='button'> unirse </button> </td> </tr>"
 							);
 						}
 
@@ -104,7 +104,7 @@ $(document).ready(
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th>nombre</th>
+							<th>nombre de partido</th>
 							<th>inicio</th>
 							<th>termino</th>
 							<th>n°jugadores</th>
@@ -136,8 +136,8 @@ $(document).ready(
 {!! Form::open(['route' => array('partido.crear', )]) !!}
 <input type="hidden" id="recinto_id" name="recinto_id">
 <div class="form-horizontal row">
-<label>nombre del partido</label>
-<input type="text" name="nombre_partido">
+<label class="col-md-6 col">nombre del partido</label>
+<input type="text" name="nombre_partido" class="col-md-6 col">
 	<label class="col-md-6 col">seleccione recinto</label>
 	<select class="selectpicker" id="listrecinto" name="nombre">
 		<option value="0">waaa</option>

@@ -14,27 +14,39 @@ class TorneoController extends Controller
 {
     //
     public function CreateTorneo(Request $request) {
-    	$torneos = new torneos();
-    	$val = $torneos->Validar($request->all());
+    	$torneo = new torneos();
+    	$val = $torneo->Validar($request->all());
     	if ($val->fails()) {
-    		$status			   = trans('requests.failure.code.bad_request');
+    		$status		   = trans('requests.failure.code.bad_request');
     		$data['errors']    = true;
-        	$data['respuesta'] = $val->messages();
-    	} else {
+        	$data['respuesta'] = $val->messages();    	
+        } else {
+            $torn = torneos::where(
+                'id_recinto',
+                $request->id_recinto
+            )->where(
+                'id_encargado',
+                $request->id_encargado
+            )->first();
 
-                        $torneos->id_recinto     = $request->id_recinto;
-                        $torneos->id_encargado   = $request->id_encargado;
-                        $torneos->inicio         = $request->inicio;
-                        $torneos->termino        = $request->termino;
-                        $torneos->save();
+            if (!isset($torn->id)) {
+                $torneo->id_recinto     = $request->id_recinto;
+                $torneo->id_encargado   = $request->id_encargado;
+                $torneo->nombre_torneo  = $request->nombre_torneo; 
+                $torneo->inicio         = $request->inicio;
+                $torneo->termino        = $request->termino;
+                $torneo->save();
 
-                        $status            = trans('requests.success.code');
-                        $data['errors']    = false;
-                        $data['respuesta'] = $torneos;
-            
-
+                $status            = trans('requests.success.code');
+                $data['errors']    = false;
+                $data['respuesta'] = $torneo;
+            } else {
+                $status            = trans('requests.success.code');
+                $data['errors']    = true;
+                $data['respuesta'] = "El torneo ya se encuentra creado";
+            }
     	}
-      return Response::json($data, $status);
+        return Response::json($data, $status);
     }
 
     public function ReadTorneo(Request $request) {
