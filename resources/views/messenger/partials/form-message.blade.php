@@ -1,3 +1,4 @@
+
 <div align="center" id="contus" class="container">
 <h4>Enviar mensaje</h4>
 <form action="{{ route('messages.update', $thread->id) }}" method="post">
@@ -25,3 +26,4 @@
     </div>
 </form>
 </div>
+
