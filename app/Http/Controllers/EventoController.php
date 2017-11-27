@@ -23,6 +23,7 @@ asi como estan ahora las funciones
 */
 
 class EventoController extends Controller {
+    
     public function CreatePartido(Request $request) {
     	$partido = new Partidos();
     	$val = $partido->Validar($request->all());
@@ -33,14 +34,14 @@ class EventoController extends Controller {
     	} else {
             $inicio = Carbon::createFromFormat(
                 'Y-m-d H:i:s', 
-                $request->inicio
+                str_replace("/", "-", $request->inicio.":00")
             );
 
             $termino = Carbon::createFromFormat(
                 'Y-m-d H:i:s', 
-                $request->termino
+                str_replace("/", "-", $request->termino.":00")
             );
-
+            
             if ($inicio->diffInMinutes($termino) >= 60) {
                 if ($request->numjugadores <= 20) {
                     $partido->nombre_partido =$request->nombre_partido;
@@ -65,11 +66,8 @@ class EventoController extends Controller {
                 $data['respuesta'] = "La hora de inicio con la hora de termino se deben diferenciar por una hora";
             }
     	}
-        return redirect('/index')->with(
-            'respuesta',
-            $data
-        );
-    	//return Response::json($data, $status);
+   
+    	return Response::json($data, $status);
     }
 
     public function ReadPartido(Request $request) {
