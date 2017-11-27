@@ -17,16 +17,15 @@ class TorneoController extends Controller {
 			$data['errors'] = true;
 			$data['respuesta'] = $val->messages();
 		} else {
-
 			$inicio = Carbon::createFromFormat(
-				'Y-m-d H:i:s', 
-				$request->inicio
-			);
+                'Y-m-d H:i:s', 
+                str_replace("/", "-", $request->inicio.":00")
+            );
 
-			$termino = Carbon::createFromFormat(
-				'Y-m-d H:i:s', 
-				$request->termino
-			);
+            $termino = Carbon::createFromFormat(
+                'Y-m-d H:i:s', 
+                str_replace("/", "-", $request->termino.":00")
+            );
 
 			if ($inicio->diffInDays($termino) >= 1) {
 				$torneo->id_recinto = $request->id_recinto;
