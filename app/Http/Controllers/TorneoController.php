@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Torneos;
 use Illuminate\Http\Request;
 use \Response;
+use Carbon\Carbon;
 
 class TorneoController extends Controller {
 	public function CreateTorneo(Request $request) {
@@ -17,17 +18,32 @@ class TorneoController extends Controller {
 			$data['respuesta'] = $val->messages();
 		} else {
 
-			$torneo->id_recinto = $request->id_recinto;
-			$torneo->id_encargado = $request->id_encargado;
-			$torneo->nombre_torneo = $request->nombre_torneo;
-			$torneo->inicio = $request->inicio;
-			$torneo->termino = $request->termino;
-			$torneo->save();
+			$inicio = Carbon::createFromFormat(
+				'Y-m-d H:i:s', 
+				$request->inicio
+			);
 
-			$status = trans('requests.success.code');
-			$data['errors'] = false;
-			$data['respuesta'] = $torneo;
+			$termino = Carbon::createFromFormat(
+				'Y-m-d H:i:s', 
+				$request->termino
+			);
 
+			if ($inicio->diffInDays($termino) >= 1) {
+				$torneo->id_recinto = $request->id_recinto;
+				$torneo->id_encargado = $request->id_encargado;
+				$torneo->nombre_torneo = $request->nombre_torneo;
+				$torneo->inicio = $request->inicio;
+				$torneo->termino = $request->termino;
+				$torneo->save();
+
+				$status = trans('requests.success.code');
+				$data['errors'] = false;
+				$data['respuesta'] = $torneo;
+			} else {
+				$status = trans('requests.success.code');
+				$data['errors'] = true;
+				$data['respuesta'] = "La fecha de inicio con la de termino tienen que tener 1 dia de diferencia";
+			}
 		}
 		return Response::json($data, $status);
 	}

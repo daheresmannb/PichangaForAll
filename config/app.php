@@ -218,6 +218,7 @@ return [
 		'Form' => Collective\Html\FormFacade::class,
 		'Html' => Collective\Html\HtmlFacade::class,
 		'Activity' => Kim\Activity\ActivityFacade::class,
+		'Carbon' => 'Carbon\Carbon',
 		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 		'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class,
 	],

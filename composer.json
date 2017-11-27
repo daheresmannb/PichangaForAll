@@ -19,7 +19,8 @@
         "kim/activity": "^1.1",
         "ghanem/friendship": "^1.0",
         "hamedmehryar/laravel-chat": "^1.0",
-        "cmgmyr/messenger": "^2.15"
+        "cmgmyr/messenger": "^2.15",
+        "nesbot/carbon": "^1.22"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

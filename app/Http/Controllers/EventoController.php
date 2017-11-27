@@ -9,6 +9,7 @@ use App\User;
 use App\Models\ParticipantePartido;
 use Illuminate\Support\Facades\Event;
 use App\Events\AmigosConectadosEvent;
+use Carbon\Carbon;
 use DB;
 /*
 Alex
@@ -30,22 +31,38 @@ class EventoController extends Controller {
     		$data['errors']    = true;
         	$data['respuesta'] = $val->messages();
     	} else {
-            if ($request->numjugadores <= 20) {
-                $partido->nombre_partido =$request->nombre_partido;
-                $partido->nombre         = $request->nombre;
-                $partido->inicio         = $request->inicio;
-                $partido->termino        = $request->termino;
-                $partido->recinto_id     = $request->recinto_id;
-                $partido->numjugadores   = $request->numjugadores;
-                $partido->save();
+            $inicio = Carbon::createFromFormat(
+                'Y-m-d H:i:s', 
+                $request->inicio
+            );
 
-                $status            = trans('requests.success.code');
-                $data['errors']    = false;
-                $data['respuesta'] = $partido;
+            $termino = Carbon::createFromFormat(
+                'Y-m-d H:i:s', 
+                $request->termino
+            );
+
+            if ($inicio->diffInMinutes($termino) >= 60) {
+                if ($request->numjugadores <= 20) {
+                    $partido->nombre_partido =$request->nombre_partido;
+                    $partido->nombre         = $request->nombre;
+                    $partido->inicio         = $request->inicio;
+                    $partido->termino        = $request->termino;
+                    $partido->recinto_id     = $request->recinto_id;
+                    $partido->numjugadores   = $request->numjugadores;
+                    $partido->save();
+
+                    $status            = trans('requests.success.code');
+                    $data['errors']    = false;
+                    $data['respuesta'] = $partido;
+                } else {
+                    $status            = trans('requests.success.code');
+                    $data['errors']    = true;
+                    $data['respuesta'] = "El partido contiene muchos jugadores";
+                }
             } else {
                 $status            = trans('requests.success.code');
                 $data['errors']    = true;
-                $data['respuesta'] = "El partido contiene muchos jugadores";
+                $data['respuesta'] = "La hora de inicio con la hora de termino se deben diferenciar por una hora";
             }
     	}
         return redirect('/index')->with(
