@@ -1,5 +1,5 @@
 /bootstrap/cache/config.php
-/vendor
+
 /node_modules
 /public/storage
 Homestead.yaml

@@ -308,9 +308,15 @@ class UserController extends Controller {
           $user = User::find($request->id);
 
           if (isset($user->id)) {
+              $amigos = $user->getAcceptedFriendships();
+
+              foreach ($amigos as $amigo) {
+                  $amigo->amigo = User::find($amigo->sender_id);
+              }
+
               $status           = trans('requests.success.code');
               $data['errors']   = false;
-              $data['respuesta'] = $user->getAcceptedFriendships();
+              $data['respuesta'] = $amigos;
           } else {
               $status           = trans('requests.failure.code.not_founded');
               $data['errors']   = true;

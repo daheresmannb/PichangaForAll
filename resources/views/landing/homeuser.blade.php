@@ -15,6 +15,42 @@
         );
     </script>
 @endif
+<script type="text/javascript">
+    $(document).ready(
+        function () {
+            $("#mostraramigos").click(
+                function () {
+                    $.ajax({
+                        type: 'POST',
+                        url:  "<?php echo url('amigo/obtener'); ?>",
+                        headers: {
+                            'X-CSRF-TOKEN': "<?php echo csrf_token(); ?>"
+                        },
+                        data: {
+                            _token: "<?php echo csrf_token(); ?>",
+                            id: "<?php echo Auth::user()->id ?>"
+                        },
+                        success: function(data) {
+                            console.log(data.respuesta);
+                            console.log("<?php echo Auth::user()->id ?>");
+                            $("#contenedor").empty();
+                            for (var i = data.respuesta.length - 1; i >= 0; i--) {
+                                $("#contenedor").append(
+                                    "<td>"+data.respuesta[i].amigo.name+"</td>"+"<td>"+data.respuesta[i].amigo.email+"</td>"
+                                );
+                            }
+                            
+                        },
+                        error: function(xhr, textStatus, thrownError) {
+                            console.log(thrownError +"error "+ textStatus);
+                        }
+                    });
+                    $("#contenedor").append("hgdhgjhgdjhdg");
+                }
+            );
+        }
+    );
+</script>
 
 <style type="text/css">
     .card {
@@ -125,7 +161,7 @@
                 <button type="button" class="btn btn-info">Perfil</button>
                 </div>
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-info">Amigos</button>
+                <button id="mostraramigos" type="button" class="btn btn-info">Amigos</button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-info">equipos</button>
@@ -146,6 +182,22 @@
           <h3>This is tab 3</h3>
         </div>
       </div>
+      <div class="card" >
+          <table class="table">
+    <thead>
+      <tr>
+        <th>nombre</th>
+        <th>correo</th>
+      </tr>
+    </thead>
+    <tbody id="contenedor">
+  
+    </tbody>
+  </table>
+      </div>
     </div>
     </div>
 </div>
+
+
+
